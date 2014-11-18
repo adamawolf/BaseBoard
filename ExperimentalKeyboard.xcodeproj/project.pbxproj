@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9407864D1A1AC2A10078C7E7 /* KeyPositionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */; };
 		94F9B9A519F08E6600F47B35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A419F08E6600F47B35 /* main.m */; };
 		94F9B9A819F08E6600F47B35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A719F08E6600F47B35 /* AppDelegate.m */; };
 		94F9B9AB19F08E6600F47B35 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9AA19F08E6600F47B35 /* FirstViewController.m */; };
@@ -59,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9407864B1A1AC2A10078C7E7 /* KeyPositionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPositionController.h; sourceTree = "<group>"; };
+		9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPositionController.m; sourceTree = "<group>"; };
 		94F9B99F19F08E6600F47B35 /* ExperimentalKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExperimentalKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9A319F08E6600F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F9B9A419F08E6600F47B35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				94F9B9D119F08EA300F47B35 /* Supporting Files */,
 				94F9B9DF19F090FC00F47B35 /* KeyView.h */,
 				94F9B9E019F090FC00F47B35 /* KeyView.m */,
+				9407864B1A1AC2A10078C7E7 /* KeyPositionController.h */,
+				9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94F9B9E119F090FC00F47B35 /* KeyView.m in Sources */,
+				9407864D1A1AC2A10078C7E7 /* KeyPositionController.m in Sources */,
 				94F9B9D519F08EA300F47B35 /* KeyboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +566,7 @@
 				94F9B9C719F08E6600F47B35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94F9B9C819F08E6600F47B35 /* Build configuration list for PBXNativeTarget "ExperimentalKeyboardTests" */ = {
 			isa = XCConfigurationList;
@@ -568,6 +575,7 @@
 				94F9B9CA19F08E6600F47B35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94F9B9DB19F08EA300F47B35 /* Build configuration list for PBXNativeTarget "Keyboard" */ = {
 			isa = XCConfigurationList;
@@ -576,6 +584,7 @@
 				94F9B9DD19F08EA300F47B35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

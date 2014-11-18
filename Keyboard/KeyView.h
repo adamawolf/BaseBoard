@@ -10,7 +10,7 @@
 
 @interface KeyView : UIView
 
-@property (nonatomic, strong) NSString *symbol;
+@property (nonatomic, strong, readonly) NSString *symbol;
 
 - (instancetype)initWithSymbol:(NSString *)symbol;
 

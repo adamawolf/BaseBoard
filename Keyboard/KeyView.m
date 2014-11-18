@@ -10,6 +10,7 @@
 
 @interface KeyView ()
 
+@property (nonatomic, strong, readwrite) NSString *symbol;
 @property (nonatomic, assign) CGFloat shadowHeight;
 
 @end
@@ -59,15 +60,8 @@
 #pragma mark - Dimension Helper methods
 
 - (CGSize)keySize
-{
-    static CGSize _keySize;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _keySize = CGSizeMake(self.frame.size.width, self.frame.size.height - self.shadowHeight);
-    });
-    
-    return _keySize;
+{    
+    return CGSizeMake(self.frame.size.width, self.frame.size.height - self.shadowHeight);
 }
 
 
