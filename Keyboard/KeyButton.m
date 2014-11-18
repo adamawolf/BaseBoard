@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Flairify LLC. All rights reserved.
 //
 
-#import "KeyView.h"
+#import "KeyButton.h"
 
-@interface KeyView ()
+@interface KeyButton ()
 
 @property (nonatomic, readwrite) KeyCode keyCode;
 @property (nonatomic, assign) CGFloat shadowHeight;
 
 @end
 
-@implementation KeyView
+@implementation KeyButton
 
 - (instancetype)initWithKeyCode:(KeyCode)keyCode
 {
@@ -26,8 +26,17 @@
         _shadowHeight = 1.5f;
         
         self.backgroundColor = [UIColor clearColor];
+        
+        [self addTarget:self action:@selector(touchUpInsideDidFire:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -44,7 +53,11 @@
     [bezierPath fill];
     
     bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f, 0.0f, keySize.width, keySize.height) cornerRadius:4.0f];
-    [[UIColor whiteColor] set];
+    if (self.highlighted == NO) {
+        [[UIColor whiteColor] set];
+    } else {
+        [[UIColor colorWithWhite:.8 alpha:1.0f] set];
+    }
     [bezierPath fill];
     
     NSDictionary *fontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
@@ -66,5 +79,11 @@
     return CGSizeMake(self.frame.size.width, self.frame.size.height - self.shadowHeight);
 }
 
+#pragma mark - Action methods
+
+- (void)touchUpInsideDidFire:(KeyButton *)sender
+{
+    [self.delegate keyButtonDidGetTapped:sender];
+}
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "KeyboardViewController.h"
-#import "KeyView.h"
+#import "KeyButton.h"
 #import "KeyController.h"
 #import "KeyPositionController.h"
 
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneSupplementalSymbols,
 };
 
-@interface KeyboardViewController () <KeyPositionDataSource>
+@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate>
 
 @property (nonatomic, strong) KeyPositionController *keyPositionController;
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
@@ -68,7 +68,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     
         [rows enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
             [row enumerateObjectsUsingBlock:^(NSDictionary *keyDictionary, NSUInteger idx, BOOL *stop) {
-                KeyView *aKeyView = [[KeyView alloc] initWithKeyCode:[keyDictionary[@"keyCode"] intValue]];
+                KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyDictionary[@"keyCode"] intValue]];
+                aKeyView.delegate = self;
                 aKeyView.frame = [keyDictionary[@"frame"] CGRectValue];
                 [self.view addSubview:aKeyView];
             }];
@@ -167,6 +168,17 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     }
     
     return stride;
+}
+
+#pragma mark - KeyButtonDelegate methods
+
+- (void)keyButtonDidGetTapped:(KeyButton *)keyButton
+{
+    NSLog(@"key press: %lu", keyButton.keyCode);
+    
+    if (keyButton.keyCode == KeyCodeNextKeyboard) {
+        [self advanceToNextInputMode];
+    }
 }
 
 @end

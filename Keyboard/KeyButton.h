@@ -9,8 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "KeyController.h"
 
-@interface KeyView : UIView
+@class KeyButton;
 
+@protocol KeyButtonDelegate <NSObject>
+
+- (void)keyButtonDidGetTapped:(KeyButton *)keyButton;
+
+@end
+
+@interface KeyButton : UIButton
+
+@property (nonatomic, weak) id<KeyButtonDelegate> delegate;
 @property (nonatomic, readonly) KeyCode keyCode;
 
 - (instancetype)initWithKeyCode:(KeyCode)keyCode;
