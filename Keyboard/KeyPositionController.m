@@ -40,7 +40,7 @@
             NSIndexPath *currentIndexPath = [NSIndexPath indexPathForKeyPosition:currentKeyPosition inKeyRow:currentRow];
             
             NSMutableDictionary *keyDictionary = [NSMutableDictionary new];
-            keyDictionary[@"symbol"] = [self.dataSource symbolForKeyAtIndexPath:currentIndexPath];
+            keyDictionary[@"keyCode"] = @([self.dataSource symbolForKeyAtIndexPath:currentIndexPath]);
             keyDictionary[@"stride"] = @([self.dataSource strideForKeyAtIndexPath:currentIndexPath]);
             
             totalStride += [keyDictionary[@"stride"] integerValue];

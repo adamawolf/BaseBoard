@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KeyController.h"
 
 @interface KeyView : UIView
 
-@property (nonatomic, strong, readonly) NSString *symbol;
+@property (nonatomic, readonly) KeyCode keyCode;
 
-- (instancetype)initWithSymbol:(NSString *)symbol;
+- (instancetype)initWithKeyCode:(KeyCode)keyCode;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "KeyController.h"
 
 @protocol  KeyPositionDataSource <NSObject>
 
@@ -19,7 +20,7 @@
 - (NSInteger)numberOfKeysForRow:(NSInteger)row;
 - (CGFloat)minimumIntraKeySpacingForRow:(NSInteger)row;
 
-- (NSString *)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath;
+- (KeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)strideForKeyAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

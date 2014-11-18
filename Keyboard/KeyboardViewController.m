@@ -8,6 +8,7 @@
 
 #import "KeyboardViewController.h"
 #import "KeyView.h"
+#import "KeyController.h"
 #import "KeyPositionController.h"
 
 typedef NS_ENUM(NSUInteger, KeyPane) {
@@ -67,7 +68,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     
         [rows enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
             [row enumerateObjectsUsingBlock:^(NSDictionary *keyDictionary, NSUInteger idx, BOOL *stop) {
-                KeyView *aKeyView = [[KeyView alloc] initWithSymbol:keyDictionary[@"symbol"]];
+                KeyView *aKeyView = [[KeyView alloc] initWithKeyCode:[keyDictionary[@"keyCode"] intValue]];
                 aKeyView.frame = [keyDictionary[@"frame"] CGRectValue];
                 [self.view addSubview:aKeyView];
             }];
@@ -105,10 +106,10 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _rows = @[
-                  @[@"q", @"w", @"e", @"r", @"t", @"y", @"u", @"i", @"o", @"p"],
-                  @[@"a", @"s", @"d", @"f", @"g", @"h", @"j", @"k", @"l"],
-                  @[@"shift", @"z", @"x", @"c", @"v", @"b", @"n", @"m", @"delete"],
-                  @[@"number pane", @"next keyboard", @"space", @"return"],
+                  @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP)],
+                  @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL)],
+                  @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeDelete)],
+                  @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn)],
                   ];
     });
     
@@ -142,20 +143,30 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     return 3.0f;
 }
 
-- (NSString *)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath
+- (KeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [KeyboardViewController rows][indexPath.keyRow][indexPath.keyPosition];
+    NSNumber *keyCodeNumber = [KeyboardViewController rows][indexPath.keyRow][indexPath.keyPosition];
+    
+    return [keyCodeNumber intValue];
 }
 
 - (NSInteger)strideForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *symbol = [KeyboardViewController rows][indexPath.keyRow][indexPath.keyPosition];
+    NSNumber *keyCodeNumber = [KeyboardViewController rows][indexPath.keyRow][indexPath.keyPosition];
     
-    if ([symbol isEqualToString:@"space"]) {
-        return 3;
+    NSInteger stride = 1;
+    
+    if ([keyCodeNumber intValue] == KeyCodeShift) {
+        stride = 2;
+    } else if ([keyCodeNumber intValue] == KeyCodeDelete) {
+        stride = 2;
+    } else if ([keyCodeNumber intValue] == KeyCodeSpace) {
+        stride = 4;
+    } else if ([keyCodeNumber intValue] == KeyCodeReturn) {
+        stride = 2;
     }
     
-    return 1;
+    return stride;
 }
 
 @end
