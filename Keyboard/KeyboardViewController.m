@@ -39,42 +39,32 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     self.keyPositionController = [[KeyPositionController alloc] init];
     self.keyPositionController.dataSource = self;
     
-    // Perform custom UI setup here
-    //    self.nextKeyboardButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    //
-    //    [self.nextKeyboardButton setTitle:NSLocalizedString(@"Next Keyboard", @"Title for 'Next Keyboard' button") forState:UIControlStateNormal];
-    //    [self.nextKeyboardButton sizeToFit];
-    //    self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = NO;
-    //
-    //    [self.nextKeyboardButton addTarget:self action:@selector(advanceToNextInputMode) forControlEvents:UIControlEventTouchUpInside];
-    //
-    //    [self.view addSubview:self.nextKeyboardButton];
-    //
-    //    NSLayoutConstraint *nextKeyboardButtonLeftSideConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-    //    NSLayoutConstraint *nextKeyboardButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    //    [self.view addConstraints:@[nextKeyboardButtonLeftSideConstraint, nextKeyboardButtonBottomConstraint]];
-    
-    
-    //    //Add some keys
-
+    //add keys
+    //KEYPANE TODO: have this be keypane specific
+    [[KeyboardViewController rows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
+        [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger idx, BOOL *stop) {
+            KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
+            aKeyView.delegate = self;
+            [self.view addSubview:aKeyView];
+        }];
+    }];;
 }
 
 - (void)viewDidLayoutSubviews
 {
-//    if (self.view.subviews.count == 0) {
-        NSArray *rows = [self.keyPositionController allKeyPositionRows];
+    [self.keyPositionController reloadKeyPositions];
     
-    NSLog(@"drawing rows: %@", rows);
-    
-        [rows enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
-            [row enumerateObjectsUsingBlock:^(NSDictionary *keyDictionary, NSUInteger idx, BOOL *stop) {
-                KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyDictionary[@"keyCode"] intValue]];
-                aKeyView.delegate = self;
-                aKeyView.frame = [keyDictionary[@"frame"] CGRectValue];
-                [self.view addSubview:aKeyView];
-            }];
-        }];
-//    }
+    [self.view.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
+        if ([subview isKindOfClass:[KeyButton class]]) {
+            KeyButton *keyButton = (KeyButton *)subview;
+            
+            NSDictionary *keyDictionary = [self.keyPositionController keyDictionaryForKeyCode:keyButton.keyCode];
+            if (keyDictionary) {
+                keyButton.frame = [keyDictionary[@"frame"] CGRectValue];
+                [keyButton setNeedsDisplay];
+            }
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

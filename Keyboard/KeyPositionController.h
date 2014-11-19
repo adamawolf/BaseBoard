@@ -29,7 +29,8 @@
 
 @property (nonatomic, weak) id<KeyPositionDataSource>dataSource;
 
-- (NSArray *)allKeyPositionRows;
+- (void)reloadKeyPositions;
+- (NSDictionary *)keyDictionaryForKeyCode:(KeyCode)keyCode;
 
 @end
 

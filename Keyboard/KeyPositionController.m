@@ -8,17 +8,24 @@
 
 #import "KeyPositionController.h"
 
+@interface KeyPositionController ()
+
+@property (nonatomic, strong) NSMutableDictionary *keyDictionariesKeyedByKeyCode;
+
+@end
+
 @implementation KeyPositionController
 
-- (NSArray *)allKeyPositionRows
+- (void)reloadKeyPositions
 {
-    NSMutableArray *rows = [NSMutableArray new];
+    self.keyDictionariesKeyedByKeyCode = nil;
     
     CGSize keyboardSize = [self.dataSource keyboardSize];
-    
     if (CGSizeEqualToSize(keyboardSize, CGSizeZero)) {
-        return rows;
+        return;
     }
+    
+    self.keyDictionariesKeyedByKeyCode = [NSMutableDictionary new];
     
     NSInteger numRows = [self.dataSource numberOfRows];
     
@@ -55,6 +62,7 @@
         CGFloat widthPerStride = floorf(exactWidthPerStride);
         
         //TODO: calculate surplus extra pixels to allocate to the keys as needed
+        
         __block CGFloat currentXPos = intraKeySpacing; //starting left spacing
         [keysInRow enumerateObjectsUsingBlock:^(NSMutableDictionary *keyDictionary, NSUInteger currentKeyPosition, BOOL *stop) {
             NSInteger keyStride = [keyDictionary[@"stride"] integerValue];
@@ -62,12 +70,19 @@
             
             keyDictionary[@"frame"] = [NSValue valueWithCGRect:CGRectMake(currentXPos, rowYPos, keyWidth, heightPerRow)];
             currentXPos += keyWidth + intraKeySpacing;
+            
+            self.keyDictionariesKeyedByKeyCode[keyDictionary[@"keyCode"]] = keyDictionary;
         }];
-        
-        [rows addObject:keysInRow];
+    }
+}
+
+- (NSDictionary *)keyDictionaryForKeyCode:(KeyCode)keyCode
+{
+    if (!self.keyDictionariesKeyedByKeyCode) {
+        [self reloadKeyPositions];
     }
     
-    return rows;
+    return self.keyDictionariesKeyedByKeyCode[@(keyCode)];
 }
 
 @end
