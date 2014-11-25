@@ -48,10 +48,17 @@ typedef NS_ENUM(NSUInteger, KeyCode) {
     KeyCodeReturn,
 };
 
+typedef NS_ENUM(NSUInteger, ShiftKeyState) {
+    ShiftKeyStateUnknown,
+    ShiftKeyStateLowercase,
+    ShiftKeyStateUppercase,
+    ShiftKeyStateCapsLock,
+};
+
 @interface KeyController : NSObject
 
-+ (NSString *)symbolForKeyCode:(KeyCode)keyCode;
-+ (NSString *)yieldedLowercaseTextForKeyCode:(KeyCode)keyCode;
++ (NSString *)symbolForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState;
++ (NSString *)yieldedLowercaseTextForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState;
 
 + (NSIndexSet *)textGeneratingKeyCodeIndexSet;
 

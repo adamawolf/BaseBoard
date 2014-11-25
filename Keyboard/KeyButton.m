@@ -62,7 +62,7 @@
     
     NSDictionary *fontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
     
-    NSString *symbol = [KeyController symbolForKeyCode:self.keyCode];
+    NSString *symbol = [KeyController symbolForKeyCode:self.keyCode forShiftKeyState:[self.dataSource shiftKeyState]];
     CGSize symbolSize = [symbol sizeWithAttributes:fontAttributes];
     [symbol drawInRect:CGRectMake(
                                   (keySize.width - symbolSize.width) / 2.0f,

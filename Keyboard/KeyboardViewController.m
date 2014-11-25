@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneSupplementalSymbols,
 };
 
-@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, TypingLogicControllerDelegate>
+@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, KeyButtonDataSource, TypingLogicControllerDelegate>
 
 @property (nonatomic, strong) KeyPositionController *keyPositionController;
 @property (nonatomic, strong) TypingLogicController *typingLogicController;
@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     self.keyPositionController.dataSource = self;
     
     self.typingLogicController = [[TypingLogicController alloc] initWithDelegate:self andTextDocumentProxy:self.textDocumentProxy];
+    [self.typingLogicController determineShiftKeyState];
     
     //add keys
     //KEYPANE TODO: have this be keypane specific
@@ -48,6 +49,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger idx, BOOL *stop) {
             KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
             aKeyView.delegate = self;
+            aKeyView.dataSource = self;
             [self.view addSubview:aKeyView];
         }];
     }];;
@@ -77,18 +79,11 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (void)textWillChange:(id<UITextInput>)textInput {
     // The app is about to change the document's contents. Perform any preparation here.
+    NSLog(@"textWillChange");
 }
 
 - (void)textDidChange:(id<UITextInput>)textInput {
-    // The app has just changed the document's contents, the document context has been updated.
-    
-//    UIColor *textColor = nil;
-//    if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark) {
-//        textColor = [UIColor whiteColor];
-//    } else {
-//        textColor = [UIColor blackColor];
-//    }
-
+    NSLog(@"textDidChange");
 }
 
 #pragma mark - Static data methods
@@ -172,11 +167,24 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     [self.typingLogicController processKeystrokeWithKeyCode:keyButton.keyCode];
 }
 
+#pragma mark - KeyButtonDataSource methods
+
+- (ShiftKeyState)shiftKeyState
+{
+    return self.typingLogicController.shiftKeyState;
+}
+
 #pragma mark - TypingLogicControllerDelegate methods
 
 - (void)typingLogicController:(TypingLogicController *)controller determinedShouldSetShiftKeyState:(ShiftKeyState)shiftKeyState
 {
-    NSLog(@"TODO: render shiftKeyState: %ld", shiftKeyState);
+    //update all key appearances
+    [self.view.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
+        if ([subview isKindOfClass:[KeyButton class]]) {
+            KeyButton *keyButton = (KeyButton *)subview;
+            [keyButton setNeedsDisplay];
+        }
+    }];
 }
 
 - (void)typingLogicController:(TypingLogicController *)controller determinedShouldInsertText:(NSString *)text
@@ -184,6 +192,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     NSLog(@"inserted text: %@", text);
     
     [self.textDocumentProxy insertText:text];
+    
+    [self.typingLogicController determineShiftKeyState];
 }
 
 - (void)typingLogicControllerDeterminedShouldDeleteBackwards:(TypingLogicController *)controller
@@ -191,6 +201,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     NSLog(@"deleted text");
     
     [self.textDocumentProxy deleteBackward];
+    
+    [self.typingLogicController determineShiftKeyState];
 }
 
 - (void)typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:(TypingLogicController *)controller

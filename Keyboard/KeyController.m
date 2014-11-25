@@ -10,9 +10,10 @@
 
 @implementation KeyController
 
-+ (NSString *)symbolForKeyCode:(KeyCode)keyCode
++ (NSString *)symbolForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState
 {
     NSString *symbol = @"";
+    BOOL isUpperCase = shiftKeyState == ShiftKeyStateUppercase || shiftKeyState == ShiftKeyStateCapsLock;
     
     switch (keyCode) {
         case KeyCodeQ:
@@ -73,7 +74,12 @@
             symbol = @"l";
             break;
         case KeyCodeShift:
-            symbol = @"^";
+            symbol = @"⬆︎";
+            if (shiftKeyState == ShiftKeyStateUppercase) {
+                symbol = @"⇧";
+            } else if (shiftKeyState == ShiftKeyStateCapsLock) {
+                symbol = @"⇪";
+            }
             break;
         case KeyCodeZ:
             symbol = @"z";
@@ -116,12 +122,17 @@
             break;
     }
 
+    if (isUpperCase) {
+        symbol = [symbol uppercaseString];
+    }
+    
     return symbol;
 }
 
-+ (NSString *)yieldedLowercaseTextForKeyCode:(KeyCode)keyCode
++ (NSString *)yieldedLowercaseTextForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState
 {
     NSString *yieldedText = nil;
+    BOOL isUpperCase = shiftKeyState == ShiftKeyStateUppercase || shiftKeyState == ShiftKeyStateCapsLock;
     
     switch (keyCode) {
         case KeyCodeQ:
@@ -214,6 +225,10 @@
         //TODO: add keys from second two panes
         default:
             break;
+    }
+    
+    if (isUpperCase) {
+        yieldedText = [yieldedText uppercaseString];
     }
     
     return yieldedText;

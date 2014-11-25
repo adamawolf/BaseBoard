@@ -45,30 +45,27 @@
     ShiftKeyState determinedState = ShiftKeyStateLowercase;
     
     if (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeSentences) {
-        if (self.textDocumentProxy.hasText) {
-            NSString *beforeText = self.textDocumentProxy.documentContextBeforeInput;
-            NSString *afterText = self.textDocumentProxy.documentContextAfterInput;
-            
-            if (afterText.length == 0) {
-                if (beforeText.length >= 2) {
-                    NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
-                    NSString *secondToLastCharacter = [beforeText substringWithRange:(NSRange){beforeText.length - 2, 1}];
-                    
-                    if ([lastCharacter isEqualToString:@"\n"])
-                    {
-                        //typed text ends in a carriage return
+        NSString *beforeText = self.textDocumentProxy.documentContextBeforeInput;
+        NSString *afterText = self.textDocumentProxy.documentContextAfterInput;
+        
+        if (afterText.length == 0) {
+            if (beforeText.length >= 2) {
+                NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
+                NSString *secondToLastCharacter = [beforeText substringWithRange:(NSRange){beforeText.length - 2, 1}];
+                
+                if ([lastCharacter isEqualToString:@"\n"])
+                {
+                    //typed text ends in a carriage return
+                    determinedState = ShiftKeyStateUppercase;
+                } else if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
+                    if ([secondToLastCharacter rangeOfCharacterFromSet:[TypingLogicController sentenceEndingCharacterSet]].location != NSNotFound) {
+                        //typed text ends in a space preceded by a sentence ending chracter
                         determinedState = ShiftKeyStateUppercase;
-                    } else if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
-                        if ([secondToLastCharacter rangeOfCharacterFromSet:[TypingLogicController sentenceEndingCharacterSet]].location != NSNotFound) {
-                            //typed text ends in a space preceded by a sentence ending chracter
-                            determinedState = ShiftKeyStateUppercase;
-                        } else if (beforeText.length >= 3) {
-                            NSString *thirdToLastCharacter = [beforeText substringWithRange:(NSRange){beforeText.length - 3, 1}];
-                            
-                            if ([secondToLastCharacter rangeOfCharacterFromSet:[TypingLogicController potentiallySentenceEndingCharacterSet]].location != NSNotFound &&
-                                [thirdToLastCharacter rangeOfCharacterFromSet:[TypingLogicController sentenceEndingCharacterSet]].location != NSNotFound ) {
-                                
-                            }
+                    } else if (beforeText.length >= 3) {
+                        NSString *thirdToLastCharacter = [beforeText substringWithRange:(NSRange){beforeText.length - 3, 1}];
+                        
+                        if ([secondToLastCharacter rangeOfCharacterFromSet:[TypingLogicController potentiallySentenceEndingCharacterSet]].location != NSNotFound &&
+                            [thirdToLastCharacter rangeOfCharacterFromSet:[TypingLogicController sentenceEndingCharacterSet]].location != NSNotFound ) {
                             determinedState = ShiftKeyStateUppercase;
                         }
                     }
@@ -77,21 +74,27 @@
         }
         else {
             determinedState = ShiftKeyStateUppercase;
-        } 
+        }
     } //TODO: handle autocapitialization UITextAutocapitalizationTypeAllCharacters and UITextAutocapitalizationTypeWords
+    
+    [self setShiftKeyState:determinedState];
 }
 
 - (void)processKeystrokeWithKeyCode:(KeyCode)keyCode
 {
     if ([[KeyController textGeneratingKeyCodeIndexSet] containsIndex:keyCode]) {
-        NSString *lowercaseYieldedText = [KeyController yieldedLowercaseTextForKeyCode:keyCode];
+        NSString *lowercaseYieldedText = [KeyController yieldedLowercaseTextForKeyCode:keyCode forShiftKeyState:self.shiftKeyState];
         [self.delegate typingLogicController:self determinedShouldInsertText:lowercaseYieldedText];
         //TODO: double tap space shortcut
     } else if (keyCode == KeyCodeDelete) {
         [self.delegate typingLogicControllerDeterminedShouldDeleteBackwards:self];
     } else if (keyCode == KeyCodeNextKeyboard) {
         [self.delegate typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:self];
-    } //TODO shift & number pane
+    } else if (keyCode == KeyCodeShift) {
+        BOOL isLowercase = self.shiftKeyState == ShiftKeyStateLowercase || self.shiftKeyState == ShiftKeyStateUnknown;
+        [self setShiftKeyState:isLowercase ? ShiftKeyStateUppercase : ShiftKeyStateLowercase];
+        //TODO: capslock
+    } //TODO next key pane key
 }
 
 #pragma mark - Static Reference methods

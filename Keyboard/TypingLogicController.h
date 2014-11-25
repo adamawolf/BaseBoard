@@ -10,13 +10,6 @@
 #import "KeyController.h"
 #import <UIKit/UIInputViewController.h>
 
-typedef NS_ENUM(NSUInteger, ShiftKeyState) {
-    ShiftKeyStateUnknown,
-    ShiftKeyStateLowercase,
-    ShiftKeyStateUppercase,
-    ShiftKeyStateCapsLock,
-};
-
 typedef NS_ENUM(NSUInteger, TypingLogicState) {
     TypingLogicStateUnknown,
     TypingLogicStateNormal,

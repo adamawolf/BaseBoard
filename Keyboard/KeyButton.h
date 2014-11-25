@@ -17,9 +17,16 @@
 
 @end
 
+@protocol KeyButtonDataSource <NSObject>
+
+- (ShiftKeyState)shiftKeyState;
+
+@end
+
 @interface KeyButton : UIButton
 
 @property (nonatomic, weak) id<KeyButtonDelegate> delegate;
+@property (nonatomic, weak) id<KeyButtonDataSource> dataSource;
 @property (nonatomic, readonly) KeyCode keyCode;
 
 - (instancetype)initWithKeyCode:(KeyCode)keyCode;
