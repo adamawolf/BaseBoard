@@ -51,5 +51,8 @@ typedef NS_ENUM(NSUInteger, KeyCode) {
 @interface KeyController : NSObject
 
 + (NSString *)symbolForKeyCode:(KeyCode)keyCode;
++ (NSString *)yieldedLowercaseTextForKeyCode:(KeyCode)keyCode;
+
++ (NSIndexSet *)textGeneratingKeyCodeIndexSet;
 
 @end

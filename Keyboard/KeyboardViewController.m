@@ -10,6 +10,7 @@
 #import "KeyButton.h"
 #import "KeyController.h"
 #import "KeyPositionController.h"
+#import "TypingLogicController.h"
 
 typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneUnknown,
@@ -18,10 +19,10 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneSupplementalSymbols,
 };
 
-@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate>
+@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, TypingLogicControllerDelegate>
 
 @property (nonatomic, strong) KeyPositionController *keyPositionController;
-@property (nonatomic, strong) UIButton *nextKeyboardButton;
+@property (nonatomic, strong) TypingLogicController *typingLogicController;
 
 @end
 
@@ -38,6 +39,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     
     self.keyPositionController = [[KeyPositionController alloc] init];
     self.keyPositionController.dataSource = self;
+    
+    self.typingLogicController = [[TypingLogicController alloc] initWithDelegate:self andTextDocumentProxy:self.textDocumentProxy];
     
     //add keys
     //KEYPANE TODO: have this be keypane specific
@@ -79,13 +82,13 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 - (void)textDidChange:(id<UITextInput>)textInput {
     // The app has just changed the document's contents, the document context has been updated.
     
-    UIColor *textColor = nil;
-    if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark) {
-        textColor = [UIColor whiteColor];
-    } else {
-        textColor = [UIColor blackColor];
-    }
-    [self.nextKeyboardButton setTitleColor:textColor forState:UIControlStateNormal];
+//    UIColor *textColor = nil;
+//    if (self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearanceDark) {
+//        textColor = [UIColor whiteColor];
+//    } else {
+//        textColor = [UIColor blackColor];
+//    }
+
 }
 
 #pragma mark - Static data methods
@@ -166,9 +169,33 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 {
     NSLog(@"key press: %lu", keyButton.keyCode);
     
-    if (keyButton.keyCode == KeyCodeNextKeyboard) {
-        [self advanceToNextInputMode];
-    }
+    [self.typingLogicController processKeystrokeWithKeyCode:keyButton.keyCode];
+}
+
+#pragma mark - TypingLogicControllerDelegate methods
+
+- (void)typingLogicController:(TypingLogicController *)controller determinedShouldSetShiftKeyState:(ShiftKeyState)shiftKeyState
+{
+    NSLog(@"TODO: render shiftKeyState: %ld", shiftKeyState);
+}
+
+- (void)typingLogicController:(TypingLogicController *)controller determinedShouldInsertText:(NSString *)text
+{
+    NSLog(@"inserted text: %@", text);
+    
+    [self.textDocumentProxy insertText:text];
+}
+
+- (void)typingLogicControllerDeterminedShouldDeleteBackwards:(TypingLogicController *)controller
+{
+    NSLog(@"deleted text");
+    
+    [self.textDocumentProxy deleteBackward];
+}
+
+- (void)typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:(TypingLogicController *)controller
+{
+    [self advanceToNextInputMode];
 }
 
 @end

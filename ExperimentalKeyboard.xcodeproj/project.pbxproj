@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9407864D1A1AC2A10078C7E7 /* KeyPositionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */; };
 		9455FAC41A1BE762001CFCE2 /* KeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9455FAC31A1BE762001CFCE2 /* KeyController.m */; };
+		94CCB3BC1A250DAA008B29F8 /* TypingLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CCB3BB1A250DAA008B29F8 /* TypingLogicController.m */; };
 		94F9B9A519F08E6600F47B35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A419F08E6600F47B35 /* main.m */; };
 		94F9B9A819F08E6600F47B35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A719F08E6600F47B35 /* AppDelegate.m */; };
 		94F9B9AB19F08E6600F47B35 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9AA19F08E6600F47B35 /* FirstViewController.m */; };
@@ -65,6 +66,8 @@
 		9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPositionController.m; sourceTree = "<group>"; };
 		9455FAC21A1BE762001CFCE2 /* KeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyController.h; sourceTree = "<group>"; };
 		9455FAC31A1BE762001CFCE2 /* KeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyController.m; sourceTree = "<group>"; };
+		94CCB3BA1A250DAA008B29F8 /* TypingLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypingLogicController.h; sourceTree = "<group>"; };
+		94CCB3BB1A250DAA008B29F8 /* TypingLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypingLogicController.m; sourceTree = "<group>"; };
 		94F9B99F19F08E6600F47B35 /* ExperimentalKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExperimentalKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9A319F08E6600F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F9B9A419F08E6600F47B35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				9455FAC31A1BE762001CFCE2 /* KeyController.m */,
 				9407864B1A1AC2A10078C7E7 /* KeyPositionController.h */,
 				9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */,
+				94CCB3BA1A250DAA008B29F8 /* TypingLogicController.h */,
+				94CCB3BB1A250DAA008B29F8 /* TypingLogicController.m */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94CCB3BC1A250DAA008B29F8 /* TypingLogicController.m in Sources */,
 				94F9B9E119F090FC00F47B35 /* KeyButton.m in Sources */,
 				9407864D1A1AC2A10078C7E7 /* KeyPositionController.m in Sources */,
 				94F9B9D519F08EA300F47B35 /* KeyboardViewController.m in Sources */,
