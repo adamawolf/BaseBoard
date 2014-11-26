@@ -8,6 +8,14 @@
 
 #import "TypingLogicController.h"
 
+static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
+
+@interface TypingLogicController ()
+
+@property NSDate *lastShiftPressDate;
+
+@end
+
 @implementation TypingLogicController
 
 - (instancetype)initWithDelegate:(id<TypingLogicControllerDelegate>)delegate
@@ -20,6 +28,7 @@
         
         _shiftKeyState = ShiftKeyStateUnknown;
         _typingLogicState = TypingLogicStateUnknown;
+        _lastShiftPressDate = [NSDate distantPast];
     }
     
     return self;
@@ -42,6 +51,10 @@
 
 - (void)determineShiftKeyState
 {
+    if (self.shiftKeyState == ShiftKeyStateCapsLock) {
+        return;
+    }
+    
     ShiftKeyState determinedState = ShiftKeyStateLowercase;
     
     if (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeSentences) {
@@ -91,9 +104,21 @@
     } else if (keyCode == KeyCodeNextKeyboard) {
         [self.delegate typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:self];
     } else if (keyCode == KeyCodeShift) {
-        BOOL isLowercase = self.shiftKeyState == ShiftKeyStateLowercase || self.shiftKeyState == ShiftKeyStateUnknown;
-        [self setShiftKeyState:isLowercase ? ShiftKeyStateUppercase : ShiftKeyStateLowercase];
-        //TODO: capslock
+        NSDate *shiftPressDate = [NSDate date];
+        
+        NSTimeInterval timeSinceLastShiftPress = [shiftPressDate timeIntervalSinceDate:self.lastShiftPressDate];
+        if (timeSinceLastShiftPress < kMaxDoubleTapInterval) {
+            [self setShiftKeyState:ShiftKeyStateCapsLock];
+        } else {
+            BOOL isLowercase = self.shiftKeyState == ShiftKeyStateLowercase || self.shiftKeyState == ShiftKeyStateUnknown;
+            if (isLowercase) {
+                [self setShiftKeyState:ShiftKeyStateUppercase];
+            } else {
+                [self setShiftKeyState:ShiftKeyStateLowercase];
+            }
+        }
+        
+        self.lastShiftPressDate = shiftPressDate;
     } //TODO next key pane key
 }
 
