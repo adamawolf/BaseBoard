@@ -47,6 +47,7 @@ typedef NS_ENUM(NSUInteger, KeyCode) {
     KeyCodeSpace,
     KeyCodeReturn,
     //number and symbol pane
+    //first row
     KeyCode1,
     KeyCode2,
     KeyCode3,
@@ -79,6 +80,43 @@ typedef NS_ENUM(NSUInteger, KeyCode) {
     //fourth row
     KeyCodePrimaryKeyPane,
     //KeyCodeNumberPaneNextKeyboard,    //use same keycode as primary keys
+    //KeyCodeNumberPaneSpace,
+    //KeyCodeNumberPaneReturn,
+    //supplemantal symbol pane
+    //first row
+    KeyCodeOpenSquareBracket,
+    KeyCodeCloseSquareBracket,
+    KeyCodeOpenCurlyBracket,
+    KeyCodeCloseCurlyBracket,
+    KeyCodePoundSign,
+    KeyCodePercent,
+    KeyCodeCaret,
+    KeyCodeAsterisk,
+    KeyCodePlus,
+    KeyCodeEqual,
+    //second row
+    KeyCodeUnderscore,
+    KeyCodeBackSlash,
+    KeyCodeVerticalBar,
+    KeyCodeTilde,
+    KeyCodeLessThan,
+    KeyCodeGreaterThan,
+    KeyCodeEuro,
+    KeyCodePound,
+    KeyCodeYen,
+    KeyCodeBullet,
+    //third row
+    //KeyCodeNumberPane,
+    //KeyCodeSymbolsPane,
+    //KeyCodePeriod,
+    //KeyCodeComma,
+    //KeyCodeQuestionMark,
+    //KeyCodeExclamationMark,
+    //KeyCodeSingleQuote,
+    //KeyCodeNumberPaneDelete,
+    //fourth row
+    //KeyCodePrimaryKeyPane,
+    //KeyCodeNumberPaneNextKeyboard,
     //KeyCodeNumberPaneSpace,
     //KeyCodeNumberPaneReturn,
 };

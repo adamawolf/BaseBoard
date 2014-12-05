@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, TypingLogicState) {
 - (void)typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:(TypingLogicController *)controller;
 - (void)typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:(TypingLogicController *)controller;
 - (void)typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:(TypingLogicController *)controller;
+- (void)typingLogicControllerDeterminedShouldSwitchToSupplemtalSymbolsKeyPane:(TypingLogicController *)controller;
 
 @end
 

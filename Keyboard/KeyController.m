@@ -198,13 +198,66 @@
         case KeyCodePrimaryKeyPane:
             symbol = @"ABC";
             break;
-//        case KeyCodeSpace:        //handled above
-//            symbol = @" ";
-//            break;
-//        case KeyCodeReturn:       //handled above
-//            symbol = @"RET";
-//            break;
-        //TODO: add keys from third pane
+        case KeyCodeOpenSquareBracket:
+            symbol = @"[";
+            break;
+        case KeyCodeCloseSquareBracket:
+            symbol = @"]";
+            break;
+        case KeyCodeOpenCurlyBracket:
+            symbol = @"{";
+            break;
+        case KeyCodeCloseCurlyBracket:
+            symbol = @"}";
+            break;
+        case KeyCodePoundSign:
+            symbol = @"#";
+            break;
+        case KeyCodePercent:
+            symbol = @"%";
+            break;
+        case KeyCodeCaret:
+            symbol = @"^";
+            break;
+        case KeyCodeAsterisk:
+            symbol = @"*";
+            break;
+        case KeyCodePlus:
+            symbol = @"+";
+            break;
+        case KeyCodeEqual:
+            symbol = @"=";
+            break;
+        case KeyCodeUnderscore:
+            symbol = @"_";
+            break;
+        case KeyCodeBackSlash:
+            symbol = @"\\";
+            break;
+        case KeyCodeVerticalBar:
+            symbol = @"|";
+            break;
+        case KeyCodeTilde:
+            symbol = @"~";
+            break;
+        case KeyCodeLessThan:
+            symbol = @"<";
+            break;
+        case KeyCodeGreaterThan:
+            symbol = @">";
+            break;
+        case KeyCodeEuro:
+            symbol = @"€";
+            break;
+        case KeyCodePound:
+            symbol = @"£";
+            break;
+        case KeyCodeYen:
+            symbol = @"¥";
+            break;
+        case KeyCodeBullet:
+            symbol = @"•";
+            break;
         default:
             break;
     }
@@ -384,14 +437,66 @@
         case KeyCodeSingleQuote:
             yieldedText = @"'";
             break;
-//        case KeyCodeSpace:        //handled above
-//            yieldedText = @" ";
-//            break;
-//        case KeyCodeReturn:       //handled above
-//            yieldedText = @"\n";
-//            break;
-            
-        //TODO: add keys from third pane
+        case KeyCodeOpenSquareBracket:
+            yieldedText = @"[";
+            break;
+        case KeyCodeCloseSquareBracket:
+            yieldedText = @"]";
+            break;
+        case KeyCodeOpenCurlyBracket:
+            yieldedText = @"{";
+            break;
+        case KeyCodeCloseCurlyBracket:
+            yieldedText = @"}";
+            break;
+        case KeyCodePoundSign:
+            yieldedText = @"#";
+            break;
+        case KeyCodePercent:
+            yieldedText = @"%";
+            break;
+        case KeyCodeCaret:
+            yieldedText = @"^";
+            break;
+        case KeyCodeAsterisk:
+            yieldedText = @"*";
+            break;
+        case KeyCodePlus:
+            yieldedText = @"+";
+            break;
+        case KeyCodeEqual:
+            yieldedText = @"=";
+            break;
+        case KeyCodeUnderscore:
+            yieldedText = @"_";
+            break;
+        case KeyCodeBackSlash:
+            yieldedText = @"\\";
+            break;
+        case KeyCodeVerticalBar:
+            yieldedText = @"|";
+            break;
+        case KeyCodeTilde:
+            yieldedText = @"~";
+            break;
+        case KeyCodeLessThan:
+            yieldedText = @"<";
+            break;
+        case KeyCodeGreaterThan:
+            yieldedText = @">";
+            break;
+        case KeyCodeEuro:
+            yieldedText = @"€";
+            break;
+        case KeyCodePound:
+            yieldedText = @"£";
+            break;
+        case KeyCodeYen:
+            yieldedText = @"¥";
+            break;
+        case KeyCodeBullet:
+            yieldedText = @"•";
+            break;
         default:
             break;
     }
@@ -420,6 +525,8 @@
         //second pane
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCode1, KeyCodeDoubleQuote - KeyCode1 + 1}];
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCodePeriod, KeyCodeSingleQuote - KeyCodePeriod + 1}];
+        //third pane
+        [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeOpenSquareBracket, KeyCodeBullet - KeyCodeOpenSquareBracket + 1}];
         
         _textGeneratingKeyCodeIndexSet = mutableIndexSet;
     });

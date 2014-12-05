@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 @property (nonatomic, strong) NSArray *primaryKeyPaneKeyButtons;
 @property (nonatomic, strong) NSArray *numericAndSymbolsKeyPaneKeyButtons;
+@property (nonatomic, strong) NSArray *supplementalSymbolsKeyPaneKeyButtons;
 
 @end
 
@@ -74,6 +75,18 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         }];
     }];;
     self.numericAndSymbolsKeyPaneKeyButtons = numericAndSymbolsKeyPaneKeys;
+    
+    NSMutableArray *supplementalSymbolsKeyPaneKeys = [NSMutableArray new];
+    [[KeyboardViewController supplementalSymbolsKeyPaneRows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
+        [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger idx, BOOL *stop) {
+            KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
+            aKeyView.delegate = self;
+            aKeyView.dataSource = self;
+            [self.view addSubview:aKeyView];
+            [supplementalSymbolsKeyPaneKeys addObject:aKeyView];
+        }];
+    }];;
+    self.supplementalSymbolsKeyPaneKeyButtons = supplementalSymbolsKeyPaneKeys;
 }
 
 - (void)viewDidLayoutSubviews
@@ -120,9 +133,15 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         if (_currentKeyPane == KeyPanePrimary) {
             [keysToShow addObject:self.primaryKeyPaneKeyButtons];
             [keysToHide addObject:self.numericAndSymbolsKeyPaneKeyButtons];
+            [keysToHide addObject:self.supplementalSymbolsKeyPaneKeyButtons];
         } else if (_currentKeyPane == KeyPaneNumericAndSymbols) {
             [keysToHide addObject:self.primaryKeyPaneKeyButtons];
             [keysToShow addObject:self.numericAndSymbolsKeyPaneKeyButtons];
+            [keysToHide addObject:self.supplementalSymbolsKeyPaneKeyButtons];
+        } else if (_currentKeyPane == KeyPaneSupplementalSymbols) {
+            [keysToHide addObject:self.primaryKeyPaneKeyButtons];
+            [keysToHide addObject:self.numericAndSymbolsKeyPaneKeyButtons];
+            [keysToShow addObject:self.supplementalSymbolsKeyPaneKeyButtons];
         }
         
         [keysToShow enumerateObjectsUsingBlock:^(NSArray *keyArray, BOOL *stop) {
@@ -151,6 +170,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         return [KeyboardViewController primaryKeyPaneRows];
     } else if (keyPane == KeyPaneNumericAndSymbols) {
         return [KeyboardViewController numericAndSymbolsKeyPaneRows];
+    } else if (keyPane == KeyPaneSupplementalSymbols) {
+        return [KeyboardViewController supplementalSymbolsKeyPaneRows];
     }
     
     return nil;
@@ -185,6 +206,23 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
                                 @[@(KeyCodeSymbolsPane), @(KeyCodePeriod), @(KeyCodeComma), @(KeyCodeQuestionMark), @(KeyCodeExclamationMark), @(KeyCodeSingleQuote), @(KeyCodeDelete),],
                                 @[@(KeyCodePrimaryKeyPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn),],
                                 ];
+    });
+    
+    return _numericAndSymbolsKeyPaneRows;
+}
+
++ (NSArray *)supplementalSymbolsKeyPaneRows
+{
+    static NSArray *_numericAndSymbolsKeyPaneRows = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _numericAndSymbolsKeyPaneRows = @[
+                                          @[@(KeyCodeOpenSquareBracket), @(KeyCodeCloseSquareBracket), @(KeyCodeOpenCurlyBracket), @(KeyCodeCloseCurlyBracket), @(KeyCodePoundSign), @(KeyCodePercent), @(KeyCodeCaret), @(KeyCodeAsterisk), @(KeyCodePlus), @(KeyCodeEqual)],
+                                          @[@(KeyCodeUnderscore), @(KeyCodeBackSlash), @(KeyCodeVerticalBar), @(KeyCodeTilde), @(KeyCodeLessThan), @(KeyCodeGreaterThan), @(KeyCodeEuro), @(KeyCodePound), @(KeyCodeYen), @(KeyCodeBullet),],
+                                          @[@(KeyCodeNumberPane), @(KeyCodePeriod), @(KeyCodeComma), @(KeyCodeQuestionMark), @(KeyCodeExclamationMark), @(KeyCodeSingleQuote), @(KeyCodeDelete),],
+                                          @[@(KeyCodePrimaryKeyPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn),],
+                                          ];
     });
     
     return _numericAndSymbolsKeyPaneRows;
@@ -303,6 +341,11 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 - (void)typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:(TypingLogicController *)controller
 {
     self.currentKeyPane = KeyPanePrimary;
+}
+
+- (void)typingLogicControllerDeterminedShouldSwitchToSupplemtalSymbolsKeyPane:(TypingLogicController *)controller
+{
+    self.currentKeyPane = KeyPaneSupplementalSymbols;
 }
 
 @end

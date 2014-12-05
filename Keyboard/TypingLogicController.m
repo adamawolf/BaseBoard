@@ -123,7 +123,9 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         [self.delegate typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:self];
     } else if (keyCode == KeyCodePrimaryKeyPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];
-    } //TODO: handle keys for supplemental symbols keypane
+    } else if (keyCode == KeyCodeSymbolsPane) {
+        [self.delegate typingLogicControllerDeterminedShouldSwitchToSupplemtalSymbolsKeyPane:self];
+    }
 }
 
 #pragma mark - Static Reference methods
