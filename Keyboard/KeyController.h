@@ -46,6 +46,41 @@ typedef NS_ENUM(NSUInteger, KeyCode) {
     KeyCodeNextKeyboard,
     KeyCodeSpace,
     KeyCodeReturn,
+    //number and symbol pane
+    KeyCode1,
+    KeyCode2,
+    KeyCode3,
+    KeyCode4,
+    KeyCode5,
+    KeyCode6,
+    KeyCode7,
+    KeyCode8,
+    KeyCode9,
+    KeyCode0,
+    //second row
+    KeyCodeDash,
+    KeyCodeForwardSlash,
+    KeyCodeColon,
+    KeyCodeSemicolon,
+    KeyCodeOpenParenthesis,
+    KeyCodeCloseParenthesis,
+    KeyCodeDollar,
+    KeyCodeAmersand,
+    KeyCodeAt,
+    KeyCodeDoubleQuote,
+    //third row
+    KeyCodeSymbolsPane,
+    KeyCodePeriod,
+    KeyCodeComma,
+    KeyCodeQuestionMark,
+    KeyCodeExclamationMark,
+    KeyCodeSingleQuote,
+    //KeyCodeNumberPaneDelete,          //use same keycode as primary keys
+    //fourth row
+    KeyCodePrimaryKeyPane,
+    //KeyCodeNumberPaneNextKeyboard,    //use same keycode as primary keys
+    //KeyCodeNumberPaneSpace,
+    //KeyCodeNumberPaneReturn,
 };
 
 typedef NS_ENUM(NSUInteger, ShiftKeyState) {

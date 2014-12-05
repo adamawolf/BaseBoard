@@ -119,7 +119,11 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         }
         
         self.lastShiftPressDate = shiftPressDate;
-    } //TODO next key pane key
+    } else if (keyCode == KeyCodeNumberPane) {
+        [self.delegate typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:self];
+    } else if (keyCode == KeyCodePrimaryKeyPane) {
+        [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];
+    } //TODO: handle keys for supplemental symbols keypane
 }
 
 #pragma mark - Static Reference methods

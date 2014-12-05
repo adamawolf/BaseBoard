@@ -21,8 +21,13 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 @interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, KeyButtonDataSource, TypingLogicControllerDelegate>
 
+@property (nonatomic, assign) KeyPane currentKeyPane;
+
 @property (nonatomic, strong) KeyPositionController *keyPositionController;
 @property (nonatomic, strong) TypingLogicController *typingLogicController;
+
+@property (nonatomic, strong) NSArray *primaryKeyPaneKeyButtons;
+@property (nonatomic, strong) NSArray *numericAndSymbolsKeyPaneKeyButtons;
 
 @end
 
@@ -37,6 +42,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _currentKeyPane = KeyPanePrimary;
+    
     self.keyPositionController = [[KeyPositionController alloc] init];
     self.keyPositionController.dataSource = self;
     
@@ -44,15 +51,29 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     [self.typingLogicController determineShiftKeyState];
     
     //add keys
-    //KEYPANE TODO: have this be keypane specific
-    [[KeyboardViewController rows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
+    NSMutableArray *primaryKeyPaneKeys = [NSMutableArray new];
+    [[KeyboardViewController primaryKeyPaneRows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
         [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger idx, BOOL *stop) {
             KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
             aKeyView.delegate = self;
             aKeyView.dataSource = self;
             [self.view addSubview:aKeyView];
+            [primaryKeyPaneKeys addObject:aKeyView];
         }];
     }];;
+    self.primaryKeyPaneKeyButtons = primaryKeyPaneKeys;
+    
+    NSMutableArray *numericAndSymbolsKeyPaneKeys = [NSMutableArray new];
+    [[KeyboardViewController numericAndSymbolsKeyPaneRows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger idx, BOOL *stop) {
+        [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger idx, BOOL *stop) {
+            KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
+            aKeyView.delegate = self;
+            aKeyView.dataSource = self;
+            [self.view addSubview:aKeyView];
+            [numericAndSymbolsKeyPaneKeys addObject:aKeyView];
+        }];
+    }];;
+    self.numericAndSymbolsKeyPaneKeyButtons = numericAndSymbolsKeyPaneKeys;
 }
 
 - (void)viewDidLayoutSubviews
@@ -72,37 +93,101 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated
-}
-
-- (void)textWillChange:(id<UITextInput>)textInput {
+- (void)textWillChange:(id<UITextInput>)textInput
+{
     // The app is about to change the document's contents. Perform any preparation here.
     NSLog(@"textWillChange");
 }
 
-- (void)textDidChange:(id<UITextInput>)textInput {
+- (void)textDidChange:(id<UITextInput>)textInput
+{
     NSLog(@"textDidChange");
+}
+
+#pragma mark - Custom setter methods
+
+- (void)setCurrentKeyPane:(KeyPane)currentKeyPane
+{
+    BOOL changed = _currentKeyPane != currentKeyPane;
+    
+    _currentKeyPane = currentKeyPane;
+    
+    if (changed) {
+        //show and hide appropriate sets of keys
+        NSMutableSet *keysToShow = [NSMutableSet new];
+        NSMutableSet *keysToHide = [NSMutableSet new];
+        
+        if (_currentKeyPane == KeyPanePrimary) {
+            [keysToShow addObject:self.primaryKeyPaneKeyButtons];
+            [keysToHide addObject:self.numericAndSymbolsKeyPaneKeyButtons];
+        } else if (_currentKeyPane == KeyPaneNumericAndSymbols) {
+            [keysToHide addObject:self.primaryKeyPaneKeyButtons];
+            [keysToShow addObject:self.numericAndSymbolsKeyPaneKeyButtons];
+        }
+        
+        [keysToShow enumerateObjectsUsingBlock:^(NSArray *keyArray, BOOL *stop) {
+            [keyArray enumerateObjectsUsingBlock:^(UIView *keyView, NSUInteger idx, BOOL *stop) {
+                keyView.alpha = 1.0f;
+            }];
+        }];
+        
+        [keysToHide enumerateObjectsUsingBlock:^(NSArray *keyArray, BOOL *stop) {
+            [keyArray enumerateObjectsUsingBlock:^(UIView *keyView, NSUInteger idx, BOOL *stop) {
+                keyView.alpha = 0.0f;
+            }];
+        }];
+        
+        //trigger re-layout of keys
+        [self.keyPositionController reloadKeyPositions];
+        [self.view setNeedsLayout]; //TODO: confirm this triggers viewDidLayoutSubviews
+    }
 }
 
 #pragma mark - Static data methods
 
-+ (NSArray *)rows
++ (NSArray *)rowsForKeyPane:(KeyPane)keyPane
 {
-    static NSArray *_rows = nil;
+    if (keyPane == KeyPanePrimary) {
+        return [KeyboardViewController primaryKeyPaneRows];
+    } else if (keyPane == KeyPaneNumericAndSymbols) {
+        return [KeyboardViewController numericAndSymbolsKeyPaneRows];
+    }
+    
+    return nil;
+}
+
++ (NSArray *)primaryKeyPaneRows
+{
+    static NSArray *_primaryKeyPaneRows = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _rows = @[
-                  @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP)],
-                  @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL)],
-                  @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeDelete)],
-                  @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn)],
-                  ];
+        _primaryKeyPaneRows = @[
+                                @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP)],
+                                @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL)],
+                                @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeDelete)],
+                                @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn)],
+                                ];
     });
     
-    return _rows;
+    return _primaryKeyPaneRows;
+}
+
++ (NSArray *)numericAndSymbolsKeyPaneRows
+{
+    static NSArray *_numericAndSymbolsKeyPaneRows = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _numericAndSymbolsKeyPaneRows = @[
+                                @[@(KeyCode1), @(KeyCode2), @(KeyCode3), @(KeyCode4), @(KeyCode5), @(KeyCode6), @(KeyCode7), @(KeyCode8), @(KeyCode9), @(KeyCode0)],
+                                @[@(KeyCodeDash), @(KeyCodeForwardSlash), @(KeyCodeColon), @(KeyCodeSemicolon), @(KeyCodeOpenParenthesis), @(KeyCodeCloseParenthesis), @(KeyCodeDollar), @(KeyCodeAmersand), @(KeyCodeAt), @(KeyCodeDoubleQuote),],
+                                @[@(KeyCodeSymbolsPane), @(KeyCodePeriod), @(KeyCodeComma), @(KeyCodeQuestionMark), @(KeyCodeExclamationMark), @(KeyCodeSingleQuote), @(KeyCodeDelete),],
+                                @[@(KeyCodePrimaryKeyPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn),],
+                                ];
+    });
+    
+    return _numericAndSymbolsKeyPaneRows;
 }
 
 #pragma mark - KeyPositionDataSource methods
@@ -114,7 +199,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (NSInteger)numberOfRows
 {
-    return [KeyboardViewController rows].count;
+    return [KeyboardViewController rowsForKeyPane:self.currentKeyPane].count;
 }
 
 - (CGFloat)minimumIntraRowSpacing
@@ -124,7 +209,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (NSInteger)numberOfKeysForRow:(NSInteger)row
 {
-    return [[KeyboardViewController rows][row] count];
+    return [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][row] count];
 }
 
 - (CGFloat)minimumIntraKeySpacingForRow:(NSInteger)row
@@ -134,14 +219,14 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (KeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSNumber *keyCodeNumber = [KeyboardViewController rows][indexPath.keyRow][indexPath.keyPosition];
+    NSNumber *keyCodeNumber = [KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition];
     
     return [keyCodeNumber intValue];
 }
 
 - (NSInteger)strideForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSNumber *keyCodeNumber = [KeyboardViewController rows][indexPath.keyRow][indexPath.keyPosition];
+    NSNumber *keyCodeNumber = [KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition];
     
     NSInteger stride = 1;
     
@@ -162,7 +247,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (void)keyButtonDidGetTapped:(KeyButton *)keyButton
 {
-    NSLog(@"key press: %lu", keyButton.keyCode);
+    NSLog(@"key press: %i", (int)keyButton.keyCode);
     
     [self.typingLogicController processKeystrokeWithKeyCode:keyButton.keyCode];
 }
@@ -208,6 +293,16 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 - (void)typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:(TypingLogicController *)controller
 {
     [self advanceToNextInputMode];
+}
+
+- (void)typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:(TypingLogicController *)controller
+{
+    self.currentKeyPane = KeyPaneNumericAndSymbols;
+}
+
+- (void)typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:(TypingLogicController *)controller
+{
+    self.currentKeyPane = KeyPanePrimary;
 }
 
 @end

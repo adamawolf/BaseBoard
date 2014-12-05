@@ -117,7 +117,94 @@
         case KeyCodeReturn:
             symbol = @"RET";
             break;
-        //TODO: add keys from second two panes
+        case KeyCode1:
+            symbol = @"1";
+            break;
+        case KeyCode2:
+            symbol = @"2";
+            break;
+        case KeyCode3:
+            symbol = @"3";
+            break;
+        case KeyCode4:
+            symbol = @"4";
+            break;
+        case KeyCode5:
+            symbol = @"5";
+            break;
+        case KeyCode6:
+            symbol = @"6";
+            break;
+        case KeyCode7:
+            symbol = @"7";
+            break;
+        case KeyCode8:
+            symbol = @"8";
+            break;
+        case KeyCode9:
+            symbol = @"9";
+            break;
+        case KeyCode0:
+            symbol = @"0";
+            break;
+        case KeyCodeDash:
+            symbol = @"-";
+            break;
+        case KeyCodeForwardSlash:
+            symbol = @"/";
+            break;
+        case KeyCodeColon:
+            symbol = @":";
+            break;
+        case KeyCodeSemicolon:
+            symbol = @";";
+            break;
+        case KeyCodeOpenParenthesis:
+            symbol = @"(";
+            break;
+        case KeyCodeCloseParenthesis:
+            symbol = @")";
+            break;
+        case KeyCodeDollar:
+            symbol = @"$";
+            break;
+        case KeyCodeAmersand:
+            symbol = @"&";
+            break;
+        case KeyCodeAt:
+            symbol = @"@";
+            break;
+        case KeyCodeDoubleQuote:
+            symbol = @"\"";
+            break;
+        case KeyCodeSymbolsPane:
+            symbol = @"#+=";
+            break;
+        case KeyCodePeriod:
+            symbol = @".";
+            break;
+        case KeyCodeComma:
+            symbol = @",";
+            break;
+        case KeyCodeQuestionMark:
+            symbol = @"?";
+            break;
+        case KeyCodeExclamationMark:
+            symbol = @"!";
+            break;
+        case KeyCodeSingleQuote:
+            symbol = @"'";
+            break;
+        case KeyCodePrimaryKeyPane:
+            symbol = @"ABC";
+            break;
+//        case KeyCodeSpace:        //handled above
+//            symbol = @" ";
+//            break;
+//        case KeyCodeReturn:       //handled above
+//            symbol = @"RET";
+//            break;
+        //TODO: add keys from third pane
         default:
             break;
     }
@@ -222,7 +309,89 @@
         case KeyCodeReturn:
             yieldedText = @"\n";
             break;
-        //TODO: add keys from second two panes
+        case KeyCode1:
+            yieldedText = @"1";
+            break;
+        case KeyCode2:
+            yieldedText = @"2";
+            break;
+        case KeyCode3:
+            yieldedText = @"3";
+            break;
+        case KeyCode4:
+            yieldedText = @"4";
+            break;
+        case KeyCode5:
+            yieldedText = @"5";
+            break;
+        case KeyCode6:
+            yieldedText = @"6";
+            break;
+        case KeyCode7:
+            yieldedText = @"7";
+            break;
+        case KeyCode8:
+            yieldedText = @"8";
+            break;
+        case KeyCode9:
+            yieldedText = @"9";
+            break;
+        case KeyCode0:
+            yieldedText = @"0";
+            break;
+        case KeyCodeDash:
+            yieldedText = @"-";
+            break;
+        case KeyCodeForwardSlash:
+            yieldedText = @"/";
+            break;
+        case KeyCodeColon:
+            yieldedText = @":";
+            break;
+        case KeyCodeSemicolon:
+            yieldedText = @";";
+            break;
+        case KeyCodeOpenParenthesis:
+            yieldedText = @"(";
+            break;
+        case KeyCodeCloseParenthesis:
+            yieldedText = @")";
+            break;
+        case KeyCodeDollar:
+            yieldedText = @"$";
+            break;
+        case KeyCodeAmersand:
+            yieldedText = @"&";
+            break;
+        case KeyCodeAt:
+            yieldedText = @"@";
+            break;
+        case KeyCodeDoubleQuote:
+            yieldedText = @"\"";
+            break;
+        case KeyCodePeriod:
+            yieldedText = @".";
+            break;
+        case KeyCodeComma:
+            yieldedText = @",";
+            break;
+        case KeyCodeQuestionMark:
+            yieldedText = @"?";
+            break;
+        case KeyCodeExclamationMark:
+            yieldedText = @"!";
+            break;
+        case KeyCodeSingleQuote:
+            yieldedText = @"'";
+            break;
+//        case KeyCodeSpace:        //handled above
+//            yieldedText = @" ";
+//            break;
+//        case KeyCodeReturn:       //handled above
+//            yieldedText = @"\n";
+//            break;
+            
+        //TODO: add keys from third pane
         default:
             break;
     }
@@ -243,10 +412,14 @@
         NSMutableIndexSet *mutableIndexSet = [NSMutableIndexSet new];
         
         //effecient, but depends on ENUM order in .h
+        //first pane
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeQ, KeyCodeL - KeyCodeQ + 1}];
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeZ, KeyCodeM - KeyCodeZ + 1}];
         [mutableIndexSet addIndex:KeyCodeSpace];
         [mutableIndexSet addIndex:KeyCodeReturn];
+        //second pane
+        [mutableIndexSet addIndexesInRange:(NSRange){KeyCode1, KeyCodeDoubleQuote - KeyCode1 + 1}];
+        [mutableIndexSet addIndexesInRange:(NSRange){KeyCodePeriod, KeyCodeSingleQuote - KeyCodePeriod + 1}];
         
         _textGeneratingKeyCodeIndexSet = mutableIndexSet;
     });
