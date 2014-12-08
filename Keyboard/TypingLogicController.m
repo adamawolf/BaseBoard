@@ -13,6 +13,7 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
 @interface TypingLogicController ()
 
 @property NSDate *lastShiftPressDate;
+@property NSDate *lastSpacePressDate;
 
 @end
 
@@ -28,7 +29,9 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         
         _shiftKeyState = ShiftKeyStateUnknown;
         _typingLogicState = TypingLogicStateUnknown;
+        
         _lastShiftPressDate = [NSDate distantPast];
+        _lastSpacePressDate = [NSDate distantPast];
     }
     
     return self;
@@ -106,9 +109,19 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         NSString *lowercaseYieldedText = [KeyController yieldedLowercaseTextForKeyCode:keyCode forShiftKeyState:self.shiftKeyState];
         [self.delegate typingLogicController:self determinedShouldInsertText:lowercaseYieldedText];
     } else if (keyCode == KeyCodeSpace) {
-        //TODO: double tap space shortcut
-        [self.delegate typingLogicController:self determinedShouldInsertText:@" "];
+        NSDate *spacePressDate = [NSDate date];
+        NSTimeInterval timeSinceLastSpacePress = [spacePressDate timeIntervalSinceDate:self.lastSpacePressDate];
+        
+        if (timeSinceLastSpacePress < kMaxDoubleTapInterval) {
+            [self.delegate typingLogicControllerDeterminedShouldDeleteBackwards:self];
+            [self.delegate typingLogicController:self determinedShouldInsertText:@". "];
+        } else {
+            [self.delegate typingLogicController:self determinedShouldInsertText:@" "];
+        }
+        //no matter what pane we're on, tapping space takes us back to primary
         [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];
+        
+        self.lastSpacePressDate = spacePressDate;
     } else if (keyCode == KeyCodeDelete) {
         [self.delegate typingLogicControllerDeterminedShouldDeleteBackwards:self];
     } else if (keyCode == KeyCodeNextKeyboard) {
