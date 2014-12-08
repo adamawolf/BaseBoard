@@ -508,9 +508,9 @@
     return yieldedText;
 }
 
-+ (NSIndexSet *)textGeneratingKeyCodeIndexSet
++ (NSIndexSet *)simpleTextGeneratingKeyCodeIndexSet
 {
-    static NSIndexSet *_textGeneratingKeyCodeIndexSet = nil;
+    static NSIndexSet *_simpleTextGeneratingKeyCodeIndexSet = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -520,7 +520,6 @@
         //first pane
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeQ, KeyCodeL - KeyCodeQ + 1}];
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeZ, KeyCodeM - KeyCodeZ + 1}];
-        [mutableIndexSet addIndex:KeyCodeSpace];
         [mutableIndexSet addIndex:KeyCodeReturn];
         //second pane
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCode1, KeyCodeDoubleQuote - KeyCode1 + 1}];
@@ -528,10 +527,10 @@
         //third pane
         [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeOpenSquareBracket, KeyCodeBullet - KeyCodeOpenSquareBracket + 1}];
         
-        _textGeneratingKeyCodeIndexSet = mutableIndexSet;
+        _simpleTextGeneratingKeyCodeIndexSet = mutableIndexSet;
     });
     
-    return _textGeneratingKeyCodeIndexSet;
+    return _simpleTextGeneratingKeyCodeIndexSet;
 }
 
 @end

@@ -95,10 +95,13 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
 
 - (void)processKeystrokeWithKeyCode:(KeyCode)keyCode
 {
-    if ([[KeyController textGeneratingKeyCodeIndexSet] containsIndex:keyCode]) {
+    if ([[KeyController simpleTextGeneratingKeyCodeIndexSet] containsIndex:keyCode]) {
         NSString *lowercaseYieldedText = [KeyController yieldedLowercaseTextForKeyCode:keyCode forShiftKeyState:self.shiftKeyState];
         [self.delegate typingLogicController:self determinedShouldInsertText:lowercaseYieldedText];
+    } else if (keyCode == KeyCodeSpace) {
         //TODO: double tap space shortcut
+        [self.delegate typingLogicController:self determinedShouldInsertText:@" "];
+        [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];
     } else if (keyCode == KeyCodeDelete) {
         [self.delegate typingLogicControllerDeterminedShouldDeleteBackwards:self];
     } else if (keyCode == KeyCodeNextKeyboard) {
