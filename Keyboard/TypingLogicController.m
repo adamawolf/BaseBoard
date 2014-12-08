@@ -62,7 +62,17 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         NSString *afterText = self.textDocumentProxy.documentContextAfterInput;
         
         if (afterText.length == 0) {
-            if (beforeText.length >= 2) {
+            if (beforeText.length == 0) {
+                determinedState = ShiftKeyStateUppercase;
+            } else if (beforeText.length == 1) {
+                NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
+                if ([lastCharacter isEqualToString:@"\n"])
+                {
+                    //typed text ends in a carriage return
+                    //NOTE: we get into this case (beforeText.length == 1) when the user types two subsequent \n
+                    determinedState = ShiftKeyStateUppercase;
+                }
+            } else if (beforeText.length >= 2) {
                 NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
                 NSString *secondToLastCharacter = [beforeText substringWithRange:(NSRange){beforeText.length - 2, 1}];
                 
@@ -84,9 +94,6 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
                     }
                 }
             }
-        }
-        else {
-            determinedState = ShiftKeyStateUppercase;
         }
     } //TODO: handle autocapitialization UITextAutocapitalizationTypeAllCharacters and UITextAutocapitalizationTypeWords
     

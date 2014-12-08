@@ -49,7 +49,6 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     self.keyPositionController.dataSource = self;
     
     self.typingLogicController = [[TypingLogicController alloc] initWithDelegate:self andTextDocumentProxy:self.textDocumentProxy];
-    [self.typingLogicController determineShiftKeyState];
     
     //add keys
     NSMutableArray *primaryKeyPaneKeys = [NSMutableArray new];
@@ -106,6 +105,13 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.typingLogicController determineShiftKeyState];
+}
+
 - (void)textWillChange:(id<UITextInput>)textInput
 {
     // The app is about to change the document's contents. Perform any preparation here.
@@ -115,6 +121,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 - (void)textDidChange:(id<UITextInput>)textInput
 {
     NSLog(@"textDidChange");
+    
+    [self.typingLogicController determineShiftKeyState];
 }
 
 #pragma mark - Custom setter methods
