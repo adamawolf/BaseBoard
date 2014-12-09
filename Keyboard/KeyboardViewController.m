@@ -26,9 +26,9 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 @property (nonatomic, strong) KeyPositionController *keyPositionController;
 @property (nonatomic, strong) TypingLogicController *typingLogicController;
 
-@property (nonatomic, strong) NSArray *primaryKeyPaneKeyButtons;
-@property (nonatomic, strong) NSArray *numericAndSymbolsKeyPaneKeyButtons;
-@property (nonatomic, strong) NSArray *supplementalSymbolsKeyPaneKeyButtons;
+@property (nonatomic, strong) NSMutableSet *primaryKeyPaneKeyButtons;
+@property (nonatomic, strong) NSMutableSet *numericAndSymbolsKeyPaneKeyButtons;
+@property (nonatomic, strong) NSMutableSet *supplementalSymbolsKeyPaneKeyButtons;
 
 @end
 
@@ -51,45 +51,38 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     self.typingLogicController = [[TypingLogicController alloc] initWithDelegate:self andTextDocumentProxy:self.textDocumentProxy];
     
     //add keys
-    //REFACTOR TODO: DRY fix this code
-    NSMutableArray *primaryKeyPaneKeys = [NSMutableArray new];
-    [[KeyboardViewController primaryKeyPaneRows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger rowIndex, BOOL *stop) {
-        [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger keyIndex, BOOL *stop) {
-            
-            KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
-            aKeyView.delegate = self;
-            aKeyView.dataSource = self;
-            [self.view addSubview:aKeyView];
-            [primaryKeyPaneKeys addObject:aKeyView];
-        }];
-    }];;
-    self.primaryKeyPaneKeyButtons = primaryKeyPaneKeys;
+    self.primaryKeyPaneKeyButtons = [NSMutableSet new];
+    self.numericAndSymbolsKeyPaneKeyButtons = [NSMutableSet new];
+    self.supplementalSymbolsKeyPaneKeyButtons = [NSMutableSet new];
     
-    NSMutableArray *numericAndSymbolsKeyPaneKeys = [NSMutableArray new];
-    [[KeyboardViewController numericAndSymbolsKeyPaneRows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger rowIndex, BOOL *stop) {
-        [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger keyIndex, BOOL *stop) {
-            
-            KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
-            aKeyView.delegate = self;
-            aKeyView.dataSource = self;
-            [self.view addSubview:aKeyView];
-            [numericAndSymbolsKeyPaneKeys addObject:aKeyView];
-        }];
-    }];;
-    self.numericAndSymbolsKeyPaneKeyButtons = numericAndSymbolsKeyPaneKeys;
+    NSArray *keyViewCreationContexts = @[
+                                         @{
+                                             @"keyPaneRows": [KeyboardViewController primaryKeyPaneRows],
+                                             @"targetButtonsMutableSet": self.primaryKeyPaneKeyButtons,
+                                             },
+                                         @{
+                                             @"keyPaneRows": [KeyboardViewController numericAndSymbolsKeyPaneRows],
+                                             @"targetButtonsMutableSet": self.numericAndSymbolsKeyPaneKeyButtons,
+                                             },
+                                         @{
+                                             @"keyPaneRows": [KeyboardViewController supplementalSymbolsKeyPaneRows],
+                                             @"targetButtonsMutableSet": self.supplementalSymbolsKeyPaneKeyButtons,
+                                             },
+                                         ];
     
-    NSMutableArray *supplementalSymbolsKeyPaneKeys = [NSMutableArray new];
-    [[KeyboardViewController supplementalSymbolsKeyPaneRows] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger rowIndex, BOOL *stop) {
-        [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger keyIndex, BOOL *stop) {
-            
-            KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
-            aKeyView.delegate = self;
-            aKeyView.dataSource = self;
-            [self.view addSubview:aKeyView];
-            [supplementalSymbolsKeyPaneKeys addObject:aKeyView];
+    [keyViewCreationContexts enumerateObjectsUsingBlock:^(NSDictionary * creationContext, NSUInteger idx, BOOL *stop) {
+        NSMutableSet *keyPaneSet = creationContext[@"targetButtonsMutableSet"];
+        [creationContext[@"keyPaneRows"] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger rowIndex, BOOL *stop) {
+            [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger keyIndex, BOOL *stop) {
+                
+                KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
+                aKeyView.delegate = self;
+                aKeyView.dataSource = self;
+                [self.view addSubview:aKeyView];
+                [keyPaneSet addObject:aKeyView];
+            }];
         }];
-    }];;
-    self.supplementalSymbolsKeyPaneKeyButtons = supplementalSymbolsKeyPaneKeys;
+    }];
 }
 
 - (void)viewDidLayoutSubviews
