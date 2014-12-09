@@ -28,13 +28,41 @@
     self.keyDictionariesKeyedByKeyCode = [NSMutableDictionary new];
     
     NSInteger numRows = [self.dataSource numberOfRows];
-    CGFloat heightPerRow = floorf(keyboardSize.height / numRows);
+    
+    //calculate height per row, which is totalHeight sans space needed for row margins
+    CGFloat totalRowVerticalMargins = 0.0f;
+    for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
+        NSInteger numKeysInRow = [self.dataSource numberOfKeysForRow:rowIndex];
+        
+        //build up data structure representing data for each key in this row
+        CGFloat largestTopMargin = 0.0f;
+        CGFloat largestBottomMargin = 0.0f;
+        for (int keyIndex = 0; keyIndex < numKeysInRow; keyIndex++) {
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForKeyPosition:keyIndex inKeyRow:rowIndex];
+            NSValue *marginsValue = [self.dataSource marginsForKeyAtIndexPath:currentIndexPath];
+            if (marginsValue) {
+                UIEdgeInsets currentMargins = [marginsValue UIEdgeInsetsValue];
+                
+                largestTopMargin = MAX(largestTopMargin, currentMargins.top);
+                largestBottomMargin = MAX(largestBottomMargin, currentMargins.bottom);
+            }
+        }
+        
+        totalRowVerticalMargins += (largestTopMargin + largestBottomMargin);
+    }
+    
+    CGFloat availableHeight = keyboardSize.height - totalRowVerticalMargins;
+    
+    CGFloat heightPerRow = floorf(availableHeight / numRows);
     
     CGFloat runningY = 0.0f;
     for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
         NSInteger numKeysInRow = [self.dataSource numberOfKeysForRow:rowIndex];
         
         //build up data structure representing data for each key in this row
+        //calculate the largest top and bottom margin values for any key in this row
+        CGFloat largestTopMargin = 0.0f;
+        CGFloat largestBottomMargin = 0.0f;
         NSMutableArray *keyDictionaries = [NSMutableArray new];
         for (int keyIndex = 0; keyIndex < numKeysInRow; keyIndex++) {
             NSIndexPath *currentIndexPath = [NSIndexPath indexPathForKeyPosition:keyIndex inKeyRow:rowIndex];
@@ -44,6 +72,10 @@
             NSValue *marginsValue = [self.dataSource marginsForKeyAtIndexPath:currentIndexPath];
             if (marginsValue) {
                 keyDictionary[@"margins"] = marginsValue;
+                
+                UIEdgeInsets currentMargins = [marginsValue UIEdgeInsetsValue];
+                largestTopMargin = MAX(largestTopMargin, currentMargins.top);
+                largestBottomMargin = MAX(largestBottomMargin, currentMargins.bottom);
             }
             
             NSNumber *relativeWidthNumber = [self.dataSource relativeWidthForKeyAtIndexPath:currentIndexPath];
@@ -52,6 +84,9 @@
             }
             [keyDictionaries addObject:keyDictionary];
         }
+        
+        //adjust yPos to account for this row's effective top margin
+        runningY += largestTopMargin;
         
         //calculate available width which relateiveWidth keys are relative to (total width sans space needed to satistfy margins)
         __block CGFloat totalRowHorizontalMargins = 0.0f;
@@ -124,6 +159,7 @@
         }];
         
         runningY += heightPerRow;
+        runningY += largestBottomMargin;
     }
 }
 

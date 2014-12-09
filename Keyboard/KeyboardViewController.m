@@ -293,7 +293,17 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (NSValue *)marginsForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    NSValue *marginsValue = nil;
+    
+    KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
+    
+    //first key in first row of each pane
+    if (keyCode == KeyCodeQ || keyCode == KeyCode1 || keyCode == KeyCodeOpenSquareBracket) {
+        //give the row a top margin
+        marginsValue = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(4.0f, 0.0f, 0.0f, 0.0f)];
+    }
+    
+    return marginsValue;
 }
 
 - (NSValue *)paddingsForKeyAtIndexPath:(NSIndexPath *)indexPath
