@@ -12,16 +12,17 @@
 
 @protocol  KeyPositionDataSource <NSObject>
 
-- (CGSize)keyboardSize;
+- (CGSize)keyboardSize; //used to infer the key width and height
 
 - (NSInteger)numberOfRows;
-- (CGFloat)minimumIntraRowSpacing;
 
 - (NSInteger)numberOfKeysForRow:(NSInteger)row;
-- (CGFloat)minimumIntraKeySpacingForRow:(NSInteger)row;
+
+- (NSNumber *)relativeWidthForKeyAtIndexPath:(NSIndexPath *)indexPath;  //relative to 1.0
+- (NSValue *)marginsForKeyAtIndexPath:(NSIndexPath *)indexPath;         //px subtracted from total available
+- (NSValue *)paddingsForKeyAtIndexPath:(NSIndexPath *)indexPath;       //internal to bounds of each key
 
 - (KeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath;
-- (NSInteger)strideForKeyAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

@@ -28,51 +28,102 @@
     self.keyDictionariesKeyedByKeyCode = [NSMutableDictionary new];
     
     NSInteger numRows = [self.dataSource numberOfRows];
+    CGFloat heightPerRow = floorf(keyboardSize.height / numRows);
     
-    CGFloat intraRowSpacing = [self.dataSource minimumIntraRowSpacing];
-    CGFloat availableHeightForRows = keyboardSize.height - ((numRows + 1) * intraRowSpacing);
-    CGFloat exactHeightPerRow = availableHeightForRows / numRows;
-    CGFloat heightPerRow = floorf(exactHeightPerRow);
-    
-    //TODO: calculate surplus extra pixels to allocate to rows as needed
-    
-    for (NSInteger currentRow = 0; currentRow < numRows; currentRow++) {
-        CGFloat rowYPos = intraRowSpacing + ((currentRow * heightPerRow) + (currentRow * intraRowSpacing));
+    CGFloat runningY = 0.0f;
+    for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
+        NSInteger numKeysInRow = [self.dataSource numberOfKeysForRow:rowIndex];
         
-        NSMutableArray *keysInRow = [NSMutableArray new];
-        
-        NSInteger numKeysInRow = [self.dataSource numberOfKeysForRow:currentRow];
-        NSInteger totalStride = 0;
-        for (NSInteger currentKeyPosition = 0; currentKeyPosition < numKeysInRow; currentKeyPosition++) {
-            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForKeyPosition:currentKeyPosition inKeyRow:currentRow];
+        //build up data structure representing data for each key in this row
+        NSMutableArray *keyDictionaries = [NSMutableArray new];
+        for (int keyIndex = 0; keyIndex < numKeysInRow; keyIndex++) {
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForKeyPosition:keyIndex inKeyRow:rowIndex];
             
             NSMutableDictionary *keyDictionary = [NSMutableDictionary new];
-            keyDictionary[@"keyCode"] = @([self.dataSource symbolForKeyAtIndexPath:currentIndexPath]);
-            keyDictionary[@"stride"] = @([self.dataSource strideForKeyAtIndexPath:currentIndexPath]);
             
-            totalStride += [keyDictionary[@"stride"] integerValue];
+            NSValue *marginsValue = [self.dataSource marginsForKeyAtIndexPath:currentIndexPath];
+            if (marginsValue) {
+                keyDictionary[@"margins"] = marginsValue;
+            }
             
-            [keysInRow addObject:keyDictionary];
+            NSNumber *relativeWidthNumber = [self.dataSource relativeWidthForKeyAtIndexPath:currentIndexPath];
+            if (relativeWidthNumber) {
+                keyDictionary[@"relativeWidth"] = relativeWidthNumber;
+            }
+            [keyDictionaries addObject:keyDictionary];
         }
         
-        CGFloat intraKeySpacing = [self.dataSource minimumIntraKeySpacingForRow:currentRow];
-        
-        CGFloat availableWidthForKeys = keyboardSize.width - ((totalStride + 1) * intraKeySpacing);
-        CGFloat exactWidthPerStride = availableWidthForKeys / totalStride;
-        CGFloat widthPerStride = floorf(exactWidthPerStride);
-        
-        //TODO: calculate surplus extra pixels to allocate to the keys as needed
-        
-        __block CGFloat currentXPos = intraKeySpacing; //starting left spacing
-        [keysInRow enumerateObjectsUsingBlock:^(NSMutableDictionary *keyDictionary, NSUInteger currentKeyPosition, BOOL *stop) {
-            NSInteger keyStride = [keyDictionary[@"stride"] integerValue];
-            CGFloat keyWidth = widthPerStride * keyStride + (intraKeySpacing * (keyStride - 1));
-            
-            keyDictionary[@"frame"] = [NSValue valueWithCGRect:CGRectMake(currentXPos, rowYPos, keyWidth, heightPerRow)];
-            currentXPos += keyWidth + intraKeySpacing;
-            
-            self.keyDictionariesKeyedByKeyCode[keyDictionary[@"keyCode"]] = keyDictionary;
+        //calculate available width which relateiveWidth keys are relative to (total width sans space needed to satistfy margins)
+        __block CGFloat totalRowHorizontalMargins = 0.0f;
+        [keyDictionaries enumerateObjectsUsingBlock:^(NSDictionary *currentKeyDictionary, NSUInteger idx, BOOL *stop) {
+            NSValue *marginsValue = currentKeyDictionary[@"margins"];
+            if (marginsValue) {
+                UIEdgeInsets margins = [marginsValue UIEdgeInsetsValue];
+                totalRowHorizontalMargins += margins.left + margins.right;
+            }
         }];
+        __block CGFloat availableWidth = keyboardSize.width - totalRowHorizontalMargins;
+        
+        //asign widths to all relativePercent specified keys
+        __block CGFloat widthAssignedToRelativeWidthKeys = 0.0f;
+        [keyDictionaries enumerateObjectsUsingBlock:^(NSMutableDictionary *currentKeyDictionary, NSUInteger idx, BOOL *stop) {
+            NSNumber *relativeWidthNumber = currentKeyDictionary[@"relativeWidth"];
+            if (relativeWidthNumber) {
+                CGFloat relativeWidth = [relativeWidthNumber floatValue];
+                CGFloat width = floorf(relativeWidth * availableWidth);
+                
+                currentKeyDictionary[@"width"] = @(width);
+                widthAssignedToRelativeWidthKeys += width;
+            } else {
+                currentKeyDictionary[@"width"] = @(0.0f);
+            }
+        }];
+        
+        //assign remaining width to all non-relativePercent specified keys evently
+        CGFloat remainingWidthToAssign = availableWidth - widthAssignedToRelativeWidthKeys;
+        int currentAssignmentIndex = 0;
+        while (remainingWidthToAssign > 0.0f) {
+            NSMutableDictionary *keyDictionary = keyDictionaries[currentAssignmentIndex];
+            
+            if (!keyDictionary[@"relativeWidth"]) {
+                keyDictionary[@"width"] = @([keyDictionary[@"width"] floatValue] + 1.0f);
+                remainingWidthToAssign -= 1.0f;
+            }
+            
+            currentAssignmentIndex++;
+            currentAssignmentIndex %= numKeysInRow;
+        }
+        
+        //create and store result dictionary
+        __block CGFloat runningX = 0.0f;
+        [keyDictionaries enumerateObjectsUsingBlock:^(NSDictionary *currentKeyDictionary, NSUInteger keyIndex, BOOL *stop) {
+
+            UIEdgeInsets margins = UIEdgeInsetsZero;
+            NSValue *marginsValue = currentKeyDictionary[@"margins"];
+            if (marginsValue) {
+                margins = [marginsValue UIEdgeInsetsValue];
+            }
+            
+            runningX += margins.left;
+    
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForKeyPosition:keyIndex inKeyRow:rowIndex];
+            NSNumber *keyCodeNumber = @([self.dataSource symbolForKeyAtIndexPath:currentIndexPath]);
+            CGRect frame = CGRectMake(runningX, runningY, [currentKeyDictionary[@"width"] floatValue], heightPerRow);
+            runningX += frame.size.width;
+            
+            self.keyDictionariesKeyedByKeyCode[keyCodeNumber] = [NSMutableDictionary dictionaryWithDictionary:@{
+                                                                                                                @"keyCode": keyCodeNumber,
+                                                                                                                @"frame": [NSValue valueWithCGRect:frame],
+                                                                                                                }];
+            runningX += margins.right;
+            
+            NSValue *paddingsValue = [self.dataSource paddingsForKeyAtIndexPath:currentIndexPath];
+            if (paddingsValue) {
+                self.keyDictionariesKeyedByKeyCode[keyCodeNumber][@"paddings"] = paddingsValue;
+            }
+        }];
+        
+        runningY += heightPerRow;
     }
 }
 

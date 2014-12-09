@@ -21,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        _keyCode = keyCode;;
+        _keyCode = keyCode;
         
         _shadowHeight = 1.5f;
         
@@ -46,13 +46,14 @@
     [[UIColor clearColor] set];
     CGContextFillRect(context, rect);
     
-    CGSize keySize = [self keySize];
+    CGRect keyFrame = [self keyRect];
+    CGRect shadowFrame = CGRectMake(keyFrame.origin.x, keyFrame.origin.y + self.shadowHeight, keyFrame.size.width, keyFrame.size.height);
     
-    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f, self.shadowHeight, keySize.width, keySize.height) cornerRadius:4.0f];
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:shadowFrame cornerRadius:4.0f];
     [[UIColor colorWithRed:(136.0f/255.0f) green:(138.0f/255.0f) blue:(142.0f/255.0f) alpha:1.0f] set];
     [bezierPath fill];
     
-    bezierPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f, 0.0f, keySize.width, keySize.height) cornerRadius:4.0f];
+    bezierPath = [UIBezierPath bezierPathWithRoundedRect:keyFrame cornerRadius:4.0f];
     if (self.highlighted == NO) {
         [[UIColor whiteColor] set];
     } else {
@@ -64,9 +65,10 @@
     
     NSString *symbol = [KeyController symbolForKeyCode:self.keyCode forShiftKeyState:[self.dataSource shiftKeyState]];
     CGSize symbolSize = [symbol sizeWithAttributes:fontAttributes];
+    CGSize keySize = keyFrame.size;
     [symbol drawInRect:CGRectMake(
-                                  (keySize.width - symbolSize.width) / 2.0f,
-                                  (keySize.height - symbolSize.height) / 2.0f,
+                                  keyFrame.origin.x + ((keySize.width - symbolSize.width) / 2.0f),
+                                  keyFrame.origin.y + ((keySize.height - symbolSize.height) / 2.0f),
                                   symbolSize.width,
                                   symbolSize.height)
         withAttributes:fontAttributes];
@@ -74,9 +76,12 @@
 
 #pragma mark - Dimension Helper methods
 
-- (CGSize)keySize
+- (CGRect)keyRect
 {
-    return CGSizeMake(self.frame.size.width, self.frame.size.height - self.shadowHeight);
+    return CGRectMake(self.paddings.left,
+                      self.paddings.top,
+                      self.frame.size.width - (self.paddings.left + self.paddings.right),
+                      self.frame.size.height - (self.paddings.top + self.paddings.bottom + self.shadowHeight));
 }
 
 #pragma mark - Action methods

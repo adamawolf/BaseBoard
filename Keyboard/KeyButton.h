@@ -28,6 +28,7 @@
 @property (nonatomic, weak) id<KeyButtonDelegate> delegate;
 @property (nonatomic, weak) id<KeyButtonDataSource> dataSource;
 @property (nonatomic, readonly) KeyCode keyCode;
+@property (nonatomic, assign) UIEdgeInsets paddings;
 
 - (instancetype)initWithKeyCode:(KeyCode)keyCode;
 
