@@ -170,7 +170,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         
         //trigger re-layout of keys
         [self.keyPositionController reloadKeyPositions];
-        [self.view setNeedsLayout]; //TODO: confirm this triggers viewDidLayoutSubviews
+        [self.view setNeedsLayout];
     }
 }
 
