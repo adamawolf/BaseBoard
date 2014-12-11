@@ -39,14 +39,15 @@
     [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect
+{
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     [[UIColor clearColor] set];
     CGContextFillRect(context, rect);
     
-    CGRect keyFrame = [self keyRect];
+    CGRect keyFrame = [self keyFrame];
     CGRect shadowFrame = CGRectMake(keyFrame.origin.x, keyFrame.origin.y + self.shadowHeight, keyFrame.size.width, keyFrame.size.height);
     
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:shadowFrame cornerRadius:4.0f];
@@ -60,23 +61,11 @@
         [[UIColor colorWithWhite:.8 alpha:1.0f] set];
     }
     [bezierPath fill];
-    
-    NSDictionary *fontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
-    
-    NSString *symbol = [KeyController symbolForKeyCode:self.keyCode forShiftKeyState:[self.dataSource shiftKeyState]];
-    CGSize symbolSize = [symbol sizeWithAttributes:fontAttributes];
-    CGSize keySize = keyFrame.size;
-    [symbol drawInRect:CGRectMake(
-                                  keyFrame.origin.x + ((keySize.width - symbolSize.width) / 2.0f),
-                                  keyFrame.origin.y + ((keySize.height - symbolSize.height) / 2.0f),
-                                  symbolSize.width,
-                                  symbolSize.height)
-        withAttributes:fontAttributes];
 }
 
 #pragma mark - Dimension Helper methods
 
-- (CGRect)keyRect
+- (CGRect)keyFrame
 {
     return CGRectMake(self.paddings.left,
                       self.paddings.top,

@@ -8,7 +8,21 @@
 
 #import "KeyController.h"
 
+#import "KeyButton.h"
+#import "SymbolKeyButton.h"
+
 @implementation KeyController
+
++ (Class)keyButtonClassForKeyCode:(KeyCode)keyCode
+{
+    Class class = [SymbolKeyButton class];
+    
+    if (keyCode == KeyCodeSpace) {
+        class = [KeyButton class];
+    }
+    
+    return class;
+}
 
 + (NSString *)symbolForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState
 {

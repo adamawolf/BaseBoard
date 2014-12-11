@@ -8,6 +8,7 @@
 
 #import "KeyboardViewController.h"
 #import "KeyButton.h"
+#import "SymbolKeyButton.h"
 #import "KeyController.h"
 #import "KeyPositionController.h"
 #import "TypingLogicController.h"
@@ -19,7 +20,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneSupplementalSymbols,
 };
 
-@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, KeyButtonDataSource, TypingLogicControllerDelegate>
+@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, SymbolKeyButtonDataSource, TypingLogicControllerDelegate>
 
 @property (nonatomic, assign) KeyPane currentKeyPane;
 
@@ -75,9 +76,15 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         [creationContext[@"keyPaneRows"] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger rowIndex, BOOL *stop) {
             [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger keyIndex, BOOL *stop) {
                 
-                KeyButton *aKeyView = [[KeyButton alloc] initWithKeyCode:[keyCodeNumber intValue]];
+                KeyCode currentKeyCode = [keyCodeNumber intValue];
+                
+                Class keyButtonClass = [KeyController keyButtonClassForKeyCode:currentKeyCode];
+                
+                KeyButton *aKeyView = [[keyButtonClass alloc] initWithKeyCode:[keyCodeNumber intValue]];
                 aKeyView.delegate = self;
-                aKeyView.dataSource = self;
+                if ([aKeyView isKindOfClass:[SymbolKeyButton class]]) {
+                    ((SymbolKeyButton *)aKeyView).dataSource = self;
+                }
                 [self.view addSubview:aKeyView];
                 [keyPaneSet addObject:aKeyView];
             }];
@@ -333,7 +340,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     [self.typingLogicController processKeystrokeWithKeyCode:keyButton.keyCode];
 }
 
-#pragma mark - KeyButtonDataSource methods
+#pragma mark - SymbolKeyButtonDataSource methods
 
 - (ShiftKeyState)shiftKeyState
 {
