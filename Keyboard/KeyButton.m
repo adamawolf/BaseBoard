@@ -28,6 +28,10 @@
         self.backgroundColor = [UIColor clearColor];
         
         [self addTarget:self action:@selector(touchUpInsideDidFire:) forControlEvents:UIControlEventTouchUpInside];
+        
+        _keyBackgroundColor = [UIColor whiteColor];
+        _keyHighlightedBackgroundColor = [UIColor colorWithWhite:.8 alpha:1.0f];
+        _keyShadowColor = [UIColor colorWithRed:(136.0f/255.0f) green:(138.0f/255.0f) blue:(142.0f/255.0f) alpha:1.0f];
     }
     return self;
 }
@@ -51,14 +55,14 @@
     CGRect shadowFrame = CGRectMake(keyFrame.origin.x, keyFrame.origin.y + self.shadowHeight, keyFrame.size.width, keyFrame.size.height);
     
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:shadowFrame cornerRadius:4.0f];
-    [[UIColor colorWithRed:(136.0f/255.0f) green:(138.0f/255.0f) blue:(142.0f/255.0f) alpha:1.0f] set];
+    [self.keyShadowColor set];
     [bezierPath fill];
     
     bezierPath = [UIBezierPath bezierPathWithRoundedRect:keyFrame cornerRadius:4.0f];
     if (self.highlighted == NO) {
-        [[UIColor whiteColor] set];
+        [self.keyBackgroundColor set];
     } else {
-        [[UIColor colorWithWhite:.8 alpha:1.0f] set];
+        [self.keyHighlightedBackgroundColor set];
     }
     [bezierPath fill];
 }

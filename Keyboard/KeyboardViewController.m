@@ -9,6 +9,7 @@
 #import "KeyboardViewController.h"
 #import "KeyButton.h"
 #import "SymbolKeyButton.h"
+#import "ShiftKeyButton.h"
 #import "KeyController.h"
 #import "KeyPositionController.h"
 #import "TypingLogicController.h"
@@ -20,7 +21,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneSupplementalSymbols,
 };
 
-@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, SymbolKeyButtonDataSource, TypingLogicControllerDelegate>
+@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, SymbolKeyButtonDataSource, ShiftKeyButtonDataSource, TypingLogicControllerDelegate>
 
 @property (nonatomic, assign) KeyPane currentKeyPane;
 
@@ -84,6 +85,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
                 aKeyView.delegate = self;
                 if ([aKeyView isKindOfClass:[SymbolKeyButton class]]) {
                     ((SymbolKeyButton *)aKeyView).dataSource = self;
+                } else if ([aKeyView isKindOfClass:[ShiftKeyButton class]]) {
+                    ((ShiftKeyButton *)aKeyView).dataSource = self;
                 }
                 [self.view addSubview:aKeyView];
                 [keyPaneSet addObject:aKeyView];
@@ -96,21 +99,24 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 {
     [self.keyPositionController reloadKeyPositions];
     
+    //layout the keys
     [self.view.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
-        if ([subview isKindOfClass:[KeyButton class]]) {
-            KeyButton *keyButton = (KeyButton *)subview;
-            
-            NSDictionary *keyDictionary = [self.keyPositionController keyDictionaryForKeyCode:keyButton.keyCode];
-            if (keyDictionary) {
-                keyButton.frame = [keyDictionary[@"frame"] CGRectValue];
+        if (subview.alpha > 0.0f) {
+            if ([subview isKindOfClass:[KeyButton class]]) {
+                KeyButton *keyButton = (KeyButton *)subview;
                 
-                if (keyDictionary[@"paddings"]) {
-                    keyButton.paddings = [keyDictionary[@"paddings"] UIEdgeInsetsValue];
-                } else {
-                    keyButton.paddings = UIEdgeInsetsZero;
+                NSDictionary *keyDictionary = [self.keyPositionController keyDictionaryForKeyCode:keyButton.keyCode];
+                if (keyDictionary) {
+                    keyButton.frame = [keyDictionary[@"frame"] CGRectValue];
+                    
+                    if (keyDictionary[@"paddings"]) {
+                        keyButton.paddings = [keyDictionary[@"paddings"] UIEdgeInsetsValue];
+                    } else {
+                        keyButton.paddings = UIEdgeInsetsZero;
+                    }
+                    
+                    [keyButton setNeedsDisplay];
                 }
-                
-                [keyButton setNeedsDisplay];
             }
         }
     }];
@@ -341,6 +347,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 }
 
 #pragma mark - SymbolKeyButtonDataSource methods
+#pragma mark - ShiftKeyButtonDataSource methods
 
 - (ShiftKeyState)shiftKeyState
 {

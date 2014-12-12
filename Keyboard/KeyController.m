@@ -10,6 +10,7 @@
 
 #import "KeyButton.h"
 #import "SymbolKeyButton.h"
+#import "ShiftKeyButton.h"
 
 @implementation KeyController
 
@@ -19,6 +20,8 @@
     
     if (keyCode == KeyCodeSpace) {
         class = [KeyButton class];
+    } else if (keyCode == KeyCodeShift) {
+        class = [ShiftKeyButton class];
     }
     
     return class;

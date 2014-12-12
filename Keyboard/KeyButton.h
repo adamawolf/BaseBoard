@@ -26,6 +26,10 @@
 @property (nonatomic, readonly) KeyCode keyCode;
 @property (nonatomic, assign) UIEdgeInsets paddings;
 
+@property (nonatomic, strong) UIColor *keyBackgroundColor;
+@property (nonatomic, strong) UIColor *keyShadowColor;
+@property (nonatomic, strong) UIColor *keyHighlightedBackgroundColor;
+
 - (instancetype)initWithKeyCode:(KeyCode)keyCode;
 
 - (CGRect)keyFrame;
