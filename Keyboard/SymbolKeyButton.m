@@ -10,6 +10,15 @@
 
 @implementation SymbolKeyButton
 
+- (instancetype)initWithKeyCode:(KeyCode)keyCode
+{
+    self = [super initWithKeyCode:keyCode];
+    if (self) {
+        _shouldAutocapitalize = YES;
+    }
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect
 {
     //draws standard key background
@@ -17,9 +26,16 @@
     
     CGRect keyFrame = [self keyFrame];
     
-    NSDictionary *fontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
+    NSString *symbol = [KeyController symbolForKeyCode:self.keyCode];
     
-    NSString *symbol = [KeyController symbolForKeyCode:self.keyCode forShiftKeyState:[self.dataSource shiftKeyState]];
+    BOOL isUpperCase = ([self.dataSource shiftKeyState] == ShiftKeyStateUppercase ||
+                        [self.dataSource shiftKeyState] == ShiftKeyStateCapsLock);
+    
+    if (self.shouldAutocapitalize && isUpperCase) {
+        symbol = [symbol uppercaseString];
+    }
+    
+    NSDictionary *fontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:19.0]};
     CGSize symbolSize = [symbol sizeWithAttributes:fontAttributes];
     CGSize keySize = keyFrame.size;
     [symbol drawInRect:CGRectMake(

@@ -19,5 +19,6 @@
 @interface SymbolKeyButton : KeyButton
 
 @property (nonatomic, weak) id<SymbolKeyButtonDataSource> dataSource;
+@property (nonatomic, assign) BOOL shouldAutocapitalize;
 
 @end

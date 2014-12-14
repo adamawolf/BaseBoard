@@ -132,7 +132,7 @@ typedef NS_ENUM(NSUInteger, ShiftKeyState) {
 
 + (Class)keyButtonClassForKeyCode:(KeyCode)keyCode;
 
-+ (NSString *)symbolForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState;
++ (NSString *)symbolForKeyCode:(KeyCode)keyCode;
 + (NSString *)yieldedLowercaseTextForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState;
 
 + (NSIndexSet *)simpleTextGeneratingKeyCodeIndexSet;

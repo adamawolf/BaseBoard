@@ -37,10 +37,9 @@
     return class;
 }
 
-+ (NSString *)symbolForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState
++ (NSString *)symbolForKeyCode:(KeyCode)keyCode
 {
     NSString *symbol = @"";
-    BOOL isUpperCase = shiftKeyState == ShiftKeyStateUppercase || shiftKeyState == ShiftKeyStateCapsLock;
     
     switch (keyCode) {
         case KeyCodeQ:
@@ -99,14 +98,6 @@
             break;
         case KeyCodeL:
             symbol = @"l";
-            break;
-        case KeyCodeShift:
-            symbol = @"⬆︎";
-            if (shiftKeyState == ShiftKeyStateUppercase) {
-                symbol = @"⇧";
-            } else if (shiftKeyState == ShiftKeyStateCapsLock) {
-                symbol = @"⇪";
-            }
             break;
         case KeyCodeZ:
             symbol = @"z";
@@ -287,10 +278,6 @@
             break;
         default:
             break;
-    }
-
-    if (isUpperCase) {
-        symbol = [symbol uppercaseString];
     }
     
     return symbol;
