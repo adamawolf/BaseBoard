@@ -12,6 +12,7 @@
 #import "SymbolKeyButton.h"
 #import "ShiftKeyButton.h"
 #import "SymbolFunctionKeyButton.h"
+#import "IconFunctionKeyButton.h"
 
 @implementation KeyController
 
@@ -28,6 +29,9 @@
                keyCode == KeyCodeSymbolsPane ||
                keyCode == KeyCodePrimaryKeyPane) {
         class = [SymbolFunctionKeyButton class];
+    } else if (keyCode == KeyCodeDelete ||
+               keyCode == KeyCodeNextKeyboard) {
+        class = [IconFunctionKeyButton class];
     }
     
     return class;

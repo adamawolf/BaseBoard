@@ -2,17 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "shift_lock_portrait@2x.png"
+      "filename" : "global_portrait@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "shift_lock_portrait@3x.png"
+      "filename" : "global_portrait@3x.png"
     }
   ],
   "info" : {
