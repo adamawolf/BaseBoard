@@ -11,6 +11,7 @@
 #import "KeyButton.h"
 #import "SymbolKeyButton.h"
 #import "ShiftKeyButton.h"
+#import "SymbolFunctionKeyButton.h"
 
 @implementation KeyController
 
@@ -22,6 +23,11 @@
         class = [KeyButton class];
     } else if (keyCode == KeyCodeShift) {
         class = [ShiftKeyButton class];
+    } else if (keyCode == KeyCodeNumberPane ||
+               keyCode == KeyCodeReturn ||
+               keyCode == KeyCodeSymbolsPane ||
+               keyCode == KeyCodePrimaryKeyPane) {
+        class = [SymbolFunctionKeyButton class];
     }
     
     return class;
