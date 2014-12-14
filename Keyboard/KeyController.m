@@ -142,7 +142,7 @@
             symbol = @" ";
             break;
         case KeyCodeReturn:
-            symbol = @"RET";
+            symbol = @"return";
             break;
         case KeyCode1:
             symbol = @"1";

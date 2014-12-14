@@ -283,8 +283,11 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     
     KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
     if (keyCode == KeyCodeSpace) {
-        relativeWidth = @(0.55f);
-    } else if (keyCode == KeyCodeA) {
+        relativeWidth = @(0.5f);
+    } else if (keyCode == KeyCodeReturn) {
+        relativeWidth = @(0.225f);
+    }
+    else if (keyCode == KeyCodeA) {
         relativeWidth = @(0.15f);
     } else if (keyCode == KeyCodeL) {
         relativeWidth = @(0.15f);
