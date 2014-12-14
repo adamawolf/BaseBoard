@@ -317,24 +317,24 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (NSValue *)paddingsForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIEdgeInsets paddings = UIEdgeInsetsMake(2.0f, 2.0f, 2.0f, 2.0f);
+    UIEdgeInsets paddings = UIEdgeInsetsMake(4.0f, 3.0f, 4.0f, 3.0f);
     
     KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
     
     if (keyCode == KeyCodeA) {
         CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
-        paddings = UIEdgeInsetsMake(2.0f, 2.0f + oneHalfTopRowButtonWidth, 2.0f, 2.0f);
+        paddings.left += oneHalfTopRowButtonWidth;
     } else if (keyCode == KeyCodeL)
     {
         CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
-        paddings = UIEdgeInsetsMake(2.0f, 2.0f, 2.0f, 2.0f + oneHalfTopRowButtonWidth);
+        paddings.right += oneHalfTopRowButtonWidth;
     }
     else if (keyCode == KeyCodeShift) {
         CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
-        paddings = UIEdgeInsetsMake(2.0f, 2.0f, 2.0f, 2.0f + oneQuarterTopRowButtonWidth);
+        paddings.right += oneQuarterTopRowButtonWidth;
     } else if (keyCode == KeyCodeDelete) {
         CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
-        paddings = UIEdgeInsetsMake(2.0f, 2.0f + oneQuarterTopRowButtonWidth, 2.0f, 2.0f);
+        paddings.left += oneQuarterTopRowButtonWidth;
     }
     
     return [NSValue valueWithUIEdgeInsets:paddings];
