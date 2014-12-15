@@ -11,6 +11,7 @@
 		940F38621A3E0BA50062EB50 /* SymbolFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38611A3E0BA50062EB50 /* SymbolFunctionKeyButton.m */; };
 		940F38651A3E0CEF0062EB50 /* IconFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38641A3E0CEF0062EB50 /* IconFunctionKeyButton.m */; };
 		940F38681A3F72B60062EB50 /* FunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38671A3F72B60062EB50 /* FunctionKeyButton.m */; };
+		940F386B1A3F73D30062EB50 /* DeleteKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F386A1A3F73D30062EB50 /* DeleteKeyButton.m */; };
 		9455FAC41A1BE762001CFCE2 /* KeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9455FAC31A1BE762001CFCE2 /* KeyController.m */; };
 		945BDC911A3A1E650060942B /* SymbolKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 945BDC901A3A1E650060942B /* SymbolKeyButton.m */; };
 		945BDC941A3A26C00060942B /* ShiftKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 945BDC931A3A26C00060942B /* ShiftKeyButton.m */; };
@@ -76,6 +77,8 @@
 		940F38641A3E0CEF0062EB50 /* IconFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFunctionKeyButton.m; sourceTree = "<group>"; };
 		940F38661A3F72B60062EB50 /* FunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionKeyButton.h; sourceTree = "<group>"; };
 		940F38671A3F72B60062EB50 /* FunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionKeyButton.m; sourceTree = "<group>"; };
+		940F38691A3F73D30062EB50 /* DeleteKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteKeyButton.h; sourceTree = "<group>"; };
+		940F386A1A3F73D30062EB50 /* DeleteKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteKeyButton.m; sourceTree = "<group>"; };
 		9455FAC21A1BE762001CFCE2 /* KeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyController.h; sourceTree = "<group>"; };
 		9455FAC31A1BE762001CFCE2 /* KeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyController.m; sourceTree = "<group>"; };
 		945BDC8F1A3A1E650060942B /* SymbolKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolKeyButton.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				940F38611A3E0BA50062EB50 /* SymbolFunctionKeyButton.m */,
 				940F38631A3E0CEF0062EB50 /* IconFunctionKeyButton.h */,
 				940F38641A3E0CEF0062EB50 /* IconFunctionKeyButton.m */,
+				940F38691A3F73D30062EB50 /* DeleteKeyButton.h */,
+				940F386A1A3F73D30062EB50 /* DeleteKeyButton.m */,
 			);
 			name = KeyButtons;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				940F386B1A3F73D30062EB50 /* DeleteKeyButton.m in Sources */,
 				94CCB3BC1A250DAA008B29F8 /* TypingLogicController.m in Sources */,
 				94F9B9E119F090FC00F47B35 /* KeyButton.m in Sources */,
 				9407864D1A1AC2A10078C7E7 /* KeyPositionController.m in Sources */,
