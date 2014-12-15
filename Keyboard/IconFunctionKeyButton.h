@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Flairify LLC. All rights reserved.
 //
 
-#import "KeyButton.h"
+#import "FunctionKeyButton.h"
 
-@interface IconFunctionKeyButton : KeyButton
+@interface IconFunctionKeyButton : FunctionKeyButton
 
 @end

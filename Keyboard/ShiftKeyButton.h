@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Flairify LLC. All rights reserved.
 //
 
-#import "KeyButton.h"
+#import "FunctionKeyButton.h"
 
 @protocol ShiftKeyButtonDataSource <NSObject>
 
@@ -14,7 +14,7 @@
 
 @end
 
-@interface ShiftKeyButton : KeyButton
+@interface ShiftKeyButton : FunctionKeyButton
 
 @property (nonatomic, weak) id<ShiftKeyButtonDataSource> dataSource;
 
