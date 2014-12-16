@@ -28,12 +28,103 @@
         self.backgroundColor = [UIColor clearColor];
         
         [self addTarget:self action:@selector(touchUpInsideDidFire:) forControlEvents:UIControlEventTouchUpInside];
-        
-        _keyBackgroundColor = [UIColor whiteColor];
-        _keyHighlightedBackgroundColor = [UIColor colorWithWhite:.8 alpha:1.0f];
-        _keyShadowColor = [UIColor colorWithRed:(136.0f/255.0f) green:(138.0f/255.0f) blue:(142.0f/255.0f) alpha:1.0f];
     }
     return self;
+}
+
+- (void)setDataSource:(id<KeyButtonDataSource>)dataSource
+{
+    _dataSource = dataSource;
+    
+    [self setNeedsDisplay];
+}
+
+- (UIColor *)symbolColor
+{
+    UIColor *color = nil;
+    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+        static UIColor *_darkColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _darkColor = [UIColor whiteColor];
+        });
+        color = _darkColor;
+    } else {
+        static UIColor *_lightColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _lightColor = [UIColor blackColor];
+        });
+        color = _lightColor;
+    }
+    
+    return color;
+}
+
+- (UIColor *)backgroundColor
+{
+    UIColor *color = nil;
+    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+        static UIColor *_darkColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _darkColor = [UIColor colorWithWhite:(90.0f/255.0f) alpha:1.0f];
+        });
+        color = _darkColor;
+    } else {
+        static UIColor *_lightColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _lightColor = [UIColor whiteColor];
+        });
+        color = _lightColor;
+    }
+    
+    return color;
+}
+
+- (UIColor *)shadowColor
+{
+    UIColor *color = nil;
+    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+        static UIColor *_darkColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _darkColor = [UIColor colorWithWhite:(15.0f/255.0f) alpha:1.0f];
+        });
+        color = _darkColor;
+    } else {
+        static UIColor *_lightColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _lightColor = [UIColor colorWithRed:(136.0f/255.0f) green:(138.0f/255.0f) blue:(142.0f/255.0f) alpha:1.0f];
+        });
+        color = _lightColor;
+    }
+    
+    return color;
+}
+
+- (UIColor *)highlightedBackgroundColor
+{
+    UIColor *color = nil;
+    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+        static UIColor *_darkColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _darkColor = [UIColor colorWithWhite:(60.0f/255.0f) alpha:1.0f];
+        });
+        color = _darkColor;
+    } else {
+        static UIColor *_lightColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _lightColor = [UIColor colorWithWhite:.8 alpha:1.0f];
+        });
+        color = _lightColor;
+    }
+    
+    return color;
 }
 
 - (void)setHighlighted:(BOOL)highlighted
@@ -45,7 +136,6 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     [[UIColor clearColor] set];
@@ -55,14 +145,14 @@
     CGRect shadowFrame = CGRectMake(keyFrame.origin.x, keyFrame.origin.y + self.shadowHeight, keyFrame.size.width, keyFrame.size.height);
     
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:shadowFrame cornerRadius:4.0f];
-    [self.keyShadowColor set];
+    [[self shadowColor] set];
     [bezierPath fill];
     
     bezierPath = [UIBezierPath bezierPathWithRoundedRect:keyFrame cornerRadius:4.0f];
     if (self.highlighted == NO) {
-        [self.keyBackgroundColor set];
+        [[self backgroundColor] set];
     } else {
-        [self.keyHighlightedBackgroundColor set];
+        [[self highlightedBackgroundColor] set];
     }
     [bezierPath fill];
 }

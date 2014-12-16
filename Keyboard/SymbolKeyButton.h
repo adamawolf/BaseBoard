@@ -10,7 +10,7 @@
 
 #import "KeyButton.h"
 
-@protocol SymbolKeyButtonDataSource <NSObject>
+@protocol SymbolKeyButtonDataSource <KeyButtonDataSource>
 
 - (ShiftKeyState)shiftKeyState;
 

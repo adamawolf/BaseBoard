@@ -35,7 +35,10 @@
         symbol = [symbol uppercaseString];
     }
     
-    NSDictionary *fontAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:19.0]};
+    NSDictionary *fontAttributes = @{
+                                     NSFontAttributeName:[UIFont systemFontOfSize:19.0],
+                                     NSForegroundColorAttributeName: self.symbolColor
+                                     };
     CGSize symbolSize = [symbol sizeWithAttributes:fontAttributes];
     CGSize keySize = keyFrame.size;
     [symbol drawInRect:CGRectMake(

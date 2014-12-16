@@ -20,15 +20,24 @@
 
 @end
 
+@protocol KeyButtonDataSource <NSObject>
+
+- (UIKeyboardAppearance)keyboardAppearance;
+
+@end
+
 @interface KeyButton : UIButton
 
 @property (nonatomic, weak) id<KeyButtonDelegate> delegate;
+@property (nonatomic, weak) id<KeyButtonDataSource> dataSource;
+
 @property (nonatomic, readonly) KeyCode keyCode;
 @property (nonatomic, assign) UIEdgeInsets paddings;
 
-@property (nonatomic, strong) UIColor *keyBackgroundColor;
-@property (nonatomic, strong) UIColor *keyShadowColor;
-@property (nonatomic, strong) UIColor *keyHighlightedBackgroundColor;
+- (UIColor *)symbolColor;
+- (UIColor *)backgroundColor;
+- (UIColor *)shadowColor;
+- (UIColor *)highlightedBackgroundColor;
 
 - (instancetype)initWithKeyCode:(KeyCode)keyCode;
 

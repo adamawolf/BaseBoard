@@ -83,11 +83,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
                 
                 KeyButton *aKeyView = [[keyButtonClass alloc] initWithKeyCode:[keyCodeNumber intValue]];
                 aKeyView.delegate = self;
-                if ([aKeyView isKindOfClass:[SymbolKeyButton class]]) {
-                    ((SymbolKeyButton *)aKeyView).dataSource = self;
-                } else if ([aKeyView isKindOfClass:[ShiftKeyButton class]]) {
-                    ((ShiftKeyButton *)aKeyView).dataSource = self;
-                }
+                aKeyView.dataSource = self;
                 [self.view addSubview:aKeyView];
                 [keyPaneSet addObject:aKeyView];
             }];
@@ -347,6 +343,13 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     NSLog(@"key press: %i", (int)keyButton.keyCode);
     
     [self.typingLogicController processKeystrokeWithKeyCode:keyButton.keyCode];
+}
+
+#pragma mark - KeyButtonDelegate
+
+- (UIKeyboardAppearance)keyboardAppearance
+{
+    return self.textDocumentProxy.keyboardAppearance;
 }
 
 #pragma mark - SymbolKeyButtonDataSource methods

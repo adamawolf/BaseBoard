@@ -10,6 +10,28 @@
 
 @implementation IconFunctionKeyButton
 
+- (UIColor *)symbolColor
+{
+    UIColor *color = nil;
+    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+        static UIColor *_darkColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _darkColor = [UIColor whiteColor];
+        });
+        color = _darkColor;
+    } else {
+        static UIColor *_lightColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _lightColor = [UIColor blackColor];
+        });
+        color = _lightColor;
+    }
+    
+    return color;
+}
+
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
@@ -17,6 +39,8 @@
     UIImage * iconImage = nil;
     if (self.keyCode == KeyCodeNextKeyboard) {
         iconImage = [UIImage imageNamed:@"global_portrait"];
+        iconImage = [iconImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [[self symbolColor] set];
     } else if (self.keyCode == KeyCodeDelete) {
         iconImage = [UIImage imageNamed:@"delete_portrait"];
         iconImage = [iconImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];

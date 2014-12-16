@@ -8,7 +8,7 @@
 
 #import "FunctionKeyButton.h"
 
-@protocol ShiftKeyButtonDataSource <NSObject>
+@protocol ShiftKeyButtonDataSource <KeyButtonDataSource>
 
 - (ShiftKeyState)shiftKeyState;
 
