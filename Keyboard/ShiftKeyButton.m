@@ -10,23 +10,19 @@
 
 @implementation ShiftKeyButton
 
-- (UIColor *)shiftOnSymbolColor
+- (UIColor *)backgroundColor
 {
     UIColor *color = nil;
-    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+    if ([self.dataSource shiftKeyState] != ShiftKeyStateLowercase &&
+        [self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
         static UIColor *_darkColor = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            _darkColor = [UIColor colorWithWhite:(15.0f/255.0f) alpha:1.0f];
+            _darkColor = [UIColor colorWithWhite:(208.0f/255.0f) alpha:1.0f];
         });
         color = _darkColor;
     } else {
-        static UIColor *_lightColor = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            _lightColor = [UIColor blackColor];
-        });
-        color = _lightColor;
+        color = [super backgroundColor];
     }
     
     return color;
@@ -44,11 +40,11 @@
     } else if ([self.dataSource shiftKeyState] == ShiftKeyStateUppercase) {
         shiftKeyImage = [UIImage imageNamed:@"shift_portrait"];
         shiftKeyImage = [shiftKeyImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [[self shiftOnSymbolColor] set];
+        [[UIColor blackColor] set];
     } else if ([self.dataSource shiftKeyState] == ShiftKeyStateCapsLock) {
         shiftKeyImage = [UIImage imageNamed:@"shift_lock_portrait"];
         shiftKeyImage = [shiftKeyImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [[self shiftOnSymbolColor] set];
+        [[UIColor blackColor] set];
     }
     
     CGRect keyFrame = [self keyFrame];
