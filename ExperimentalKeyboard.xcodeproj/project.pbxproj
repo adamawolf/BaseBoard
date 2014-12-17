@@ -315,6 +315,7 @@
 				TargetAttributes = {
 					94F9B99E19F08E6600F47B35 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 3P4KBPGH6G;
 					};
 					94F9B9BA19F08E6600F47B35 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -322,6 +323,7 @@
 					};
 					94F9B9CE19F08EA300F47B35 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 3P4KBPGH6G;
 					};
 				};
 			};

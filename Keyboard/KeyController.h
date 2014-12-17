@@ -41,11 +41,13 @@ typedef NS_ENUM(NSUInteger, KeyCode) {
     KeyCodeN,
     KeyCodeM,
     KeyCodeDelete,
+    KeyCodeSecondShift, //iPad only
     //bottom row
     KeyCodeNumberPane,
     KeyCodeNextKeyboard,
     KeyCodeSpace,
     KeyCodeReturn,
+    KeyCodeSecondNumberPane, //iPad only
     //number and symbol pane
     //first row
     KeyCode1,

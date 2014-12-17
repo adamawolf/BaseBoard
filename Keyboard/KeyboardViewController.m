@@ -204,12 +204,21 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _primaryKeyPaneRows = @[
-                                @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP)],
-                                @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL)],
-                                @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeDelete)],
-                                @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn)],
-                                ];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) {
+            _primaryKeyPaneRows = @[
+                                    @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP)],
+                                    @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL)],
+                                    @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeDelete)],
+                                    @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn)],
+                                    ];
+        } else {
+            _primaryKeyPaneRows = @[
+                                    @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP), @(KeyCodeDelete)],
+                                    @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL), @(KeyCodeReturn)],
+                                    @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeComma), @(KeyCodePeriod), @(KeyCodeSecondShift)],
+                                    @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeSecondNumberPane),],
+                                    ];
+        }
     });
     
     return _primaryKeyPaneRows;
@@ -278,19 +287,29 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     NSNumber *relativeWidth = nil;
     
     KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
-    if (keyCode == KeyCodeSpace) {
-        relativeWidth = @(0.5f);
-    } else if (keyCode == KeyCodeReturn) {
-        relativeWidth = @(0.225f);
-    }
-    else if (keyCode == KeyCodeA) {
-        relativeWidth = @(0.15f);
-    } else if (keyCode == KeyCodeL) {
-        relativeWidth = @(0.15f);
-    } else if (keyCode == KeyCodeShift) {
-        relativeWidth = @(0.15f);
-    } else if (keyCode == KeyCodeDelete) {
-        relativeWidth = @(0.15f);
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) {
+        if (keyCode == KeyCodeSpace) {
+            relativeWidth = @(0.5f);
+        } else if (keyCode == KeyCodeReturn) {
+            relativeWidth = @(0.225f);
+        } else if (keyCode == KeyCodeA) {
+            relativeWidth = @(0.15f);
+        } else if (keyCode == KeyCodeL) {
+            relativeWidth = @(0.15f);
+        } else if (keyCode == KeyCodeShift) {
+            relativeWidth = @(0.15f);
+        } else if (keyCode == KeyCodeDelete) {
+            relativeWidth = @(0.15f);
+        }
+    } else {
+        if (keyCode == KeyCodeReturn) {
+            relativeWidth = @(0.15f);
+        } else if (keyCode == KeyCodeA) {
+            relativeWidth = @(0.14f);
+        } else if (keyCode == KeyCodeSpace) {
+            relativeWidth = @(0.6f);
+        }
     }
     
     return relativeWidth;
@@ -313,24 +332,29 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (NSValue *)paddingsForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIEdgeInsets paddings = UIEdgeInsetsMake(4.0f, 3.0f, 4.0f, 3.0f);
+    UIEdgeInsets paddings = [[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad ? UIEdgeInsetsMake(4.0f, 3.0f, 4.0f, 3.0f) : UIEdgeInsetsMake(4.0f, 4.0f, 4.0f, 4.0f);
     
     KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
     
-    if (keyCode == KeyCodeA) {
-        CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
-        paddings.left += oneHalfTopRowButtonWidth;
-    } else if (keyCode == KeyCodeL)
-    {
-        CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
-        paddings.right += oneHalfTopRowButtonWidth;
-    }
-    else if (keyCode == KeyCodeShift || keyCode == KeyCodeSymbolsPane || keyCode == KeyCodeThirdRowNumberPane) {
-        CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
-        paddings.right += oneQuarterTopRowButtonWidth;
-    } else if (keyCode == KeyCodeDelete) {
-        CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
-        paddings.left += oneQuarterTopRowButtonWidth;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) {
+        if (keyCode == KeyCodeA) {
+            CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
+            paddings.left += oneHalfTopRowButtonWidth;
+        } else if (keyCode == KeyCodeL) {
+            CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
+            paddings.right += oneHalfTopRowButtonWidth;
+        } else if (keyCode == KeyCodeShift || keyCode == KeyCodeSymbolsPane || keyCode == KeyCodeThirdRowNumberPane) {
+            CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
+            paddings.right += oneQuarterTopRowButtonWidth;
+        } else if (keyCode == KeyCodeDelete) {
+            CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
+            paddings.left += oneQuarterTopRowButtonWidth;
+        }
+    } else {
+        if (keyCode == KeyCodeA) {
+            CGFloat oneHalfMiddleRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
+            paddings.left += oneHalfMiddleRowButtonWidth;
+        }
     }
     
     return [NSValue valueWithUIEdgeInsets:paddings];

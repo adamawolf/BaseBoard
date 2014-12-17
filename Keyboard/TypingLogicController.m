@@ -140,7 +140,7 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         [self.delegate typingLogicControllerDeterminedShouldDeleteBackwards:self];
     } else if (keyCode == KeyCodeNextKeyboard) {
         [self.delegate typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:self];
-    } else if (keyCode == KeyCodeShift) {
+    } else if (keyCode == KeyCodeShift || keyCode == KeyCodeSecondShift) {
         NSDate *shiftPressDate = [NSDate date];
         
         NSTimeInterval timeSinceLastShiftPress = [shiftPressDate timeIntervalSinceDate:self.lastShiftPressDate];
@@ -156,7 +156,7 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         }
         
         self.lastShiftPressDate = shiftPressDate;
-    } else if (keyCode == KeyCodeNumberPane || keyCode == KeyCodeThirdRowNumberPane) {
+    } else if (keyCode == KeyCodeNumberPane || keyCode == KeyCodeSecondNumberPane || keyCode == KeyCodeThirdRowNumberPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:self];
     } else if (keyCode == KeyCodePrimaryKeyPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];

@@ -15,7 +15,7 @@
     static UIFont *_symbolFont = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _symbolFont = [UIFont systemFontOfSize:17.0];
+        _symbolFont = [UIFont systemFontOfSize: [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? 21.0f : 17.0];
     });
     
     return _symbolFont;

@@ -23,9 +23,11 @@
     
     if (keyCode == KeyCodeSpace) {
         class = [KeyButton class];
-    } else if (keyCode == KeyCodeShift) {
+    } else if (keyCode == KeyCodeShift ||
+               keyCode == KeyCodeSecondShift) {
         class = [ShiftKeyButton class];
     } else if (keyCode == KeyCodeNumberPane ||
+               keyCode == KeyCodeSecondNumberPane ||
                keyCode == KeyCodeThirdRowNumberPane ||
                keyCode == KeyCodeReturn ||
                keyCode == KeyCodeSymbolsPane ||
@@ -127,6 +129,7 @@
             symbol = @"<";
             break;
         case KeyCodeNumberPane:
+        case KeyCodeSecondNumberPane:
         case KeyCodeThirdRowNumberPane:
             symbol = @"123";
             break;
@@ -350,8 +353,6 @@
         case KeyCodeL:
             yieldedText = @"l";
             break;
-        case KeyCodeShift:
-            yieldedText = @"^";
             break;
         case KeyCodeZ:
             yieldedText = @"z";
