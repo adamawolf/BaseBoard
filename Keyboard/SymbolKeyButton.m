@@ -19,6 +19,17 @@
     return self;
 }
 
+- (UIFont *)symbolFont
+{
+    static UIFont *_symbolFont = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _symbolFont = [UIFont systemFontOfSize:19.0];
+    });
+    
+    return _symbolFont;
+}
+
 - (void)drawRect:(CGRect)rect
 {
     //draws standard key background
@@ -36,7 +47,7 @@
     }
     
     NSDictionary *fontAttributes = @{
-                                     NSFontAttributeName:[UIFont systemFontOfSize:19.0],
+                                     NSFontAttributeName: [self symbolFont],
                                      NSForegroundColorAttributeName: self.symbolColor
                                      };
     CGSize symbolSize = [symbol sizeWithAttributes:fontAttributes];

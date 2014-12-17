@@ -10,6 +10,18 @@
 
 @implementation SymbolFunctionKeyButton
 
+- (UIFont *)symbolFont
+{
+    static UIFont *_symbolFont = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _symbolFont = [UIFont systemFontOfSize:17.0];
+    });
+    
+    return _symbolFont;
+}
+
+
 - (instancetype)initWithKeyCode:(KeyCode)keyCode
 {
     self = [super initWithKeyCode:keyCode];
