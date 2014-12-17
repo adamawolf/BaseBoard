@@ -98,7 +98,21 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
                 }
             }
         }
-    } //TODO: handle autocapitialization UITextAutocapitalizationTypeAllCharacters and UITextAutocapitalizationTypeWords
+    } else if (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeAllCharacters) {
+        determinedState = ShiftKeyStateUppercase;
+    } else if (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeWords) {
+        NSString *beforeText = self.textDocumentProxy.documentContextBeforeInput;
+        
+        if (beforeText.length == 0) {
+            determinedState = ShiftKeyStateUppercase;
+        } else {
+            NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
+            if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound)
+            {
+                determinedState = ShiftKeyStateUppercase;
+            }
+        }
+    }
     
     [self setShiftKeyState:determinedState];
 }
