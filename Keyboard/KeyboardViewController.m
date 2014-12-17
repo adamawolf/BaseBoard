@@ -384,6 +384,11 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     return self.typingLogicController.shiftKeyState;
 }
 
+- (UIReturnKeyType)returnKeyType
+{
+    return self.textDocumentProxy.returnKeyType;
+}
+
 #pragma mark - TypingLogicControllerDelegate methods
 
 - (void)typingLogicController:(TypingLogicController *)controller determinedShouldSetShiftKeyState:(ShiftKeyState)shiftKeyState

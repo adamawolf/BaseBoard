@@ -13,6 +13,7 @@
 @protocol SymbolKeyButtonDataSource <KeyButtonDataSource>
 
 - (ShiftKeyState)shiftKeyState;
+- (UIReturnKeyType)returnKeyType;
 
 @end
 

@@ -37,7 +37,12 @@
     
     CGRect keyFrame = [self keyFrame];
     
-    NSString *symbol = [KeyController symbolForKeyCode:self.keyCode];
+    NSString *symbol = nil;
+    if (self.keyCode != KeyCodeReturn) {
+        symbol = [KeyController symbolForKeyCode:self.keyCode];
+    } else {
+        symbol = [SymbolKeyButton returnKeyTextForReturnKeyType:[self.dataSource returnKeyType]];
+    }
     
     BOOL isUpperCase = ([self.dataSource shiftKeyState] == ShiftKeyStateUppercase ||
                         [self.dataSource shiftKeyState] == ShiftKeyStateCapsLock);
@@ -58,6 +63,53 @@
                                   symbolSize.width,
                                   symbolSize.height)
         withAttributes:fontAttributes];
+}
+
++ (NSString *)returnKeyTextForReturnKeyType:(UIReturnKeyType)returnKeyType
+{
+    NSString *text;
+    
+    switch (returnKeyType) {
+        case UIReturnKeyDefault:
+            text = NSLocalizedString(@"return", @"return");
+            break;
+        case UIReturnKeyGo:
+            text = NSLocalizedString(@"go", @"go");
+            break;
+        case UIReturnKeyGoogle:
+            text = NSLocalizedString(@"search", @"search");
+            break;
+        case UIReturnKeyJoin:
+            text = NSLocalizedString(@"join", @"join");
+            break;
+        case UIReturnKeyNext:
+            text = NSLocalizedString(@"next", @"next");
+            break;
+        case UIReturnKeyRoute:
+            text = NSLocalizedString(@"route", @"route");
+            break;
+        case UIReturnKeySearch:
+            text = NSLocalizedString(@"search", @"search");
+            break;
+        case UIReturnKeySend:
+            text = NSLocalizedString(@"send", @"send");
+            break;
+        case UIReturnKeyYahoo:
+            text = NSLocalizedString(@"search", @"search");
+            break;
+        case UIReturnKeyDone:
+            text = NSLocalizedString(@"done", @"done");
+            break;
+        case UIReturnKeyEmergencyCall:
+            text = NSLocalizedString(@"call", @"call");
+            break;
+            
+        default:
+            text = NSLocalizedString(@"return", @"return");
+            break;
+    }
+    
+    return text;
 }
 
 @end
