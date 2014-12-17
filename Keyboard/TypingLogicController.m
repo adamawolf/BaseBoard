@@ -156,7 +156,7 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         }
         
         self.lastShiftPressDate = shiftPressDate;
-    } else if (keyCode == KeyCodeNumberPane) {
+    } else if (keyCode == KeyCodeNumberPane || keyCode == KeyCodeThirdRowNumberPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:self];
     } else if (keyCode == KeyCodePrimaryKeyPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];

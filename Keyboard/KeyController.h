@@ -106,8 +106,7 @@ typedef NS_ENUM(NSUInteger, KeyCode) {
     KeyCodeYen,
     KeyCodeBullet,
     //third row
-    //KeyCodeNumberPane,
-    //KeyCodeSymbolsPane,
+    KeyCodeThirdRowNumberPane,
     //KeyCodePeriod,
     //KeyCodeComma,
     //KeyCodeQuestionMark,

@@ -241,7 +241,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         _numericAndSymbolsKeyPaneRows = @[
                                           @[@(KeyCodeOpenSquareBracket), @(KeyCodeCloseSquareBracket), @(KeyCodeOpenCurlyBracket), @(KeyCodeCloseCurlyBracket), @(KeyCodePoundSign), @(KeyCodePercent), @(KeyCodeCaret), @(KeyCodeAsterisk), @(KeyCodePlus), @(KeyCodeEqual)],
                                           @[@(KeyCodeUnderscore), @(KeyCodeBackSlash), @(KeyCodeVerticalBar), @(KeyCodeTilde), @(KeyCodeLessThan), @(KeyCodeGreaterThan), @(KeyCodeEuro), @(KeyCodePound), @(KeyCodeYen), @(KeyCodeBullet),],
-                                          @[@(KeyCodeNumberPane), @(KeyCodePeriod), @(KeyCodeComma), @(KeyCodeQuestionMark), @(KeyCodeExclamationMark), @(KeyCodeSingleQuote), @(KeyCodeDelete),],
+                                          @[@(KeyCodeThirdRowNumberPane), @(KeyCodePeriod), @(KeyCodeComma), @(KeyCodeQuestionMark), @(KeyCodeExclamationMark), @(KeyCodeSingleQuote), @(KeyCodeDelete),],
                                           @[@(KeyCodePrimaryKeyPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn),],
                                           ];
     });
@@ -325,7 +325,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
         paddings.right += oneHalfTopRowButtonWidth;
     }
-    else if (keyCode == KeyCodeShift) {
+    else if (keyCode == KeyCodeShift || keyCode == KeyCodeSymbolsPane || keyCode == KeyCodeThirdRowNumberPane) {
         CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
         paddings.right += oneQuarterTopRowButtonWidth;
     } else if (keyCode == KeyCodeDelete) {

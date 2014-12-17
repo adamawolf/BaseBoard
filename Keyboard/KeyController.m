@@ -26,6 +26,7 @@
     } else if (keyCode == KeyCodeShift) {
         class = [ShiftKeyButton class];
     } else if (keyCode == KeyCodeNumberPane ||
+               keyCode == KeyCodeThirdRowNumberPane ||
                keyCode == KeyCodeReturn ||
                keyCode == KeyCodeSymbolsPane ||
                keyCode == KeyCodePrimaryKeyPane) {
@@ -126,6 +127,7 @@
             symbol = @"<";
             break;
         case KeyCodeNumberPane:
+        case KeyCodeThirdRowNumberPane:
             symbol = @"123";
             break;
         case KeyCodeNextKeyboard:
