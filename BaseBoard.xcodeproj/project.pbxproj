@@ -24,7 +24,7 @@
 		94F9B9B119F08E6600F47B35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F9B9AF19F08E6600F47B35 /* Main.storyboard */; };
 		94F9B9B319F08E6600F47B35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F9B9B219F08E6600F47B35 /* Images.xcassets */; };
 		94F9B9B619F08E6600F47B35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F9B9B419F08E6600F47B35 /* LaunchScreen.xib */; };
-		94F9B9C219F08E6600F47B35 /* ExperimentalKeyboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9C119F08E6600F47B35 /* ExperimentalKeyboardTests.m */; };
+		94F9B9C219F08E6600F47B35 /* BaseBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9C119F08E6600F47B35 /* BaseBoardTests.m */; };
 		94F9B9D519F08EA300F47B35 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9D419F08EA300F47B35 /* KeyboardViewController.m */; };
 		94F9B9D819F08EA300F47B35 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 94F9B9CF19F08EA300F47B35 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		94F9B9E119F090FC00F47B35 /* KeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9E019F090FC00F47B35 /* KeyButton.m */; };
@@ -36,7 +36,7 @@
 			containerPortal = 94F9B99719F08E6600F47B35 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 94F9B99E19F08E6600F47B35;
-			remoteInfo = ExperimentalKeyboard;
+			remoteInfo = BaseBoard;
 		};
 		94F9B9D619F08EA300F47B35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -102,7 +102,7 @@
 		94F9B9B519F08E6600F47B35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		94F9B9BB19F08E6600F47B35 /* BaseBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9C019F08E6600F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94F9B9C119F08E6600F47B35 /* ExperimentalKeyboardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExperimentalKeyboardTests.m; sourceTree = "<group>"; };
+		94F9B9C119F08E6600F47B35 /* BaseBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseBoardTests.m; sourceTree = "<group>"; };
 		94F9B9CF19F08EA300F47B35 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9D219F08EA300F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F9B9D319F08EA300F47B35 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 		94F9B99619F08E6600F47B35 = {
 			isa = PBXGroup;
 			children = (
-				94F9B9A119F08E6600F47B35 /* ExperimentalKeyboard */,
-				94F9B9BE19F08E6600F47B35 /* ExperimentalKeyboardTests */,
+				94F9B9A119F08E6600F47B35 /* BaseBoard */,
+				94F9B9BE19F08E6600F47B35 /* BaseBoardTests */,
 				94F9B9D019F08EA300F47B35 /* Keyboard */,
 				94F9B9A019F08E6600F47B35 /* Products */,
 			);
@@ -177,7 +177,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94F9B9A119F08E6600F47B35 /* ExperimentalKeyboard */ = {
+		94F9B9A119F08E6600F47B35 /* BaseBoard */ = {
 			isa = PBXGroup;
 			children = (
 				94F9B9A619F08E6600F47B35 /* AppDelegate.h */,
@@ -191,7 +191,7 @@
 				94F9B9B419F08E6600F47B35 /* LaunchScreen.xib */,
 				94F9B9A219F08E6600F47B35 /* Supporting Files */,
 			);
-			path = ExperimentalKeyboard;
+			path = BaseBoard;
 			sourceTree = "<group>";
 		};
 		94F9B9A219F08E6600F47B35 /* Supporting Files */ = {
@@ -203,13 +203,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		94F9B9BE19F08E6600F47B35 /* ExperimentalKeyboardTests */ = {
+		94F9B9BE19F08E6600F47B35 /* BaseBoardTests */ = {
 			isa = PBXGroup;
 			children = (
-				94F9B9C119F08E6600F47B35 /* ExperimentalKeyboardTests.m */,
+				94F9B9C119F08E6600F47B35 /* BaseBoardTests.m */,
 				94F9B9BF19F08E6600F47B35 /* Supporting Files */,
 			);
-			path = ExperimentalKeyboardTests;
+			path = BaseBoardTests;
 			sourceTree = "<group>";
 		};
 		94F9B9BF19F08E6600F47B35 /* Supporting Files */ = {
@@ -265,7 +265,7 @@
 				94F9B9DA19F08EA300F47B35 /* PBXTargetDependency */,
 			);
 			name = BaseBoard;
-			productName = ExperimentalKeyboard;
+			productName = BaseBoard;
 			productReference = 94F9B99F19F08E6600F47B35 /* BaseBoard.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -283,7 +283,7 @@
 				94F9B9BD19F08E6600F47B35 /* PBXTargetDependency */,
 			);
 			name = BaseBoardTests;
-			productName = ExperimentalKeyboardTests;
+			productName = BaseBoardTests;
 			productReference = 94F9B9BB19F08E6600F47B35 /* BaseBoardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -391,7 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F9B9C219F08E6600F47B35 /* ExperimentalKeyboardTests.m in Sources */,
+				94F9B9C219F08E6600F47B35 /* BaseBoardTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,7 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ExperimentalKeyboard/Info.plist;
+				INFOPLIST_FILE = BaseBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = BaseBoard;
 			};
@@ -545,7 +545,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ExperimentalKeyboard/Info.plist;
+				INFOPLIST_FILE = BaseBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = BaseBoard;
 			};
@@ -563,10 +563,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ExperimentalKeyboardTests/Info.plist;
+				INFOPLIST_FILE = BaseBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = BaseBoardTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExperimentalKeyboard.app/ExperimentalKeyboard";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseBoard.app/BaseBoard";
 			};
 			name = Debug;
 		};
@@ -578,10 +578,10 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ExperimentalKeyboardTests/Info.plist;
+				INFOPLIST_FILE = BaseBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = BaseBoardTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExperimentalKeyboard.app/ExperimentalKeyboard";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseBoard.app/BaseBoard";
 			};
 			name = Release;
 		};
