@@ -1,16 +1,16 @@
 //
-//  SymbolKeyButton.m
-//  ExperimentalKeyboard
+//  BBDSymbolKeyButton.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 12/11/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "SymbolKeyButton.h"
+#import "BBDSymbolKeyButton.h"
 
-@implementation SymbolKeyButton
+@implementation BBDSymbolKeyButton
 
-- (instancetype)initWithKeyCode:(KeyCode)keyCode
+- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
 {
     self = [super initWithKeyCode:keyCode];
     if (self) {
@@ -38,14 +38,14 @@
     CGRect keyFrame = [self keyFrame];
     
     NSString *symbol = nil;
-    if (self.keyCode != KeyCodeReturn) {
-        symbol = [KeyController symbolForKeyCode:self.keyCode];
+    if (self.keyCode != BBDKeyCodeReturn) {
+        symbol = [BBDKeyController symbolForKeyCode:self.keyCode];
     } else {
-        symbol = [SymbolKeyButton returnKeyTextForReturnKeyType:[self.dataSource returnKeyType]];
+        symbol = [BBDSymbolKeyButton returnKeyTextForReturnKeyType:[self.dataSource returnKeyType]];
     }
     
-    BOOL isUpperCase = ([self.dataSource shiftKeyState] == ShiftKeyStateUppercase ||
-                        [self.dataSource shiftKeyState] == ShiftKeyStateCapsLock);
+    BOOL isUpperCase = ([self.dataSource shiftKeyState] == BBDShiftKeyStateUppercase ||
+                        [self.dataSource shiftKeyState] == BBDShiftKeyStateCapsLock);
     
     if (self.shouldAutocapitalize && isUpperCase) {
         symbol = [symbol uppercaseString];

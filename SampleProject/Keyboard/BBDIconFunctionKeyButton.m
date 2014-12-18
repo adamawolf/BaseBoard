@@ -1,14 +1,14 @@
 //
-//  IconFunctionKeyButton.m
-//  ExperimentalKeyboard
+//  BBDIconFunctionKeyButton.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 12/14/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "IconFunctionKeyButton.h"
+#import "BBDIconFunctionKeyButton.h"
 
-@implementation IconFunctionKeyButton
+@implementation BBDIconFunctionKeyButton
 
 - (UIColor *)symbolColor
 {
@@ -37,11 +37,11 @@
     
     //draw the appropriate shift key image
     UIImage * iconImage = nil;
-    if (self.keyCode == KeyCodeNextKeyboard) {
+    if (self.keyCode == BBDKeyCodeNextKeyboard) {
         iconImage = [UIImage imageNamed:@"global_portrait"];
         iconImage = [iconImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [[self symbolColor] set];
-    } else if (self.keyCode == KeyCodeDelete) {
+    } else if (self.keyCode == BBDKeyCodeDelete) {
         iconImage = [UIImage imageNamed:@"delete_portrait"];
         iconImage = [iconImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [[UIColor whiteColor] set];

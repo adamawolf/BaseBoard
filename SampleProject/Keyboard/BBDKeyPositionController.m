@@ -1,20 +1,20 @@
 //
-//  KeyPositionController.m
-//  ExperimentalKeyboard
+//  BBDKeyPositionController.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 11/17/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "KeyPositionController.h"
+#import "BBDKeyPositionController.h"
 
-@interface KeyPositionController ()
+@interface BBDKeyPositionController ()
 
 @property (nonatomic, strong) NSMutableDictionary *keyDictionariesKeyedByKeyCode;
 
 @end
 
-@implementation KeyPositionController
+@implementation BBDKeyPositionController
 
 - (void)reloadKeyPositions
 {
@@ -163,7 +163,7 @@
     }
 }
 
-- (NSDictionary *)keyDictionaryForKeyCode:(KeyCode)keyCode
+- (NSDictionary *)keyDictionaryForKeyCode:(BBDKeyCode)keyCode
 {
     if (!self.keyDictionariesKeyedByKeyCode) {
         [self reloadKeyPositions];

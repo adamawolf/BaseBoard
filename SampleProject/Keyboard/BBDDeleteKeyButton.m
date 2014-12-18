@@ -1,27 +1,27 @@
 //
-//  DeleteKeyButton.m
-//  ExperimentalKeyboard
+//  BBDDeleteKeyButton.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 12/15/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "DeleteKeyButton.h"
+#import "BBDDeleteKeyButton.h"
 
 static NSTimeInterval const kDeleteRepeatTimeInterval = 0.2f;
 static NSInteger const kNumDeletesForLargeStride = 9;
 static NSInteger const kLargeDeleteStringCharacterCount = 6;
 
-@interface DeleteKeyButton ()
+@interface BBDDeleteKeyButton ()
 
 @property (nonatomic, strong) NSTimer *deleteRepeatTimer;
 @property (nonatomic, assign) NSInteger deleteRepeatCount;
 
 @end
 
-@implementation DeleteKeyButton
+@implementation BBDDeleteKeyButton
 
-- (instancetype)initWithKeyCode:(KeyCode)keyCode
+- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
 {
     self = [super initWithKeyCode:keyCode];
     
@@ -35,7 +35,7 @@ static NSInteger const kLargeDeleteStringCharacterCount = 6;
 
 #pragma mark - Action methods
 
-- (void)touchUpInsideDidFire:(KeyButton *)sender
+- (void)touchUpInsideDidFire:(BBDKeyButton *)sender
 {
     [self handleEndTouchDown:sender];
     

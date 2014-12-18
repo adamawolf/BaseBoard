@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9407864D1A1AC2A10078C7E7 /* KeyPositionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */; };
-		940F38621A3E0BA50062EB50 /* SymbolFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38611A3E0BA50062EB50 /* SymbolFunctionKeyButton.m */; };
-		940F38651A3E0CEF0062EB50 /* IconFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38641A3E0CEF0062EB50 /* IconFunctionKeyButton.m */; };
-		940F38681A3F72B60062EB50 /* FunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38671A3F72B60062EB50 /* FunctionKeyButton.m */; };
-		940F386B1A3F73D30062EB50 /* DeleteKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F386A1A3F73D30062EB50 /* DeleteKeyButton.m */; };
-		9455FAC41A1BE762001CFCE2 /* KeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9455FAC31A1BE762001CFCE2 /* KeyController.m */; };
-		945BDC911A3A1E650060942B /* SymbolKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 945BDC901A3A1E650060942B /* SymbolKeyButton.m */; };
-		945BDC941A3A26C00060942B /* ShiftKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 945BDC931A3A26C00060942B /* ShiftKeyButton.m */; };
-		945BDC981A3A27040060942B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945BDC971A3A27040060942B /* Images.xcassets */; };
-		94CCB3BC1A250DAA008B29F8 /* TypingLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CCB3BB1A250DAA008B29F8 /* TypingLogicController.m */; };
+		9407864D1A1AC2A10078C7E7 /* BBDKeyPositionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407864C1A1AC2A10078C7E7 /* BBDKeyPositionController.m */; };
+		940F38621A3E0BA50062EB50 /* BBDSymbolFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38611A3E0BA50062EB50 /* BBDSymbolFunctionKeyButton.m */; };
+		940F38651A3E0CEF0062EB50 /* BBDIconFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38641A3E0CEF0062EB50 /* BBDIconFunctionKeyButton.m */; };
+		940F38681A3F72B60062EB50 /* BBDFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F38671A3F72B60062EB50 /* BBDFunctionKeyButton.m */; };
+		940F386B1A3F73D30062EB50 /* BBDDeleteKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 940F386A1A3F73D30062EB50 /* BBDDeleteKeyButton.m */; };
+		9455FAC41A1BE762001CFCE2 /* BBDKeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9455FAC31A1BE762001CFCE2 /* BBDKeyController.m */; };
+		945BDC911A3A1E650060942B /* BBDSymbolKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 945BDC901A3A1E650060942B /* BBDSymbolKeyButton.m */; };
+		945BDC941A3A26C00060942B /* BBDShiftKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 945BDC931A3A26C00060942B /* BBDShiftKeyButton.m */; };
+		945BDC981A3A27040060942B /* BaseBoardImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945BDC971A3A27040060942B /* BaseBoardImages.xcassets */; };
+		94CCB3BC1A250DAA008B29F8 /* BBDTypingLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CCB3BB1A250DAA008B29F8 /* BBDTypingLogicController.m */; };
 		94F9B9A519F08E6600F47B35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A419F08E6600F47B35 /* main.m */; };
 		94F9B9A819F08E6600F47B35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A719F08E6600F47B35 /* AppDelegate.m */; };
 		94F9B9AB19F08E6600F47B35 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9AA19F08E6600F47B35 /* FirstViewController.m */; };
@@ -25,9 +25,9 @@
 		94F9B9B319F08E6600F47B35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F9B9B219F08E6600F47B35 /* Images.xcassets */; };
 		94F9B9B619F08E6600F47B35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F9B9B419F08E6600F47B35 /* LaunchScreen.xib */; };
 		94F9B9C219F08E6600F47B35 /* BaseBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9C119F08E6600F47B35 /* BaseBoardTests.m */; };
-		94F9B9D519F08EA300F47B35 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9D419F08EA300F47B35 /* KeyboardViewController.m */; };
+		94F9B9D519F08EA300F47B35 /* BBDKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9D419F08EA300F47B35 /* BBDKeyboardViewController.m */; };
 		94F9B9D819F08EA300F47B35 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 94F9B9CF19F08EA300F47B35 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		94F9B9E119F090FC00F47B35 /* KeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9E019F090FC00F47B35 /* KeyButton.m */; };
+		94F9B9E119F090FC00F47B35 /* BBDKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9E019F090FC00F47B35 /* BBDKeyButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,25 +69,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9407864B1A1AC2A10078C7E7 /* KeyPositionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPositionController.h; sourceTree = "<group>"; };
-		9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPositionController.m; sourceTree = "<group>"; };
-		940F38601A3E0BA50062EB50 /* SymbolFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolFunctionKeyButton.h; sourceTree = "<group>"; };
-		940F38611A3E0BA50062EB50 /* SymbolFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolFunctionKeyButton.m; sourceTree = "<group>"; };
-		940F38631A3E0CEF0062EB50 /* IconFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFunctionKeyButton.h; sourceTree = "<group>"; };
-		940F38641A3E0CEF0062EB50 /* IconFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFunctionKeyButton.m; sourceTree = "<group>"; };
-		940F38661A3F72B60062EB50 /* FunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionKeyButton.h; sourceTree = "<group>"; };
-		940F38671A3F72B60062EB50 /* FunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionKeyButton.m; sourceTree = "<group>"; };
-		940F38691A3F73D30062EB50 /* DeleteKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteKeyButton.h; sourceTree = "<group>"; };
-		940F386A1A3F73D30062EB50 /* DeleteKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteKeyButton.m; sourceTree = "<group>"; };
-		9455FAC21A1BE762001CFCE2 /* KeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyController.h; sourceTree = "<group>"; };
-		9455FAC31A1BE762001CFCE2 /* KeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyController.m; sourceTree = "<group>"; };
-		945BDC8F1A3A1E650060942B /* SymbolKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolKeyButton.h; sourceTree = "<group>"; };
-		945BDC901A3A1E650060942B /* SymbolKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolKeyButton.m; sourceTree = "<group>"; };
-		945BDC921A3A26C00060942B /* ShiftKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftKeyButton.h; sourceTree = "<group>"; };
-		945BDC931A3A26C00060942B /* ShiftKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftKeyButton.m; sourceTree = "<group>"; };
-		945BDC971A3A27040060942B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		94CCB3BA1A250DAA008B29F8 /* TypingLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypingLogicController.h; sourceTree = "<group>"; };
-		94CCB3BB1A250DAA008B29F8 /* TypingLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypingLogicController.m; sourceTree = "<group>"; };
+		9407864B1A1AC2A10078C7E7 /* BBDKeyPositionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDKeyPositionController.h; sourceTree = "<group>"; };
+		9407864C1A1AC2A10078C7E7 /* BBDKeyPositionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDKeyPositionController.m; sourceTree = "<group>"; };
+		940F38601A3E0BA50062EB50 /* BBDSymbolFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDSymbolFunctionKeyButton.h; sourceTree = "<group>"; };
+		940F38611A3E0BA50062EB50 /* BBDSymbolFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDSymbolFunctionKeyButton.m; sourceTree = "<group>"; };
+		940F38631A3E0CEF0062EB50 /* BBDIconFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDIconFunctionKeyButton.h; sourceTree = "<group>"; };
+		940F38641A3E0CEF0062EB50 /* BBDIconFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDIconFunctionKeyButton.m; sourceTree = "<group>"; };
+		940F38661A3F72B60062EB50 /* BBDFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDFunctionKeyButton.h; sourceTree = "<group>"; };
+		940F38671A3F72B60062EB50 /* BBDFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDFunctionKeyButton.m; sourceTree = "<group>"; };
+		940F38691A3F73D30062EB50 /* BBDDeleteKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDDeleteKeyButton.h; sourceTree = "<group>"; };
+		940F386A1A3F73D30062EB50 /* BBDDeleteKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDDeleteKeyButton.m; sourceTree = "<group>"; };
+		9455FAC21A1BE762001CFCE2 /* BBDKeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDKeyController.h; sourceTree = "<group>"; };
+		9455FAC31A1BE762001CFCE2 /* BBDKeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDKeyController.m; sourceTree = "<group>"; };
+		945BDC8F1A3A1E650060942B /* BBDSymbolKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDSymbolKeyButton.h; sourceTree = "<group>"; };
+		945BDC901A3A1E650060942B /* BBDSymbolKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDSymbolKeyButton.m; sourceTree = "<group>"; };
+		945BDC921A3A26C00060942B /* BBDShiftKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDShiftKeyButton.h; sourceTree = "<group>"; };
+		945BDC931A3A26C00060942B /* BBDShiftKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDShiftKeyButton.m; sourceTree = "<group>"; };
+		945BDC971A3A27040060942B /* BaseBoardImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BaseBoardImages.xcassets; sourceTree = "<group>"; };
+		94CCB3BA1A250DAA008B29F8 /* BBDTypingLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDTypingLogicController.h; sourceTree = "<group>"; };
+		94CCB3BB1A250DAA008B29F8 /* BBDTypingLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDTypingLogicController.m; sourceTree = "<group>"; };
 		94F9B99F19F08E6600F47B35 /* BaseBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9A319F08E6600F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F9B9A419F08E6600F47B35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,10 +105,10 @@
 		94F9B9C119F08E6600F47B35 /* BaseBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseBoardTests.m; sourceTree = "<group>"; };
 		94F9B9CF19F08EA300F47B35 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9D219F08EA300F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94F9B9D319F08EA300F47B35 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
-		94F9B9D419F08EA300F47B35 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
-		94F9B9DF19F090FC00F47B35 /* KeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyButton.h; sourceTree = "<group>"; };
-		94F9B9E019F090FC00F47B35 /* KeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyButton.m; sourceTree = "<group>"; };
+		94F9B9D319F08EA300F47B35 /* BBDKeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBDKeyboardViewController.h; sourceTree = "<group>"; };
+		94F9B9D419F08EA300F47B35 /* BBDKeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBDKeyboardViewController.m; sourceTree = "<group>"; };
+		94F9B9DF19F090FC00F47B35 /* BBDKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDKeyButton.h; sourceTree = "<group>"; };
+		94F9B9E019F090FC00F47B35 /* BBDKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDKeyButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,20 +139,20 @@
 		945BDC8E1A3A1D6F0060942B /* KeyButtons */ = {
 			isa = PBXGroup;
 			children = (
-				94F9B9DF19F090FC00F47B35 /* KeyButton.h */,
-				94F9B9E019F090FC00F47B35 /* KeyButton.m */,
-				940F38661A3F72B60062EB50 /* FunctionKeyButton.h */,
-				940F38671A3F72B60062EB50 /* FunctionKeyButton.m */,
-				945BDC8F1A3A1E650060942B /* SymbolKeyButton.h */,
-				945BDC901A3A1E650060942B /* SymbolKeyButton.m */,
-				945BDC921A3A26C00060942B /* ShiftKeyButton.h */,
-				945BDC931A3A26C00060942B /* ShiftKeyButton.m */,
-				940F38601A3E0BA50062EB50 /* SymbolFunctionKeyButton.h */,
-				940F38611A3E0BA50062EB50 /* SymbolFunctionKeyButton.m */,
-				940F38631A3E0CEF0062EB50 /* IconFunctionKeyButton.h */,
-				940F38641A3E0CEF0062EB50 /* IconFunctionKeyButton.m */,
-				940F38691A3F73D30062EB50 /* DeleteKeyButton.h */,
-				940F386A1A3F73D30062EB50 /* DeleteKeyButton.m */,
+				94F9B9DF19F090FC00F47B35 /* BBDKeyButton.h */,
+				94F9B9E019F090FC00F47B35 /* BBDKeyButton.m */,
+				940F38661A3F72B60062EB50 /* BBDFunctionKeyButton.h */,
+				940F38671A3F72B60062EB50 /* BBDFunctionKeyButton.m */,
+				945BDC8F1A3A1E650060942B /* BBDSymbolKeyButton.h */,
+				945BDC901A3A1E650060942B /* BBDSymbolKeyButton.m */,
+				945BDC921A3A26C00060942B /* BBDShiftKeyButton.h */,
+				945BDC931A3A26C00060942B /* BBDShiftKeyButton.m */,
+				940F38601A3E0BA50062EB50 /* BBDSymbolFunctionKeyButton.h */,
+				940F38611A3E0BA50062EB50 /* BBDSymbolFunctionKeyButton.m */,
+				940F38631A3E0CEF0062EB50 /* BBDIconFunctionKeyButton.h */,
+				940F38641A3E0CEF0062EB50 /* BBDIconFunctionKeyButton.m */,
+				940F38691A3F73D30062EB50 /* BBDDeleteKeyButton.h */,
+				940F386A1A3F73D30062EB50 /* BBDDeleteKeyButton.m */,
 			);
 			name = KeyButtons;
 			sourceTree = "<group>";
@@ -223,16 +223,16 @@
 		94F9B9D019F08EA300F47B35 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				94F9B9D319F08EA300F47B35 /* KeyboardViewController.h */,
-				94F9B9D419F08EA300F47B35 /* KeyboardViewController.m */,
+				94F9B9D319F08EA300F47B35 /* BBDKeyboardViewController.h */,
+				94F9B9D419F08EA300F47B35 /* BBDKeyboardViewController.m */,
 				94F9B9D119F08EA300F47B35 /* Supporting Files */,
 				945BDC8E1A3A1D6F0060942B /* KeyButtons */,
-				9455FAC21A1BE762001CFCE2 /* KeyController.h */,
-				9455FAC31A1BE762001CFCE2 /* KeyController.m */,
-				9407864B1A1AC2A10078C7E7 /* KeyPositionController.h */,
-				9407864C1A1AC2A10078C7E7 /* KeyPositionController.m */,
-				94CCB3BA1A250DAA008B29F8 /* TypingLogicController.h */,
-				94CCB3BB1A250DAA008B29F8 /* TypingLogicController.m */,
+				9455FAC21A1BE762001CFCE2 /* BBDKeyController.h */,
+				9455FAC31A1BE762001CFCE2 /* BBDKeyController.m */,
+				9407864B1A1AC2A10078C7E7 /* BBDKeyPositionController.h */,
+				9407864C1A1AC2A10078C7E7 /* BBDKeyPositionController.m */,
+				94CCB3BA1A250DAA008B29F8 /* BBDTypingLogicController.h */,
+				94CCB3BB1A250DAA008B29F8 /* BBDTypingLogicController.m */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -241,7 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				94F9B9D219F08EA300F47B35 /* Info.plist */,
-				945BDC971A3A27040060942B /* Images.xcassets */,
+				945BDC971A3A27040060942B /* BaseBoardImages.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -310,8 +310,9 @@
 		94F9B99719F08E6600F47B35 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = BBD;
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "Flairify LLC";
+				ORGANIZATIONNAME = "Adam A. Wolf";
 				TargetAttributes = {
 					94F9B99E19F08E6600F47B35 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -369,7 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				945BDC981A3A27040060942B /* Images.xcassets in Resources */,
+				945BDC981A3A27040060942B /* BaseBoardImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,17 +400,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				940F386B1A3F73D30062EB50 /* DeleteKeyButton.m in Sources */,
-				94CCB3BC1A250DAA008B29F8 /* TypingLogicController.m in Sources */,
-				94F9B9E119F090FC00F47B35 /* KeyButton.m in Sources */,
-				9407864D1A1AC2A10078C7E7 /* KeyPositionController.m in Sources */,
-				940F38681A3F72B60062EB50 /* FunctionKeyButton.m in Sources */,
-				940F38651A3E0CEF0062EB50 /* IconFunctionKeyButton.m in Sources */,
-				945BDC911A3A1E650060942B /* SymbolKeyButton.m in Sources */,
-				945BDC941A3A26C00060942B /* ShiftKeyButton.m in Sources */,
-				940F38621A3E0BA50062EB50 /* SymbolFunctionKeyButton.m in Sources */,
-				94F9B9D519F08EA300F47B35 /* KeyboardViewController.m in Sources */,
-				9455FAC41A1BE762001CFCE2 /* KeyController.m in Sources */,
+				940F386B1A3F73D30062EB50 /* BBDDeleteKeyButton.m in Sources */,
+				94CCB3BC1A250DAA008B29F8 /* BBDTypingLogicController.m in Sources */,
+				94F9B9E119F090FC00F47B35 /* BBDKeyButton.m in Sources */,
+				9407864D1A1AC2A10078C7E7 /* BBDKeyPositionController.m in Sources */,
+				940F38681A3F72B60062EB50 /* BBDFunctionKeyButton.m in Sources */,
+				940F38651A3E0CEF0062EB50 /* BBDIconFunctionKeyButton.m in Sources */,
+				945BDC911A3A1E650060942B /* BBDSymbolKeyButton.m in Sources */,
+				945BDC941A3A26C00060942B /* BBDShiftKeyButton.m in Sources */,
+				940F38621A3E0BA50062EB50 /* BBDSymbolFunctionKeyButton.m in Sources */,
+				94F9B9D519F08EA300F47B35 /* BBDKeyboardViewController.m in Sources */,
+				9455FAC41A1BE762001CFCE2 /* BBDKeyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

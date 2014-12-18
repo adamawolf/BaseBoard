@@ -1,16 +1,16 @@
 //
-//  KeyPositionController.h
-//  ExperimentalKeyboard
+//  BBDKeyPositionController.h
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 11/17/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "KeyController.h"
+#import "BBDKeyController.h"
 
-@protocol  KeyPositionDataSource <NSObject>
+@protocol  BBDKeyPositionDataSource <NSObject>
 
 - (CGSize)keyboardSize; //used to infer the key width and height
 
@@ -22,16 +22,16 @@
 - (NSValue *)marginsForKeyAtIndexPath:(NSIndexPath *)indexPath;         //px subtracted from total available
 - (NSValue *)paddingsForKeyAtIndexPath:(NSIndexPath *)indexPath;       //internal to bounds of each key
 
-- (KeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath;
+- (BBDKeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
-@interface KeyPositionController : NSObject
+@interface BBDKeyPositionController : NSObject
 
-@property (nonatomic, weak) id<KeyPositionDataSource>dataSource;
+@property (nonatomic, weak) id<BBDKeyPositionDataSource>dataSource;
 
 - (void)reloadKeyPositions;
-- (NSDictionary *)keyDictionaryForKeyCode:(KeyCode)keyCode;
+- (NSDictionary *)keyDictionaryForKeyCode:(BBDKeyCode)keyCode;
 
 @end
 

@@ -1,25 +1,25 @@
 //
 //  TypingLogicController.m
-//  ExperimentalKeyboard
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 11/25/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "TypingLogicController.h"
+#import "BBDTypingLogicController.h"
 
 static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
 
-@interface TypingLogicController ()
+@interface BBDTypingLogicController ()
 
 @property NSDate *lastShiftPressDate;
 @property NSDate *lastSpacePressDate;
 
 @end
 
-@implementation TypingLogicController
+@implementation BBDTypingLogicController
 
-- (instancetype)initWithDelegate:(id<TypingLogicControllerDelegate>)delegate
+- (instancetype)initWithDelegate:(id<BBDTypingLogicControllerDelegate>)delegate
             andTextDocumentProxy:(NSObject <UITextDocumentProxy> *)textDocumentProxy
 {
     self = [super init];
@@ -27,8 +27,7 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         _delegate = delegate;
         _textDocumentProxy = textDocumentProxy;
         
-        _shiftKeyState = ShiftKeyStateUnknown;
-        _typingLogicState = TypingLogicStateUnknown;
+        _shiftKeyState = BBDShiftKeyStateUnknown;
         
         _lastShiftPressDate = [NSDate distantPast];
         _lastSpacePressDate = [NSDate distantPast];
@@ -39,9 +38,9 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
 
 #pragma mark - Custom Setter methods
 
-- (void)setShiftKeyState:(ShiftKeyState)shiftKeyState
+- (void)setShiftKeyState:(BBDShiftKeyState)shiftKeyState
 {
-    ShiftKeyState initialShiftKeyState = _shiftKeyState;
+    BBDShiftKeyState initialShiftKeyState = _shiftKeyState;
     
     _shiftKeyState = shiftKeyState;
     
@@ -54,11 +53,11 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
 
 - (void)determineShiftKeyState
 {
-    if (self.shiftKeyState == ShiftKeyStateCapsLock) {
+    if (self.shiftKeyState == BBDShiftKeyStateCapsLock) {
         return;
     }
     
-    ShiftKeyState determinedState = ShiftKeyStateLowercase;
+    BBDShiftKeyState determinedState = BBDShiftKeyStateLowercase;
     
     if (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeSentences) {
         NSString *beforeText = self.textDocumentProxy.documentContextBeforeInput;
@@ -66,14 +65,14 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         
         if (afterText.length == 0) {
             if (beforeText.length == 0) {
-                determinedState = ShiftKeyStateUppercase;
+                determinedState = BBDShiftKeyStateUppercase;
             } else if (beforeText.length == 1) {
                 NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
                 if ([lastCharacter isEqualToString:@"\n"])
                 {
                     //typed text ends in a carriage return
                     //NOTE: we get into this case (beforeText.length == 1) when the user types two subsequent \n
-                    determinedState = ShiftKeyStateUppercase;
+                    determinedState = BBDShiftKeyStateUppercase;
                 }
             } else if (beforeText.length >= 2) {
                 NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
@@ -82,34 +81,34 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
                 if ([lastCharacter isEqualToString:@"\n"])
                 {
                     //typed text ends in a carriage return
-                    determinedState = ShiftKeyStateUppercase;
+                    determinedState = BBDShiftKeyStateUppercase;
                 } else if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
-                    if ([secondToLastCharacter rangeOfCharacterFromSet:[TypingLogicController sentenceEndingCharacterSet]].location != NSNotFound) {
+                    if ([secondToLastCharacter rangeOfCharacterFromSet:[BBDTypingLogicController sentenceEndingCharacterSet]].location != NSNotFound) {
                         //typed text ends in a space preceded by a sentence ending chracter
-                        determinedState = ShiftKeyStateUppercase;
+                        determinedState = BBDShiftKeyStateUppercase;
                     } else if (beforeText.length >= 3) {
                         NSString *thirdToLastCharacter = [beforeText substringWithRange:(NSRange){beforeText.length - 3, 1}];
                         
-                        if ([secondToLastCharacter rangeOfCharacterFromSet:[TypingLogicController potentiallySentenceEndingCharacterSet]].location != NSNotFound &&
-                            [thirdToLastCharacter rangeOfCharacterFromSet:[TypingLogicController sentenceEndingCharacterSet]].location != NSNotFound ) {
-                            determinedState = ShiftKeyStateUppercase;
+                        if ([secondToLastCharacter rangeOfCharacterFromSet:[BBDTypingLogicController potentiallySentenceEndingCharacterSet]].location != NSNotFound &&
+                            [thirdToLastCharacter rangeOfCharacterFromSet:[BBDTypingLogicController sentenceEndingCharacterSet]].location != NSNotFound ) {
+                            determinedState = BBDShiftKeyStateUppercase;
                         }
                     }
                 }
             }
         }
     } else if (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeAllCharacters) {
-        determinedState = ShiftKeyStateUppercase;
+        determinedState = BBDShiftKeyStateUppercase;
     } else if (self.textDocumentProxy.autocapitalizationType == UITextAutocapitalizationTypeWords) {
         NSString *beforeText = self.textDocumentProxy.documentContextBeforeInput;
         
         if (beforeText.length == 0) {
-            determinedState = ShiftKeyStateUppercase;
+            determinedState = BBDShiftKeyStateUppercase;
         } else {
             NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
             if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound)
             {
-                determinedState = ShiftKeyStateUppercase;
+                determinedState = BBDShiftKeyStateUppercase;
             }
         }
     }
@@ -117,12 +116,12 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
     [self setShiftKeyState:determinedState];
 }
 
-- (void)processKeystrokeWithKeyCode:(KeyCode)keyCode
+- (void)processKeystrokeWithKeyCode:(BBDKeyCode)keyCode
 {
-    if ([[KeyController simpleTextGeneratingKeyCodeIndexSet] containsIndex:keyCode]) {
-        NSString *lowercaseYieldedText = [KeyController yieldedLowercaseTextForKeyCode:keyCode forShiftKeyState:self.shiftKeyState];
+    if ([[BBDKeyController simpleTextGeneratingKeyCodeIndexSet] containsIndex:keyCode]) {
+        NSString *lowercaseYieldedText = [BBDKeyController yieldedLowercaseTextForKeyCode:keyCode forShiftKeyState:self.shiftKeyState];
         [self.delegate typingLogicController:self determinedShouldInsertText:lowercaseYieldedText];
-    } else if (keyCode == KeyCodeSpace) {
+    } else if (keyCode == BBDKeyCodeSpace) {
         NSDate *spacePressDate = [NSDate date];
         NSTimeInterval timeSinceLastSpacePress = [spacePressDate timeIntervalSinceDate:self.lastSpacePressDate];
         
@@ -136,31 +135,31 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];
         
         self.lastSpacePressDate = spacePressDate;
-    } else if (keyCode == KeyCodeDelete) {
+    } else if (keyCode == BBDKeyCodeDelete) {
         [self.delegate typingLogicControllerDeterminedShouldDeleteBackwards:self];
-    } else if (keyCode == KeyCodeNextKeyboard) {
+    } else if (keyCode == BBDKeyCodeNextKeyboard) {
         [self.delegate typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:self];
-    } else if (keyCode == KeyCodeShift || keyCode == KeyCodeSecondShift) {
+    } else if (keyCode == BBDKeyCodeShift || keyCode == BBDKeyCodeSecondShift) {
         NSDate *shiftPressDate = [NSDate date];
         
         NSTimeInterval timeSinceLastShiftPress = [shiftPressDate timeIntervalSinceDate:self.lastShiftPressDate];
         if (timeSinceLastShiftPress < kMaxDoubleTapInterval) {
-            [self setShiftKeyState:ShiftKeyStateCapsLock];
+            [self setShiftKeyState:BBDShiftKeyStateCapsLock];
         } else {
-            BOOL isLowercase = self.shiftKeyState == ShiftKeyStateLowercase || self.shiftKeyState == ShiftKeyStateUnknown;
+            BOOL isLowercase = self.shiftKeyState == BBDShiftKeyStateLowercase || self.shiftKeyState == BBDShiftKeyStateUnknown;
             if (isLowercase) {
-                [self setShiftKeyState:ShiftKeyStateUppercase];
+                [self setShiftKeyState:BBDShiftKeyStateUppercase];
             } else {
-                [self setShiftKeyState:ShiftKeyStateLowercase];
+                [self setShiftKeyState:BBDShiftKeyStateLowercase];
             }
         }
         
         self.lastShiftPressDate = shiftPressDate;
-    } else if (keyCode == KeyCodeNumberPane || keyCode == KeyCodeSecondNumberPane || keyCode == KeyCodeThirdRowNumberPane) {
+    } else if (keyCode == BBDKeyCodeNumberPane || keyCode == BBDKeyCodeSecondNumberPane || keyCode == BBDKeyCodeThirdRowNumberPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:self];
-    } else if (keyCode == KeyCodePrimaryKeyPane) {
+    } else if (keyCode == BBDKeyCodePrimaryKeyPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:self];
-    } else if (keyCode == KeyCodeSymbolsPane) {
+    } else if (keyCode == BBDKeyCodeSymbolsPane) {
         [self.delegate typingLogicControllerDeterminedShouldSwitchToSupplemtalSymbolsKeyPane:self];
     }
 }

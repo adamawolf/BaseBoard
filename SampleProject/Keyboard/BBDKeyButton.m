@@ -1,23 +1,23 @@
 //
-//  KeyView.m
-//  ExperimentalKeyboard
+//  BBDKeyButton.m
+//  BaseBoard
 //
 //  Created by Adam Wolf on 10/16/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "KeyButton.h"
+#import "BBDKeyButton.h"
 
-@interface KeyButton ()
+@interface BBDKeyButton ()
 
-@property (nonatomic, readwrite) KeyCode keyCode;
+@property (nonatomic, readwrite) BBDKeyCode keyCode;
 @property (nonatomic, assign) CGFloat shadowHeight;
 
 @end
 
-@implementation KeyButton
+@implementation BBDKeyButton
 
-- (instancetype)initWithKeyCode:(KeyCode)keyCode
+- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
 {
     self = [super init];
     if (self) {
@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void)setDataSource:(id<KeyButtonDataSource>)dataSource
+- (void)setDataSource:(id<BBDKeyButtonDataSource>)dataSource
 {
     _dataSource = dataSource;
     
@@ -169,7 +169,7 @@
 
 #pragma mark - Action methods
 
-- (void)touchUpInsideDidFire:(KeyButton *)sender
+- (void)touchUpInsideDidFire:(BBDKeyButton *)sender
 {
     [self.delegate keyButtonDidGetTapped:sender];
 }

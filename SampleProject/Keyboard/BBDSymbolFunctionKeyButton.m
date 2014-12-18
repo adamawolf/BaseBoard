@@ -1,14 +1,14 @@
 //
-//  SymbolFunctionKeyButton.m
-//  ExperimentalKeyboard
+//  BBDSymbolFunctionKeyButton.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 12/14/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "SymbolFunctionKeyButton.h"
+#import "BBDSymbolFunctionKeyButton.h"
 
-@implementation SymbolFunctionKeyButton
+@implementation BBDSymbolFunctionKeyButton
 
 - (UIFont *)symbolFont
 {
@@ -22,7 +22,7 @@
 }
 
 
-- (instancetype)initWithKeyCode:(KeyCode)keyCode
+- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
 {
     self = [super initWithKeyCode:keyCode];
     if (self) {

@@ -1,19 +1,19 @@
 //
-//  ExperimentalKeyboardTests.m
-//  ExperimentalKeyboardTests
+//  BaseBoardTests.m
+//  BaseBoardTests
 //
 //  Created by Adam Wolf on 10/16/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface ExperimentalKeyboardTests : XCTestCase
+@interface BaseBoardTests : XCTestCase
 
 @end
 
-@implementation ExperimentalKeyboardTests
+@implementation BaseBoardTests
 
 - (void)setUp {
     [super setUp];

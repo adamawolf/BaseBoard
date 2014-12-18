@@ -1,16 +1,16 @@
 //
-//  FunctionKeyButton.m
-//  ExperimentalKeyboard
+//  BBDFunctionKeyButton.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 12/15/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "FunctionKeyButton.h"
+#import "BBDFunctionKeyButton.h"
 
-@implementation FunctionKeyButton
+@implementation BBDFunctionKeyButton
 
-- (instancetype)initWithKeyCode:(KeyCode)keyCode
+- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
 {
     self = [super initWithKeyCode:keyCode];
     if (self) {

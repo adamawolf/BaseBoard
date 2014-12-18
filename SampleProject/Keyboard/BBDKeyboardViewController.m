@@ -1,18 +1,18 @@
 //
-//  KeyboardViewController.m
-//  Keyboard
+//  BBDKeyboardViewController.m
+//  BaseBoard
 //
 //  Created by Adam Wolf on 10/16/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "KeyboardViewController.h"
-#import "KeyButton.h"
-#import "SymbolKeyButton.h"
-#import "ShiftKeyButton.h"
-#import "KeyController.h"
-#import "KeyPositionController.h"
-#import "TypingLogicController.h"
+#import "BBDKeyboardViewController.h"
+#import "BBDKeyButton.h"
+#import "BBDSymbolKeyButton.h"
+#import "BBDShiftKeyButton.h"
+#import "BBDKeyController.h"
+#import "BBDKeyPositionController.h"
+#import "BBDTypingLogicController.h"
 
 typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneUnknown,
@@ -21,12 +21,12 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneSupplementalSymbols,
 };
 
-@interface KeyboardViewController () <KeyPositionDataSource, KeyButtonDelegate, SymbolKeyButtonDataSource, ShiftKeyButtonDataSource, TypingLogicControllerDelegate>
+@interface BBDKeyboardViewController () <BBDKeyPositionDataSource, BBDKeyButtonDelegate, BBDSymbolKeyButtonDataSource, BBDShiftKeyButtonDataSource, BBDTypingLogicControllerDelegate>
 
 @property (nonatomic, assign) KeyPane currentKeyPane;
 
-@property (nonatomic, strong) KeyPositionController *keyPositionController;
-@property (nonatomic, strong) TypingLogicController *typingLogicController;
+@property (nonatomic, strong) BBDKeyPositionController *keyPositionController;
+@property (nonatomic, strong) BBDTypingLogicController *typingLogicController;
 
 @property (nonatomic, strong) NSMutableSet *primaryKeyPaneKeyButtons;
 @property (nonatomic, strong) NSMutableSet *numericAndSymbolsKeyPaneKeyButtons;
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 @end
 
-@implementation KeyboardViewController
+@implementation BBDKeyboardViewController
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
@@ -47,10 +47,10 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     
     _currentKeyPane = KeyPanePrimary;
     
-    self.keyPositionController = [[KeyPositionController alloc] init];
+    self.keyPositionController = [[BBDKeyPositionController alloc] init];
     self.keyPositionController.dataSource = self;
     
-    self.typingLogicController = [[TypingLogicController alloc] initWithDelegate:self andTextDocumentProxy:self.textDocumentProxy];
+    self.typingLogicController = [[BBDTypingLogicController alloc] initWithDelegate:self andTextDocumentProxy:self.textDocumentProxy];
     
     //add keys
     self.primaryKeyPaneKeyButtons = [NSMutableSet new];
@@ -59,15 +59,15 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     
     NSArray *keyViewCreationContexts = @[
                                          @{
-                                             @"keyPaneRows": [KeyboardViewController primaryKeyPaneRows],
+                                             @"keyPaneRows": [BBDKeyboardViewController primaryKeyPaneRows],
                                              @"targetButtonsMutableSet": self.primaryKeyPaneKeyButtons,
                                              },
                                          @{
-                                             @"keyPaneRows": [KeyboardViewController numericAndSymbolsKeyPaneRows],
+                                             @"keyPaneRows": [BBDKeyboardViewController numericAndSymbolsKeyPaneRows],
                                              @"targetButtonsMutableSet": self.numericAndSymbolsKeyPaneKeyButtons,
                                              },
                                          @{
-                                             @"keyPaneRows": [KeyboardViewController supplementalSymbolsKeyPaneRows],
+                                             @"keyPaneRows": [BBDKeyboardViewController supplementalSymbolsKeyPaneRows],
                                              @"targetButtonsMutableSet": self.supplementalSymbolsKeyPaneKeyButtons,
                                              },
                                          ];
@@ -77,11 +77,11 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
         [creationContext[@"keyPaneRows"] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger rowIndex, BOOL *stop) {
             [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger keyIndex, BOOL *stop) {
                 
-                KeyCode currentKeyCode = [keyCodeNumber intValue];
+                BBDKeyCode currentKeyCode = [keyCodeNumber intValue];
                 
-                Class keyButtonClass = [KeyController keyButtonClassForKeyCode:currentKeyCode];
+                Class keyButtonClass = [BBDKeyController keyButtonClassForKeyCode:currentKeyCode];
                 
-                KeyButton *aKeyView = [[keyButtonClass alloc] initWithKeyCode:[keyCodeNumber intValue]];
+                BBDKeyButton *aKeyView = [[keyButtonClass alloc] initWithKeyCode:[keyCodeNumber intValue]];
                 aKeyView.delegate = self;
                 aKeyView.dataSource = self;
                 [self.view addSubview:aKeyView];
@@ -98,8 +98,8 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     //layout the keys
     [self.view.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
         if (subview.alpha > 0.0f) {
-            if ([subview isKindOfClass:[KeyButton class]]) {
-                KeyButton *keyButton = (KeyButton *)subview;
+            if ([subview isKindOfClass:[BBDKeyButton class]]) {
+                BBDKeyButton *keyButton = (BBDKeyButton *)subview;
                 
                 NSDictionary *keyDictionary = [self.keyPositionController keyDictionaryForKeyCode:keyButton.keyCode];
                 if (keyDictionary) {
@@ -188,11 +188,11 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 + (NSArray *)rowsForKeyPane:(KeyPane)keyPane
 {
     if (keyPane == KeyPanePrimary) {
-        return [KeyboardViewController primaryKeyPaneRows];
+        return [BBDKeyboardViewController primaryKeyPaneRows];
     } else if (keyPane == KeyPaneNumericAndSymbols) {
-        return [KeyboardViewController numericAndSymbolsKeyPaneRows];
+        return [BBDKeyboardViewController numericAndSymbolsKeyPaneRows];
     } else if (keyPane == KeyPaneSupplementalSymbols) {
-        return [KeyboardViewController supplementalSymbolsKeyPaneRows];
+        return [BBDKeyboardViewController supplementalSymbolsKeyPaneRows];
     }
     
     return nil;
@@ -206,17 +206,17 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     dispatch_once(&onceToken, ^{
         if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) {
             _primaryKeyPaneRows = @[
-                                    @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP)],
-                                    @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL)],
-                                    @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeDelete)],
-                                    @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn)],
+                                    @[@(BBDKeyCodeQ), @(BBDKeyCodeW), @(BBDKeyCodeE), @(BBDKeyCodeR), @(BBDKeyCodeT), @(BBDKeyCodeY), @(BBDKeyCodeU), @(BBDKeyCodeI), @(BBDKeyCodeO), @(BBDKeyCodeP)],
+                                    @[@(BBDKeyCodeA), @(BBDKeyCodeS), @(BBDKeyCodeD), @(BBDKeyCodeF), @(BBDKeyCodeG), @(BBDKeyCodeH), @(BBDKeyCodeJ), @(BBDKeyCodeK), @(BBDKeyCodeL)],
+                                    @[@(BBDKeyCodeShift), @(BBDKeyCodeZ), @(BBDKeyCodeX), @(BBDKeyCodeC), @(BBDKeyCodeV), @(BBDKeyCodeB), @(BBDKeyCodeN), @(BBDKeyCodeM), @(BBDKeyCodeDelete)],
+                                    @[@(BBDKeyCodeNumberPane), @(BBDKeyCodeNextKeyboard), @(BBDKeyCodeSpace), @(BBDKeyCodeReturn)],
                                     ];
         } else {
             _primaryKeyPaneRows = @[
-                                    @[@(KeyCodeQ), @(KeyCodeW), @(KeyCodeE), @(KeyCodeR), @(KeyCodeT), @(KeyCodeY), @(KeyCodeU), @(KeyCodeI), @(KeyCodeO), @(KeyCodeP), @(KeyCodeDelete)],
-                                    @[@(KeyCodeA), @(KeyCodeS), @(KeyCodeD), @(KeyCodeF), @(KeyCodeG), @(KeyCodeH), @(KeyCodeJ), @(KeyCodeK), @(KeyCodeL), @(KeyCodeReturn)],
-                                    @[@(KeyCodeShift), @(KeyCodeZ), @(KeyCodeX), @(KeyCodeC), @(KeyCodeV), @(KeyCodeB), @(KeyCodeN), @(KeyCodeM), @(KeyCodeComma), @(KeyCodePeriod), @(KeyCodeSecondShift)],
-                                    @[@(KeyCodeNumberPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeSecondNumberPane),],
+                                    @[@(BBDKeyCodeQ), @(BBDKeyCodeW), @(BBDKeyCodeE), @(BBDKeyCodeR), @(BBDKeyCodeT), @(BBDKeyCodeY), @(BBDKeyCodeU), @(BBDKeyCodeI), @(BBDKeyCodeO), @(BBDKeyCodeP), @(BBDKeyCodeDelete)],
+                                    @[@(BBDKeyCodeA), @(BBDKeyCodeS), @(BBDKeyCodeD), @(BBDKeyCodeF), @(BBDKeyCodeG), @(BBDKeyCodeH), @(BBDKeyCodeJ), @(BBDKeyCodeK), @(BBDKeyCodeL), @(BBDKeyCodeReturn)],
+                                    @[@(BBDKeyCodeShift), @(BBDKeyCodeZ), @(BBDKeyCodeX), @(BBDKeyCodeC), @(BBDKeyCodeV), @(BBDKeyCodeB), @(BBDKeyCodeN), @(BBDKeyCodeM), @(BBDKeyCodeComma), @(BBDKeyCodePeriod), @(BBDKeyCodeSecondShift)],
+                                    @[@(BBDKeyCodeNumberPane), @(BBDKeyCodeNextKeyboard), @(BBDKeyCodeSpace), @(BBDKeyCodeSecondNumberPane),],
                                     ];
         }
     });
@@ -231,10 +231,10 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _numericAndSymbolsKeyPaneRows = @[
-                                @[@(KeyCode1), @(KeyCode2), @(KeyCode3), @(KeyCode4), @(KeyCode5), @(KeyCode6), @(KeyCode7), @(KeyCode8), @(KeyCode9), @(KeyCode0)],
-                                @[@(KeyCodeDash), @(KeyCodeForwardSlash), @(KeyCodeColon), @(KeyCodeSemicolon), @(KeyCodeOpenParenthesis), @(KeyCodeCloseParenthesis), @(KeyCodeDollar), @(KeyCodeAmersand), @(KeyCodeAt), @(KeyCodeDoubleQuote),],
-                                @[@(KeyCodeSymbolsPane), @(KeyCodePeriod), @(KeyCodeComma), @(KeyCodeQuestionMark), @(KeyCodeExclamationMark), @(KeyCodeSingleQuote), @(KeyCodeDelete),],
-                                @[@(KeyCodePrimaryKeyPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn),],
+                                @[@(BBDKeyCode1), @(BBDKeyCode2), @(BBDKeyCode3), @(BBDKeyCode4), @(BBDKeyCode5), @(BBDKeyCode6), @(BBDKeyCode7), @(BBDKeyCode8), @(BBDKeyCode9), @(BBDKeyCode0)],
+                                @[@(BBDKeyCodeDash), @(BBDKeyCodeForwardSlash), @(BBDKeyCodeColon), @(BBDKeyCodeSemicolon), @(BBDKeyCodeOpenParenthesis), @(BBDKeyCodeCloseParenthesis), @(BBDKeyCodeDollar), @(BBDKeyCodeAmersand), @(BBDKeyCodeAt), @(BBDKeyCodeDoubleQuote),],
+                                @[@(BBDKeyCodeSymbolsPane), @(BBDKeyCodePeriod), @(BBDKeyCodeComma), @(BBDKeyCodeQuestionMark), @(BBDKeyCodeExclamationMark), @(BBDKeyCodeSingleQuote), @(BBDKeyCodeDelete),],
+                                @[@(BBDKeyCodePrimaryKeyPane), @(BBDKeyCodeNextKeyboard), @(BBDKeyCodeSpace), @(BBDKeyCodeReturn),],
                                 ];
     });
     
@@ -248,17 +248,17 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _numericAndSymbolsKeyPaneRows = @[
-                                          @[@(KeyCodeOpenSquareBracket), @(KeyCodeCloseSquareBracket), @(KeyCodeOpenCurlyBracket), @(KeyCodeCloseCurlyBracket), @(KeyCodePoundSign), @(KeyCodePercent), @(KeyCodeCaret), @(KeyCodeAsterisk), @(KeyCodePlus), @(KeyCodeEqual)],
-                                          @[@(KeyCodeUnderscore), @(KeyCodeBackSlash), @(KeyCodeVerticalBar), @(KeyCodeTilde), @(KeyCodeLessThan), @(KeyCodeGreaterThan), @(KeyCodeEuro), @(KeyCodePound), @(KeyCodeYen), @(KeyCodeBullet),],
-                                          @[@(KeyCodeThirdRowNumberPane), @(KeyCodePeriod), @(KeyCodeComma), @(KeyCodeQuestionMark), @(KeyCodeExclamationMark), @(KeyCodeSingleQuote), @(KeyCodeDelete),],
-                                          @[@(KeyCodePrimaryKeyPane), @(KeyCodeNextKeyboard), @(KeyCodeSpace), @(KeyCodeReturn),],
+                                          @[@(BBDKeyCodeOpenSquareBracket), @(BBDKeyCodeCloseSquareBracket), @(BBDKeyCodeOpenCurlyBracket), @(BBDKeyCodeCloseCurlyBracket), @(BBDKeyCodePoundSign), @(BBDKeyCodePercent), @(BBDKeyCodeCaret), @(BBDKeyCodeAsterisk), @(BBDKeyCodePlus), @(BBDKeyCodeEqual)],
+                                          @[@(BBDKeyCodeUnderscore), @(BBDKeyCodeBackSlash), @(BBDKeyCodeVerticalBar), @(BBDKeyCodeTilde), @(BBDKeyCodeLessThan), @(BBDKeyCodeGreaterThan), @(BBDKeyCodeEuro), @(BBDKeyCodePound), @(BBDKeyCodeYen), @(BBDKeyCodeBullet),],
+                                          @[@(BBDKeyCodeThirdRowNumberPane), @(BBDKeyCodePeriod), @(BBDKeyCodeComma), @(BBDKeyCodeQuestionMark), @(BBDKeyCodeExclamationMark), @(BBDKeyCodeSingleQuote), @(BBDKeyCodeDelete),],
+                                          @[@(BBDKeyCodePrimaryKeyPane), @(BBDKeyCodeNextKeyboard), @(BBDKeyCodeSpace), @(BBDKeyCodeReturn),],
                                           ];
     });
     
     return _numericAndSymbolsKeyPaneRows;
 }
 
-#pragma mark - KeyPositionDataSource methods
+#pragma mark - BBDKeyPositionDataSource methods
 
 - (CGSize)keyboardSize
 {
@@ -267,17 +267,17 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 - (NSInteger)numberOfRows
 {
-    return [KeyboardViewController rowsForKeyPane:self.currentKeyPane].count;
+    return [BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane].count;
 }
 
 - (NSInteger)numberOfKeysForRow:(NSInteger)row
 {
-    return [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][row] count];
+    return [[BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane][row] count];
 }
 
-- (KeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath
+- (BBDKeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSNumber *keyCodeNumber = [KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition];
+    NSNumber *keyCodeNumber = [BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition];
     
     return [keyCodeNumber intValue];
 }
@@ -286,28 +286,28 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 {
     NSNumber *relativeWidth = nil;
     
-    KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
+    BBDKeyCode keyCode = [[BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) {
-        if (keyCode == KeyCodeSpace) {
+        if (keyCode == BBDKeyCodeSpace) {
             relativeWidth = @(0.5f);
-        } else if (keyCode == KeyCodeReturn) {
+        } else if (keyCode == BBDKeyCodeReturn) {
             relativeWidth = @(0.225f);
-        } else if (keyCode == KeyCodeA) {
+        } else if (keyCode == BBDKeyCodeA) {
             relativeWidth = @(0.15f);
-        } else if (keyCode == KeyCodeL) {
+        } else if (keyCode == BBDKeyCodeL) {
             relativeWidth = @(0.15f);
-        } else if (keyCode == KeyCodeShift) {
+        } else if (keyCode == BBDKeyCodeShift) {
             relativeWidth = @(0.15f);
-        } else if (keyCode == KeyCodeDelete) {
+        } else if (keyCode == BBDKeyCodeDelete) {
             relativeWidth = @(0.15f);
         }
     } else {
-        if (keyCode == KeyCodeReturn) {
+        if (keyCode == BBDKeyCodeReturn) {
             relativeWidth = @(0.15f);
-        } else if (keyCode == KeyCodeA) {
+        } else if (keyCode == BBDKeyCodeA) {
             relativeWidth = @(0.14f);
-        } else if (keyCode == KeyCodeSpace) {
+        } else if (keyCode == BBDKeyCodeSpace) {
             relativeWidth = @(0.6f);
         }
     }
@@ -319,10 +319,10 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 {
     NSValue *marginsValue = nil;
     
-    KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
+    BBDKeyCode keyCode = [[BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
     
     //first key in first row of each pane
-    if (keyCode == KeyCodeQ || keyCode == KeyCode1 || keyCode == KeyCodeOpenSquareBracket) {
+    if (keyCode == BBDKeyCodeQ || keyCode == BBDKeyCode1 || keyCode == BBDKeyCodeOpenSquareBracket) {
         //give the row a top margin
         marginsValue = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(4.0f, 0.0f, 0.0f, 0.0f)];
     }
@@ -334,24 +334,24 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 {
     UIEdgeInsets paddings = [[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad ? UIEdgeInsetsMake(4.0f, 3.0f, 4.0f, 3.0f) : UIEdgeInsetsMake(4.0f, 4.0f, 4.0f, 4.0f);
     
-    KeyCode keyCode = [[KeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
+    BBDKeyCode keyCode = [[BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition] integerValue];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) {
-        if (keyCode == KeyCodeA) {
+        if (keyCode == BBDKeyCodeA) {
             CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
             paddings.left += oneHalfTopRowButtonWidth;
-        } else if (keyCode == KeyCodeL) {
+        } else if (keyCode == BBDKeyCodeL) {
             CGFloat oneHalfTopRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
             paddings.right += oneHalfTopRowButtonWidth;
-        } else if (keyCode == KeyCodeShift || keyCode == KeyCodeSymbolsPane || keyCode == KeyCodeThirdRowNumberPane) {
+        } else if (keyCode == BBDKeyCodeShift || keyCode == BBDKeyCodeSymbolsPane || keyCode == BBDKeyCodeThirdRowNumberPane) {
             CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
             paddings.right += oneQuarterTopRowButtonWidth;
-        } else if (keyCode == KeyCodeDelete) {
+        } else if (keyCode == BBDKeyCodeDelete) {
             CGFloat oneQuarterTopRowButtonWidth = floorf(self.view.bounds.size.width / 40.0f);
             paddings.left += oneQuarterTopRowButtonWidth;
         }
     } else {
-        if (keyCode == KeyCodeA) {
+        if (keyCode == BBDKeyCodeA) {
             CGFloat oneHalfMiddleRowButtonWidth = floorf(self.view.bounds.size.width / 20.0f);
             paddings.left += oneHalfMiddleRowButtonWidth;
         }
@@ -360,26 +360,26 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     return [NSValue valueWithUIEdgeInsets:paddings];
 }
 
-#pragma mark - KeyButtonDelegate methods
+#pragma mark - BBDKeyButtonDelegate methods
 
-- (void)keyButtonDidGetTapped:(KeyButton *)keyButton
+- (void)keyButtonDidGetTapped:(BBDKeyButton *)keyButton
 {
     NSLog(@"key press: %i", (int)keyButton.keyCode);
     
     [self.typingLogicController processKeystrokeWithKeyCode:keyButton.keyCode];
 }
 
-#pragma mark - KeyButtonDelegate
+#pragma mark - BBDKeyButtonDataSource
 
 - (UIKeyboardAppearance)keyboardAppearance
 {
     return self.textDocumentProxy.keyboardAppearance;
 }
 
-#pragma mark - SymbolKeyButtonDataSource methods
-#pragma mark - ShiftKeyButtonDataSource methods
+#pragma mark - BBDSymbolKeyButtonDataSource methods
+#pragma mark - BDShiftKeyButtonDataSource methods
 
-- (ShiftKeyState)shiftKeyState
+- (BBDShiftKeyState)shiftKeyState
 {
     return self.typingLogicController.shiftKeyState;
 }
@@ -391,18 +391,18 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 #pragma mark - TypingLogicControllerDelegate methods
 
-- (void)typingLogicController:(TypingLogicController *)controller determinedShouldSetShiftKeyState:(ShiftKeyState)shiftKeyState
+- (void)typingLogicController:(BBDTypingLogicController *)controller determinedShouldSetShiftKeyState:(BBDShiftKeyState)shiftKeyState
 {
     //update all key appearances
     [self.view.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
-        if ([subview isKindOfClass:[KeyButton class]]) {
-            KeyButton *keyButton = (KeyButton *)subview;
+        if ([subview isKindOfClass:[BBDKeyButton class]]) {
+            BBDKeyButton *keyButton = (BBDKeyButton *)subview;
             [keyButton setNeedsDisplay];
         }
     }];
 }
 
-- (void)typingLogicController:(TypingLogicController *)controller determinedShouldInsertText:(NSString *)text
+- (void)typingLogicController:(BBDTypingLogicController *)controller determinedShouldInsertText:(NSString *)text
 {
     NSLog(@"inserted text: %@", text);
     
@@ -411,7 +411,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     [self.typingLogicController determineShiftKeyState];
 }
 
-- (void)typingLogicControllerDeterminedShouldDeleteBackwards:(TypingLogicController *)controller
+- (void)typingLogicControllerDeterminedShouldDeleteBackwards:(BBDTypingLogicController *)controller
 {
     NSLog(@"deleted text");
     
@@ -420,22 +420,22 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     [self.typingLogicController determineShiftKeyState];
 }
 
-- (void)typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:(TypingLogicController *)controller
+- (void)typingLogicControllerDeterminedShouldAdvanceToNextKeyboard:(BBDTypingLogicController *)controller
 {
     [self advanceToNextInputMode];
 }
 
-- (void)typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:(TypingLogicController *)controller
+- (void)typingLogicControllerDeterminedShouldSwitchToNumericAndSymbolsKeyPane:(BBDTypingLogicController *)controller
 {
     self.currentKeyPane = KeyPaneNumericAndSymbols;
 }
 
-- (void)typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:(TypingLogicController *)controller
+- (void)typingLogicControllerDeterminedShouldSwitchToPrimaryKeyPane:(BBDTypingLogicController *)controller
 {
     self.currentKeyPane = KeyPanePrimary;
 }
 
-- (void)typingLogicControllerDeterminedShouldSwitchToSupplemtalSymbolsKeyPane:(TypingLogicController *)controller
+- (void)typingLogicControllerDeterminedShouldSwitchToSupplemtalSymbolsKeyPane:(BBDTypingLogicController *)controller
 {
     self.currentKeyPane = KeyPaneSupplementalSymbols;
 }

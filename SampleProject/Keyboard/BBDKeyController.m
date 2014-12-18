@@ -1,286 +1,286 @@
 //
-//  KeyController.m
-//  ExperimentalKeyboard
+//  BBDKeyController.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 11/18/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "KeyController.h"
+#import "BBDKeyController.h"
 
-#import "KeyButton.h"
-#import "SymbolKeyButton.h"
-#import "ShiftKeyButton.h"
-#import "SymbolFunctionKeyButton.h"
-#import "IconFunctionKeyButton.h"
-#import "DeleteKeyButton.h"
+#import "BBDKeyButton.h"
+#import "BBDSymbolKeyButton.h"
+#import "BBDShiftKeyButton.h"
+#import "BBDSymbolFunctionKeyButton.h"
+#import "BBDIconFunctionKeyButton.h"
+#import "BBDDeleteKeyButton.h"
 
-@implementation KeyController
+@implementation BBDKeyController
 
-+ (Class)keyButtonClassForKeyCode:(KeyCode)keyCode
++ (Class)keyButtonClassForKeyCode:(BBDKeyCode)keyCode
 {
-    Class class = [SymbolKeyButton class];
+    Class class = [BBDSymbolKeyButton class];
     
-    if (keyCode == KeyCodeSpace) {
-        class = [KeyButton class];
-    } else if (keyCode == KeyCodeShift ||
-               keyCode == KeyCodeSecondShift) {
-        class = [ShiftKeyButton class];
-    } else if (keyCode == KeyCodeNumberPane ||
-               keyCode == KeyCodeSecondNumberPane ||
-               keyCode == KeyCodeThirdRowNumberPane ||
-               keyCode == KeyCodeReturn ||
-               keyCode == KeyCodeSymbolsPane ||
-               keyCode == KeyCodePrimaryKeyPane) {
-        class = [SymbolFunctionKeyButton class];
-    } else if (keyCode == KeyCodeNextKeyboard) {
-        class = [IconFunctionKeyButton class];
-    } else if (keyCode == KeyCodeDelete) {
-        class = [DeleteKeyButton class];
+    if (keyCode == BBDKeyCodeSpace) {
+        class = [BBDKeyButton class];
+    } else if (keyCode == BBDKeyCodeShift ||
+               keyCode == BBDKeyCodeSecondShift) {
+        class = [BBDShiftKeyButton class];
+    } else if (keyCode == BBDKeyCodeNumberPane ||
+               keyCode == BBDKeyCodeSecondNumberPane ||
+               keyCode == BBDKeyCodeThirdRowNumberPane ||
+               keyCode == BBDKeyCodeReturn ||
+               keyCode == BBDKeyCodeSymbolsPane ||
+               keyCode == BBDKeyCodePrimaryKeyPane) {
+        class = [BBDSymbolFunctionKeyButton class];
+    } else if (keyCode == BBDKeyCodeNextKeyboard) {
+        class = [BBDIconFunctionKeyButton class];
+    } else if (keyCode == BBDKeyCodeDelete) {
+        class = [BBDDeleteKeyButton class];
     }
     
     return class;
 }
 
-+ (NSString *)symbolForKeyCode:(KeyCode)keyCode
++ (NSString *)symbolForKeyCode:(BBDKeyCode)keyCode
 {
     NSString *symbol = @"";
     
     switch (keyCode) {
-        case KeyCodeQ:
+        case BBDKeyCodeQ:
             symbol = @"q";
             break;
-        case KeyCodeW:
+        case BBDKeyCodeW:
             symbol = @"w";
             break;
-        case KeyCodeE:
+        case BBDKeyCodeE:
             symbol = @"e";
             break;
-        case KeyCodeR:
+        case BBDKeyCodeR:
             symbol = @"r";
             break;
-        case KeyCodeT:
+        case BBDKeyCodeT:
             symbol = @"t";
             break;
-        case KeyCodeY:
+        case BBDKeyCodeY:
             symbol = @"y";
             break;
-        case KeyCodeU:
+        case BBDKeyCodeU:
             symbol = @"u";
             break;
-        case KeyCodeI:
+        case BBDKeyCodeI:
             symbol = @"i";
             break;
-        case KeyCodeO:
+        case BBDKeyCodeO:
             symbol = @"o";
             break;
-        case KeyCodeP:
+        case BBDKeyCodeP:
             symbol = @"p";
             break;
-        case KeyCodeA:
+        case BBDKeyCodeA:
             symbol = @"a";
             break;
-        case KeyCodeS:
+        case BBDKeyCodeS:
             symbol = @"s";
             break;
-        case KeyCodeD:
+        case BBDKeyCodeD:
             symbol = @"d";
             break;
-        case KeyCodeF:
+        case BBDKeyCodeF:
             symbol = @"f";
             break;
-        case KeyCodeG:
+        case BBDKeyCodeG:
             symbol = @"g";
             break;
-        case KeyCodeH:
+        case BBDKeyCodeH:
             symbol = @"h";
             break;
-        case KeyCodeJ:
+        case BBDKeyCodeJ:
             symbol = @"j";
             break;
-        case KeyCodeK:
+        case BBDKeyCodeK:
             symbol = @"k";
             break;
-        case KeyCodeL:
+        case BBDKeyCodeL:
             symbol = @"l";
             break;
-        case KeyCodeZ:
+        case BBDKeyCodeZ:
             symbol = @"z";
             break;
-        case KeyCodeX:
+        case BBDKeyCodeX:
             symbol = @"x";
             break;
-        case KeyCodeC:
+        case BBDKeyCodeC:
             symbol = @"c";
             break;
-        case KeyCodeV:
+        case BBDKeyCodeV:
             symbol = @"v";
             break;
-        case KeyCodeB:
+        case BBDKeyCodeB:
             symbol = @"b";
             break;
-        case KeyCodeN:
+        case BBDKeyCodeN:
             symbol = @"n";
             break;
-        case KeyCodeM:
+        case BBDKeyCodeM:
             symbol = @"m";
             break;
-        case KeyCodeDelete:
+        case BBDKeyCodeDelete:
             symbol = @"<";
             break;
-        case KeyCodeNumberPane:
-        case KeyCodeSecondNumberPane:
-        case KeyCodeThirdRowNumberPane:
+        case BBDKeyCodeNumberPane:
+        case BBDKeyCodeSecondNumberPane:
+        case BBDKeyCodeThirdRowNumberPane:
             symbol = @"123";
             break;
-        case KeyCodeNextKeyboard:
+        case BBDKeyCodeNextKeyboard:
             symbol = @"*";
             break;
-        case KeyCodeSpace:
+        case BBDKeyCodeSpace:
             symbol = @" ";
             break;
-        case KeyCodeReturn:
+        case BBDKeyCodeReturn:
             symbol = @"return";
             break;
-        case KeyCode1:
+        case BBDKeyCode1:
             symbol = @"1";
             break;
-        case KeyCode2:
+        case BBDKeyCode2:
             symbol = @"2";
             break;
-        case KeyCode3:
+        case BBDKeyCode3:
             symbol = @"3";
             break;
-        case KeyCode4:
+        case BBDKeyCode4:
             symbol = @"4";
             break;
-        case KeyCode5:
+        case BBDKeyCode5:
             symbol = @"5";
             break;
-        case KeyCode6:
+        case BBDKeyCode6:
             symbol = @"6";
             break;
-        case KeyCode7:
+        case BBDKeyCode7:
             symbol = @"7";
             break;
-        case KeyCode8:
+        case BBDKeyCode8:
             symbol = @"8";
             break;
-        case KeyCode9:
+        case BBDKeyCode9:
             symbol = @"9";
             break;
-        case KeyCode0:
+        case BBDKeyCode0:
             symbol = @"0";
             break;
-        case KeyCodeDash:
+        case BBDKeyCodeDash:
             symbol = @"-";
             break;
-        case KeyCodeForwardSlash:
+        case BBDKeyCodeForwardSlash:
             symbol = @"/";
             break;
-        case KeyCodeColon:
+        case BBDKeyCodeColon:
             symbol = @":";
             break;
-        case KeyCodeSemicolon:
+        case BBDKeyCodeSemicolon:
             symbol = @";";
             break;
-        case KeyCodeOpenParenthesis:
+        case BBDKeyCodeOpenParenthesis:
             symbol = @"(";
             break;
-        case KeyCodeCloseParenthesis:
+        case BBDKeyCodeCloseParenthesis:
             symbol = @")";
             break;
-        case KeyCodeDollar:
+        case BBDKeyCodeDollar:
             symbol = @"$";
             break;
-        case KeyCodeAmersand:
+        case BBDKeyCodeAmersand:
             symbol = @"&";
             break;
-        case KeyCodeAt:
+        case BBDKeyCodeAt:
             symbol = @"@";
             break;
-        case KeyCodeDoubleQuote:
+        case BBDKeyCodeDoubleQuote:
             symbol = @"\"";
             break;
-        case KeyCodeSymbolsPane:
+        case BBDKeyCodeSymbolsPane:
             symbol = @"#+=";
             break;
-        case KeyCodePeriod:
+        case BBDKeyCodePeriod:
             symbol = @".";
             break;
-        case KeyCodeComma:
+        case BBDKeyCodeComma:
             symbol = @",";
             break;
-        case KeyCodeQuestionMark:
+        case BBDKeyCodeQuestionMark:
             symbol = @"?";
             break;
-        case KeyCodeExclamationMark:
+        case BBDKeyCodeExclamationMark:
             symbol = @"!";
             break;
-        case KeyCodeSingleQuote:
+        case BBDKeyCodeSingleQuote:
             symbol = @"'";
             break;
-        case KeyCodePrimaryKeyPane:
+        case BBDKeyCodePrimaryKeyPane:
             symbol = @"ABC";
             break;
-        case KeyCodeOpenSquareBracket:
+        case BBDKeyCodeOpenSquareBracket:
             symbol = @"[";
             break;
-        case KeyCodeCloseSquareBracket:
+        case BBDKeyCodeCloseSquareBracket:
             symbol = @"]";
             break;
-        case KeyCodeOpenCurlyBracket:
+        case BBDKeyCodeOpenCurlyBracket:
             symbol = @"{";
             break;
-        case KeyCodeCloseCurlyBracket:
+        case BBDKeyCodeCloseCurlyBracket:
             symbol = @"}";
             break;
-        case KeyCodePoundSign:
+        case BBDKeyCodePoundSign:
             symbol = @"#";
             break;
-        case KeyCodePercent:
+        case BBDKeyCodePercent:
             symbol = @"%";
             break;
-        case KeyCodeCaret:
+        case BBDKeyCodeCaret:
             symbol = @"^";
             break;
-        case KeyCodeAsterisk:
+        case BBDKeyCodeAsterisk:
             symbol = @"*";
             break;
-        case KeyCodePlus:
+        case BBDKeyCodePlus:
             symbol = @"+";
             break;
-        case KeyCodeEqual:
+        case BBDKeyCodeEqual:
             symbol = @"=";
             break;
-        case KeyCodeUnderscore:
+        case BBDKeyCodeUnderscore:
             symbol = @"_";
             break;
-        case KeyCodeBackSlash:
+        case BBDKeyCodeBackSlash:
             symbol = @"\\";
             break;
-        case KeyCodeVerticalBar:
+        case BBDKeyCodeVerticalBar:
             symbol = @"|";
             break;
-        case KeyCodeTilde:
+        case BBDKeyCodeTilde:
             symbol = @"~";
             break;
-        case KeyCodeLessThan:
+        case BBDKeyCodeLessThan:
             symbol = @"<";
             break;
-        case KeyCodeGreaterThan:
+        case BBDKeyCodeGreaterThan:
             symbol = @">";
             break;
-        case KeyCodeEuro:
+        case BBDKeyCodeEuro:
             symbol = @"€";
             break;
-        case KeyCodePound:
+        case BBDKeyCodePound:
             symbol = @"£";
             break;
-        case KeyCodeYen:
+        case BBDKeyCodeYen:
             symbol = @"¥";
             break;
-        case KeyCodeBullet:
+        case BBDKeyCodeBullet:
             symbol = @"•";
             break;
         default:
@@ -290,230 +290,230 @@
     return symbol;
 }
 
-+ (NSString *)yieldedLowercaseTextForKeyCode:(KeyCode)keyCode forShiftKeyState:(ShiftKeyState)shiftKeyState
++ (NSString *)yieldedLowercaseTextForKeyCode:(BBDKeyCode)keyCode forShiftKeyState:(BBDShiftKeyState)shiftKeyState
 {
     NSString *yieldedText = nil;
-    BOOL isUpperCase = shiftKeyState == ShiftKeyStateUppercase || shiftKeyState == ShiftKeyStateCapsLock;
+    BOOL isUpperCase = shiftKeyState == BBDShiftKeyStateUppercase || shiftKeyState == BBDShiftKeyStateCapsLock;
     
     switch (keyCode) {
-        case KeyCodeQ:
+        case BBDKeyCodeQ:
             yieldedText = @"q";
             break;
-        case KeyCodeW:
+        case BBDKeyCodeW:
             yieldedText = @"w";
             break;
-        case KeyCodeE:
+        case BBDKeyCodeE:
             yieldedText = @"e";
             break;
-        case KeyCodeR:
+        case BBDKeyCodeR:
             yieldedText = @"r";
             break;
-        case KeyCodeT:
+        case BBDKeyCodeT:
             yieldedText = @"t";
             break;
-        case KeyCodeY:
+        case BBDKeyCodeY:
             yieldedText = @"y";
             break;
-        case KeyCodeU:
+        case BBDKeyCodeU:
             yieldedText = @"u";
             break;
-        case KeyCodeI:
+        case BBDKeyCodeI:
             yieldedText = @"i";
             break;
-        case KeyCodeO:
+        case BBDKeyCodeO:
             yieldedText = @"o";
             break;
-        case KeyCodeP:
+        case BBDKeyCodeP:
             yieldedText = @"p";
             break;
-        case KeyCodeA:
+        case BBDKeyCodeA:
             yieldedText = @"a";
             break;
-        case KeyCodeS:
+        case BBDKeyCodeS:
             yieldedText = @"s";
             break;
-        case KeyCodeD:
+        case BBDKeyCodeD:
             yieldedText = @"d";
             break;
-        case KeyCodeF:
+        case BBDKeyCodeF:
             yieldedText = @"f";
             break;
-        case KeyCodeG:
+        case BBDKeyCodeG:
             yieldedText = @"g";
             break;
-        case KeyCodeH:
+        case BBDKeyCodeH:
             yieldedText = @"h";
             break;
-        case KeyCodeJ:
+        case BBDKeyCodeJ:
             yieldedText = @"j";
             break;
-        case KeyCodeK:
+        case BBDKeyCodeK:
             yieldedText = @"k";
             break;
-        case KeyCodeL:
+        case BBDKeyCodeL:
             yieldedText = @"l";
             break;
             break;
-        case KeyCodeZ:
+        case BBDKeyCodeZ:
             yieldedText = @"z";
             break;
-        case KeyCodeX:
+        case BBDKeyCodeX:
             yieldedText = @"x";
             break;
-        case KeyCodeC:
+        case BBDKeyCodeC:
             yieldedText = @"c";
             break;
-        case KeyCodeV:
+        case BBDKeyCodeV:
             yieldedText = @"v";
             break;
-        case KeyCodeB:
+        case BBDKeyCodeB:
             yieldedText = @"b";
             break;
-        case KeyCodeN:
+        case BBDKeyCodeN:
             yieldedText = @"n";
             break;
-        case KeyCodeM:
+        case BBDKeyCodeM:
             yieldedText = @"m";
             break;
-        case KeyCodeSpace:
+        case BBDKeyCodeSpace:
             yieldedText = @" ";
             break;
-        case KeyCodeReturn:
+        case BBDKeyCodeReturn:
             yieldedText = @"\n";
             break;
-        case KeyCode1:
+        case BBDKeyCode1:
             yieldedText = @"1";
             break;
-        case KeyCode2:
+        case BBDKeyCode2:
             yieldedText = @"2";
             break;
-        case KeyCode3:
+        case BBDKeyCode3:
             yieldedText = @"3";
             break;
-        case KeyCode4:
+        case BBDKeyCode4:
             yieldedText = @"4";
             break;
-        case KeyCode5:
+        case BBDKeyCode5:
             yieldedText = @"5";
             break;
-        case KeyCode6:
+        case BBDKeyCode6:
             yieldedText = @"6";
             break;
-        case KeyCode7:
+        case BBDKeyCode7:
             yieldedText = @"7";
             break;
-        case KeyCode8:
+        case BBDKeyCode8:
             yieldedText = @"8";
             break;
-        case KeyCode9:
+        case BBDKeyCode9:
             yieldedText = @"9";
             break;
-        case KeyCode0:
+        case BBDKeyCode0:
             yieldedText = @"0";
             break;
-        case KeyCodeDash:
+        case BBDKeyCodeDash:
             yieldedText = @"-";
             break;
-        case KeyCodeForwardSlash:
+        case BBDKeyCodeForwardSlash:
             yieldedText = @"/";
             break;
-        case KeyCodeColon:
+        case BBDKeyCodeColon:
             yieldedText = @":";
             break;
-        case KeyCodeSemicolon:
+        case BBDKeyCodeSemicolon:
             yieldedText = @";";
             break;
-        case KeyCodeOpenParenthesis:
+        case BBDKeyCodeOpenParenthesis:
             yieldedText = @"(";
             break;
-        case KeyCodeCloseParenthesis:
+        case BBDKeyCodeCloseParenthesis:
             yieldedText = @")";
             break;
-        case KeyCodeDollar:
+        case BBDKeyCodeDollar:
             yieldedText = @"$";
             break;
-        case KeyCodeAmersand:
+        case BBDKeyCodeAmersand:
             yieldedText = @"&";
             break;
-        case KeyCodeAt:
+        case BBDKeyCodeAt:
             yieldedText = @"@";
             break;
-        case KeyCodeDoubleQuote:
+        case BBDKeyCodeDoubleQuote:
             yieldedText = @"\"";
             break;
-        case KeyCodePeriod:
+        case BBDKeyCodePeriod:
             yieldedText = @".";
             break;
-        case KeyCodeComma:
+        case BBDKeyCodeComma:
             yieldedText = @",";
             break;
-        case KeyCodeQuestionMark:
+        case BBDKeyCodeQuestionMark:
             yieldedText = @"?";
             break;
-        case KeyCodeExclamationMark:
+        case BBDKeyCodeExclamationMark:
             yieldedText = @"!";
             break;
-        case KeyCodeSingleQuote:
+        case BBDKeyCodeSingleQuote:
             yieldedText = @"'";
             break;
-        case KeyCodeOpenSquareBracket:
+        case BBDKeyCodeOpenSquareBracket:
             yieldedText = @"[";
             break;
-        case KeyCodeCloseSquareBracket:
+        case BBDKeyCodeCloseSquareBracket:
             yieldedText = @"]";
             break;
-        case KeyCodeOpenCurlyBracket:
+        case BBDKeyCodeOpenCurlyBracket:
             yieldedText = @"{";
             break;
-        case KeyCodeCloseCurlyBracket:
+        case BBDKeyCodeCloseCurlyBracket:
             yieldedText = @"}";
             break;
-        case KeyCodePoundSign:
+        case BBDKeyCodePoundSign:
             yieldedText = @"#";
             break;
-        case KeyCodePercent:
+        case BBDKeyCodePercent:
             yieldedText = @"%";
             break;
-        case KeyCodeCaret:
+        case BBDKeyCodeCaret:
             yieldedText = @"^";
             break;
-        case KeyCodeAsterisk:
+        case BBDKeyCodeAsterisk:
             yieldedText = @"*";
             break;
-        case KeyCodePlus:
+        case BBDKeyCodePlus:
             yieldedText = @"+";
             break;
-        case KeyCodeEqual:
+        case BBDKeyCodeEqual:
             yieldedText = @"=";
             break;
-        case KeyCodeUnderscore:
+        case BBDKeyCodeUnderscore:
             yieldedText = @"_";
             break;
-        case KeyCodeBackSlash:
+        case BBDKeyCodeBackSlash:
             yieldedText = @"\\";
             break;
-        case KeyCodeVerticalBar:
+        case BBDKeyCodeVerticalBar:
             yieldedText = @"|";
             break;
-        case KeyCodeTilde:
+        case BBDKeyCodeTilde:
             yieldedText = @"~";
             break;
-        case KeyCodeLessThan:
+        case BBDKeyCodeLessThan:
             yieldedText = @"<";
             break;
-        case KeyCodeGreaterThan:
+        case BBDKeyCodeGreaterThan:
             yieldedText = @">";
             break;
-        case KeyCodeEuro:
+        case BBDKeyCodeEuro:
             yieldedText = @"€";
             break;
-        case KeyCodePound:
+        case BBDKeyCodePound:
             yieldedText = @"£";
             break;
-        case KeyCodeYen:
+        case BBDKeyCodeYen:
             yieldedText = @"¥";
             break;
-        case KeyCodeBullet:
+        case BBDKeyCodeBullet:
             yieldedText = @"•";
             break;
         default:
@@ -537,14 +537,14 @@
         
         //effecient, but depends on ENUM order in .h
         //first pane
-        [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeQ, KeyCodeL - KeyCodeQ + 1}];
-        [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeZ, KeyCodeM - KeyCodeZ + 1}];
-        [mutableIndexSet addIndex:KeyCodeReturn];
+        [mutableIndexSet addIndexesInRange:(NSRange){BBDKeyCodeQ, BBDKeyCodeL - BBDKeyCodeQ + 1}];
+        [mutableIndexSet addIndexesInRange:(NSRange){BBDKeyCodeZ, BBDKeyCodeM - BBDKeyCodeZ + 1}];
+        [mutableIndexSet addIndex:BBDKeyCodeReturn];
         //second pane
-        [mutableIndexSet addIndexesInRange:(NSRange){KeyCode1, KeyCodeDoubleQuote - KeyCode1 + 1}];
-        [mutableIndexSet addIndexesInRange:(NSRange){KeyCodePeriod, KeyCodeSingleQuote - KeyCodePeriod + 1}];
+        [mutableIndexSet addIndexesInRange:(NSRange){BBDKeyCode1, BBDKeyCodeDoubleQuote - BBDKeyCode1 + 1}];
+        [mutableIndexSet addIndexesInRange:(NSRange){BBDKeyCodePeriod, BBDKeyCodeSingleQuote - BBDKeyCodePeriod + 1}];
         //third pane
-        [mutableIndexSet addIndexesInRange:(NSRange){KeyCodeOpenSquareBracket, KeyCodeBullet - KeyCodeOpenSquareBracket + 1}];
+        [mutableIndexSet addIndexesInRange:(NSRange){BBDKeyCodeOpenSquareBracket, BBDKeyCodeBullet - BBDKeyCodeOpenSquareBracket + 1}];
         
         _simpleTextGeneratingKeyCodeIndexSet = mutableIndexSet;
     });

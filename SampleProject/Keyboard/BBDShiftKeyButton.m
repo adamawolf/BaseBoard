@@ -1,19 +1,19 @@
 //
-//  ShiftKeyButton.m
-//  ExperimentalKeyboard
+//  BBDShiftKeyButton.m
+//  BaseBoard
 //
 //  Created by Adam A. Wolf on 12/11/14.
-//  Copyright (c) 2014 Flairify LLC. All rights reserved.
+//  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "ShiftKeyButton.h"
+#import "BBDShiftKeyButton.h"
 
-@implementation ShiftKeyButton
+@implementation BBDShiftKeyButton
 
 - (UIColor *)backgroundColor
 {
     UIColor *color = nil;
-    if ([self.dataSource shiftKeyState] != ShiftKeyStateLowercase &&
+    if ([self.dataSource shiftKeyState] != BBDShiftKeyStateLowercase &&
         [self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
         static UIColor *_darkColor = nil;
         static dispatch_once_t onceToken;
@@ -33,15 +33,15 @@
     
     //draw the appropriate shift key image
     UIImage * shiftKeyImage = nil;
-    if ([self.dataSource shiftKeyState] == ShiftKeyStateLowercase) {
+    if ([self.dataSource shiftKeyState] == BBDShiftKeyStateLowercase) {
         shiftKeyImage = [UIImage imageNamed:@"shift_portrait"];
         shiftKeyImage = [shiftKeyImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [[UIColor whiteColor] set];
-    } else if ([self.dataSource shiftKeyState] == ShiftKeyStateUppercase) {
+    } else if ([self.dataSource shiftKeyState] == BBDShiftKeyStateUppercase) {
         shiftKeyImage = [UIImage imageNamed:@"shift_portrait"];
         shiftKeyImage = [shiftKeyImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [[UIColor blackColor] set];
-    } else if ([self.dataSource shiftKeyState] == ShiftKeyStateCapsLock) {
+    } else if ([self.dataSource shiftKeyState] == BBDShiftKeyStateCapsLock) {
         shiftKeyImage = [UIImage imageNamed:@"shift_lock_portrait"];
         shiftKeyImage = [shiftKeyImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [[UIColor blackColor] set];
