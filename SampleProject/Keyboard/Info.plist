@@ -38,7 +38,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.keyboard-service</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>BBDKeyboardViewController</string>
+		<string>KeyboardViewController</string>
 	</dict>
 </dict>
 </plist>
