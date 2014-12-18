@@ -1,0 +1,15 @@
+source 'https://github.com/CocoaPods/Specs'
+
+xcodeproj 'BaseBoard'
+workspace '../BaseBoard'
+#inhibit_all_warnings!
+
+def import_pods
+  pod 'BaseBoard', :path => '../'
+end
+
+target :ios do
+  platform :ios, '8.0'
+  link_with 'Keyboard'
+  import_pods
+end
