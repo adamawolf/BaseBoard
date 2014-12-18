@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		072E0943179C73115CF81F51 /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 758FCC1E18C555742F8D63B1 /* libPods-ios.a */; };
 		941229041A437F1D002CB2CE /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941229031A437F1D002CB2CE /* KeyboardViewController.m */; };
-		945BDC981A3A27040060942B /* BaseBoardImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945BDC971A3A27040060942B /* BaseBoardImages.xcassets */; };
 		94F9B9A519F08E6600F47B35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A419F08E6600F47B35 /* main.m */; };
 		94F9B9A819F08E6600F47B35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9A719F08E6600F47B35 /* AppDelegate.m */; };
 		94F9B9AB19F08E6600F47B35 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9B9AA19F08E6600F47B35 /* FirstViewController.m */; };
@@ -64,7 +63,6 @@
 		8EB02909852E2C76C63C266C /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		941229021A437F1D002CB2CE /* KeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
 		941229031A437F1D002CB2CE /* KeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
-		945BDC971A3A27040060942B /* BaseBoardImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BaseBoardImages.xcassets; sourceTree = "<group>"; };
 		94F9B99F19F08E6600F47B35 /* BaseBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9A319F08E6600F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F9B9A419F08E6600F47B35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				94F9B9D219F08EA300F47B35 /* Info.plist */,
-				945BDC971A3A27040060942B /* BaseBoardImages.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				945BDC981A3A27040060942B /* BaseBoardImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
