@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		948A85971A44DAF400EC20EA /* BaseBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85961A44DAF400EC20EA /* BaseBoardTests.m */; };
+		948A85C31A44DB1C00EC20EA /* BBDKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A859D1A44DB1C00EC20EA /* BBDKeyboardViewController.m */; };
+		948A85C41A44DB1C00EC20EA /* BBDKeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A01A44DB1C00EC20EA /* BBDKeyController.m */; };
+		948A85C51A44DB1C00EC20EA /* BBDKeyPositionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A21A44DB1C00EC20EA /* BBDKeyPositionController.m */; };
+		948A85C61A44DB1C00EC20EA /* BBDTypingLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A41A44DB1C00EC20EA /* BBDTypingLogicController.m */; };
+		948A85C71A44DB1C00EC20EA /* BBDDeleteKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A61A44DB1C00EC20EA /* BBDDeleteKeyButton.m */; };
+		948A85C81A44DB1C00EC20EA /* BBDFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A81A44DB1C00EC20EA /* BBDFunctionKeyButton.m */; };
+		948A85C91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85AA1A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m */; };
+		948A85CA1A44DB1C00EC20EA /* BBDKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85AC1A44DB1C00EC20EA /* BBDKeyButton.m */; };
+		948A85CB1A44DB1C00EC20EA /* BBDShiftKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85AE1A44DB1C00EC20EA /* BBDShiftKeyButton.m */; };
+		948A85CC1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85B01A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m */; };
+		948A85CD1A44DB1C00EC20EA /* BBDSymbolKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85B21A44DB1C00EC20EA /* BBDSymbolKeyButton.m */; };
+		948A85CE1A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B41A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png */; };
+		948A85CF1A44DB1C00EC20EA /* global_portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B51A44DB1C00EC20EA /* global_portrait@2x~ipad.png */; };
+		948A85D01A44DB1C00EC20EA /* delete_portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B61A44DB1C00EC20EA /* delete_portrait@2x~ipad.png */; };
+		948A85D11A44DB1C00EC20EA /* delete_portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B71A44DB1C00EC20EA /* delete_portrait@2x~iphone.png */; };
+		948A85D21A44DB1C00EC20EA /* delete_portrait@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B81A44DB1C00EC20EA /* delete_portrait@3x~iphone.png */; };
+		948A85D31A44DB1C00EC20EA /* global_portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B91A44DB1C00EC20EA /* global_portrait@2x~iphone.png */; };
+		948A85D41A44DB1C00EC20EA /* global_portrait@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85BA1A44DB1C00EC20EA /* global_portrait@3x~iphone.png */; };
+		948A85D51A44DB1C00EC20EA /* shift_lock_portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85BB1A44DB1C00EC20EA /* shift_lock_portrait@2x~iphone.png */; };
+		948A85D61A44DB1C00EC20EA /* shift_lock_portrait@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85BC1A44DB1C00EC20EA /* shift_lock_portrait@3x~iphone.png */; };
+		948A85D71A44DB1C00EC20EA /* shift_portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85BD1A44DB1C00EC20EA /* shift_portrait@2x~ipad.png */; };
+		948A85D81A44DB1C00EC20EA /* shift_portrait@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85BE1A44DB1C00EC20EA /* shift_portrait@2x~iphone.png */; };
+		948A85D91A44DB1C00EC20EA /* shift_portrait@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85BF1A44DB1C00EC20EA /* shift_portrait@3x~iphone.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		948A85911A44DAF400EC20EA /* BaseBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		948A85951A44DAF400EC20EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		948A85961A44DAF400EC20EA /* BaseBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseBoardTests.m; sourceTree = "<group>"; };
+		948A859B1A44DB1C00EC20EA /* BaseBoard.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BaseBoard.podspec; sourceTree = "<group>"; };
+		948A859C1A44DB1C00EC20EA /* BBDKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDKeyboardViewController.h; path = BaseBoard/BBDKeyboardViewController.h; sourceTree = "<group>"; };
+		948A859D1A44DB1C00EC20EA /* BBDKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDKeyboardViewController.m; path = BaseBoard/BBDKeyboardViewController.m; sourceTree = "<group>"; };
+		948A859E1A44DB1C00EC20EA /* BaseBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseBoard.h; path = BaseBoard/BaseBoard.h; sourceTree = "<group>"; };
+		948A859F1A44DB1C00EC20EA /* BBDKeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDKeyController.h; path = BaseBoard/BBDKeyController.h; sourceTree = "<group>"; };
+		948A85A01A44DB1C00EC20EA /* BBDKeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDKeyController.m; path = BaseBoard/BBDKeyController.m; sourceTree = "<group>"; };
+		948A85A11A44DB1C00EC20EA /* BBDKeyPositionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDKeyPositionController.h; path = BaseBoard/BBDKeyPositionController.h; sourceTree = "<group>"; };
+		948A85A21A44DB1C00EC20EA /* BBDKeyPositionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDKeyPositionController.m; path = BaseBoard/BBDKeyPositionController.m; sourceTree = "<group>"; };
+		948A85A31A44DB1C00EC20EA /* BBDTypingLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDTypingLogicController.h; path = BaseBoard/BBDTypingLogicController.h; sourceTree = "<group>"; };
+		948A85A41A44DB1C00EC20EA /* BBDTypingLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDTypingLogicController.m; path = BaseBoard/BBDTypingLogicController.m; sourceTree = "<group>"; };
+		948A85A51A44DB1C00EC20EA /* BBDDeleteKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDDeleteKeyButton.h; path = BaseBoard/BBDDeleteKeyButton.h; sourceTree = "<group>"; };
+		948A85A61A44DB1C00EC20EA /* BBDDeleteKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDDeleteKeyButton.m; path = BaseBoard/BBDDeleteKeyButton.m; sourceTree = "<group>"; };
+		948A85A71A44DB1C00EC20EA /* BBDFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDFunctionKeyButton.h; path = BaseBoard/BBDFunctionKeyButton.h; sourceTree = "<group>"; };
+		948A85A81A44DB1C00EC20EA /* BBDFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDFunctionKeyButton.m; path = BaseBoard/BBDFunctionKeyButton.m; sourceTree = "<group>"; };
+		948A85A91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDIconFunctionKeyButton.h; path = BaseBoard/BBDIconFunctionKeyButton.h; sourceTree = "<group>"; };
+		948A85AA1A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDIconFunctionKeyButton.m; path = BaseBoard/BBDIconFunctionKeyButton.m; sourceTree = "<group>"; };
+		948A85AB1A44DB1C00EC20EA /* BBDKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDKeyButton.h; path = BaseBoard/BBDKeyButton.h; sourceTree = "<group>"; };
+		948A85AC1A44DB1C00EC20EA /* BBDKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDKeyButton.m; path = BaseBoard/BBDKeyButton.m; sourceTree = "<group>"; };
+		948A85AD1A44DB1C00EC20EA /* BBDShiftKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDShiftKeyButton.h; path = BaseBoard/BBDShiftKeyButton.h; sourceTree = "<group>"; };
+		948A85AE1A44DB1C00EC20EA /* BBDShiftKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDShiftKeyButton.m; path = BaseBoard/BBDShiftKeyButton.m; sourceTree = "<group>"; };
+		948A85AF1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDSymbolFunctionKeyButton.h; path = BaseBoard/BBDSymbolFunctionKeyButton.h; sourceTree = "<group>"; };
+		948A85B01A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDSymbolFunctionKeyButton.m; path = BaseBoard/BBDSymbolFunctionKeyButton.m; sourceTree = "<group>"; };
+		948A85B11A44DB1C00EC20EA /* BBDSymbolKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDSymbolKeyButton.h; path = BaseBoard/BBDSymbolKeyButton.h; sourceTree = "<group>"; };
+		948A85B21A44DB1C00EC20EA /* BBDSymbolKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDSymbolKeyButton.m; path = BaseBoard/BBDSymbolKeyButton.m; sourceTree = "<group>"; };
+		948A85B41A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_lock_portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		948A85B51A44DB1C00EC20EA /* global_portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "global_portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		948A85B61A44DB1C00EC20EA /* delete_portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		948A85B71A44DB1C00EC20EA /* delete_portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_portrait@2x~iphone.png"; sourceTree = "<group>"; };
+		948A85B81A44DB1C00EC20EA /* delete_portrait@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_portrait@3x~iphone.png"; sourceTree = "<group>"; };
+		948A85B91A44DB1C00EC20EA /* global_portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "global_portrait@2x~iphone.png"; sourceTree = "<group>"; };
+		948A85BA1A44DB1C00EC20EA /* global_portrait@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "global_portrait@3x~iphone.png"; sourceTree = "<group>"; };
+		948A85BB1A44DB1C00EC20EA /* shift_lock_portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_lock_portrait@2x~iphone.png"; sourceTree = "<group>"; };
+		948A85BC1A44DB1C00EC20EA /* shift_lock_portrait@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_lock_portrait@3x~iphone.png"; sourceTree = "<group>"; };
+		948A85BD1A44DB1C00EC20EA /* shift_portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		948A85BE1A44DB1C00EC20EA /* shift_portrait@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_portrait@2x~iphone.png"; sourceTree = "<group>"; };
+		948A85BF1A44DB1C00EC20EA /* shift_portrait@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_portrait@3x~iphone.png"; sourceTree = "<group>"; };
+		948A85DB1A44DCF600EC20EA /* BaseBoard.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BaseBoard.podspec; path = ../BaseBoard.podspec; sourceTree = "<group>"; };
+		948A85DD1A44DCFE00EC20EA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		948A85DE1A44DCFE00EC20EA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		948A858E1A44DAF400EC20EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		948A85861A44DACA00EC20EA = {
+			isa = PBXGroup;
+			children = (
+				948A85DB1A44DCF600EC20EA /* BaseBoard.podspec */,
+				948A85DD1A44DCFE00EC20EA /* LICENSE */,
+				948A85DE1A44DCFE00EC20EA /* README.md */,
+				948A85C11A44DB1C00EC20EA /* BaseBoard */,
+				948A85931A44DAF400EC20EA /* BaseBoardTests */,
+				948A85921A44DAF400EC20EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		948A85921A44DAF400EC20EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				948A85911A44DAF400EC20EA /* BaseBoardTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		948A85931A44DAF400EC20EA /* BaseBoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				948A85961A44DAF400EC20EA /* BaseBoardTests.m */,
+				948A85941A44DAF400EC20EA /* Supporting Files */,
+			);
+			path = BaseBoardTests;
+			sourceTree = "<group>";
+		};
+		948A85941A44DAF400EC20EA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				948A85951A44DAF400EC20EA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		948A85B31A44DB1C00EC20EA /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				948A85A51A44DB1C00EC20EA /* BBDDeleteKeyButton.h */,
+				948A85A61A44DB1C00EC20EA /* BBDDeleteKeyButton.m */,
+				948A85A71A44DB1C00EC20EA /* BBDFunctionKeyButton.h */,
+				948A85A81A44DB1C00EC20EA /* BBDFunctionKeyButton.m */,
+				948A85A91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.h */,
+				948A85AA1A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m */,
+				948A85AB1A44DB1C00EC20EA /* BBDKeyButton.h */,
+				948A85AC1A44DB1C00EC20EA /* BBDKeyButton.m */,
+				948A85AD1A44DB1C00EC20EA /* BBDShiftKeyButton.h */,
+				948A85AE1A44DB1C00EC20EA /* BBDShiftKeyButton.m */,
+				948A85AF1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.h */,
+				948A85B01A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m */,
+				948A85B11A44DB1C00EC20EA /* BBDSymbolKeyButton.h */,
+				948A85B21A44DB1C00EC20EA /* BBDSymbolKeyButton.m */,
+			);
+			name = Keys;
+			sourceTree = "<group>";
+		};
+		948A85C01A44DB1C00EC20EA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				948A85B41A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png */,
+				948A85B51A44DB1C00EC20EA /* global_portrait@2x~ipad.png */,
+				948A85B61A44DB1C00EC20EA /* delete_portrait@2x~ipad.png */,
+				948A85B71A44DB1C00EC20EA /* delete_portrait@2x~iphone.png */,
+				948A85B81A44DB1C00EC20EA /* delete_portrait@3x~iphone.png */,
+				948A85B91A44DB1C00EC20EA /* global_portrait@2x~iphone.png */,
+				948A85BA1A44DB1C00EC20EA /* global_portrait@3x~iphone.png */,
+				948A85BB1A44DB1C00EC20EA /* shift_lock_portrait@2x~iphone.png */,
+				948A85BC1A44DB1C00EC20EA /* shift_lock_portrait@3x~iphone.png */,
+				948A85BD1A44DB1C00EC20EA /* shift_portrait@2x~ipad.png */,
+				948A85BE1A44DB1C00EC20EA /* shift_portrait@2x~iphone.png */,
+				948A85BF1A44DB1C00EC20EA /* shift_portrait@3x~iphone.png */,
+			);
+			name = Resources;
+			path = BaseBoard/Resources;
+			sourceTree = "<group>";
+		};
+		948A85C11A44DB1C00EC20EA /* BaseBoard */ = {
+			isa = PBXGroup;
+			children = (
+				948A859B1A44DB1C00EC20EA /* BaseBoard.podspec */,
+				948A859C1A44DB1C00EC20EA /* BBDKeyboardViewController.h */,
+				948A859D1A44DB1C00EC20EA /* BBDKeyboardViewController.m */,
+				948A859E1A44DB1C00EC20EA /* BaseBoard.h */,
+				948A859F1A44DB1C00EC20EA /* BBDKeyController.h */,
+				948A85A01A44DB1C00EC20EA /* BBDKeyController.m */,
+				948A85A11A44DB1C00EC20EA /* BBDKeyPositionController.h */,
+				948A85A21A44DB1C00EC20EA /* BBDKeyPositionController.m */,
+				948A85A31A44DB1C00EC20EA /* BBDTypingLogicController.h */,
+				948A85A41A44DB1C00EC20EA /* BBDTypingLogicController.m */,
+				948A85B31A44DB1C00EC20EA /* Keys */,
+				948A85C01A44DB1C00EC20EA /* Resources */,
+			);
+			name = BaseBoard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		948A85901A44DAF400EC20EA /* BaseBoardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 948A859A1A44DAF400EC20EA /* Build configuration list for PBXNativeTarget "BaseBoardTests" */;
+			buildPhases = (
+				948A858D1A44DAF400EC20EA /* Sources */,
+				948A858E1A44DAF400EC20EA /* Frameworks */,
+				948A858F1A44DAF400EC20EA /* Resources */,
+				948A85DA1A44DBFF00EC20EA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BaseBoardTests;
+			productName = BaseBoardTests;
+			productReference = 948A85911A44DAF400EC20EA /* BaseBoardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		948A85871A44DACA00EC20EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					948A85901A44DAF400EC20EA = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 948A858A1A44DACA00EC20EA /* Build configuration list for PBXProject "BaseBoard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 948A85861A44DACA00EC20EA;
+			productRefGroup = 948A85921A44DAF400EC20EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				948A85901A44DAF400EC20EA /* BaseBoardTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		948A858F1A44DAF400EC20EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				948A85D81A44DB1C00EC20EA /* shift_portrait@2x~iphone.png in Resources */,
+				948A85D91A44DB1C00EC20EA /* shift_portrait@3x~iphone.png in Resources */,
+				948A85D71A44DB1C00EC20EA /* shift_portrait@2x~ipad.png in Resources */,
+				948A85D31A44DB1C00EC20EA /* global_portrait@2x~iphone.png in Resources */,
+				948A85D41A44DB1C00EC20EA /* global_portrait@3x~iphone.png in Resources */,
+				948A85D61A44DB1C00EC20EA /* shift_lock_portrait@3x~iphone.png in Resources */,
+				948A85CE1A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png in Resources */,
+				948A85D21A44DB1C00EC20EA /* delete_portrait@3x~iphone.png in Resources */,
+				948A85CF1A44DB1C00EC20EA /* global_portrait@2x~ipad.png in Resources */,
+				948A85D11A44DB1C00EC20EA /* delete_portrait@2x~iphone.png in Resources */,
+				948A85D51A44DB1C00EC20EA /* shift_lock_portrait@2x~iphone.png in Resources */,
+				948A85D01A44DB1C00EC20EA /* delete_portrait@2x~ipad.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		948A85DA1A44DBFF00EC20EA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -z ${SKIP_OBJCLEAN} || ${SKIP_OBJCLEAN} != 1 ]]; then\nif [[ -d \"${LOCAL_APPS_DIR}/Objective-Clean.app\" ]]; then\n\"${LOCAL_APPS_DIR}\"/Objective-Clean.app/Contents/Resources/ObjClean.app/Contents/MacOS/ObjClean \"${SRCROOT}\"\nelse\necho \"warning: You have to install and set up Objective-Clean to use its features!\"\nfi\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		948A858D1A44DAF400EC20EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				948A85C31A44DB1C00EC20EA /* BBDKeyboardViewController.m in Sources */,
+				948A85CC1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m in Sources */,
+				948A85C91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m in Sources */,
+				948A85CA1A44DB1C00EC20EA /* BBDKeyButton.m in Sources */,
+				948A85C71A44DB1C00EC20EA /* BBDDeleteKeyButton.m in Sources */,
+				948A85971A44DAF400EC20EA /* BaseBoardTests.m in Sources */,
+				948A85CB1A44DB1C00EC20EA /* BBDShiftKeyButton.m in Sources */,
+				948A85C41A44DB1C00EC20EA /* BBDKeyController.m in Sources */,
+				948A85C81A44DB1C00EC20EA /* BBDFunctionKeyButton.m in Sources */,
+				948A85C61A44DB1C00EC20EA /* BBDTypingLogicController.m in Sources */,
+				948A85CD1A44DB1C00EC20EA /* BBDSymbolKeyButton.m in Sources */,
+				948A85C51A44DB1C00EC20EA /* BBDKeyPositionController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		948A858B1A44DACA00EC20EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		948A858C1A44DACA00EC20EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		948A85981A44DAF400EC20EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BaseBoardTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		948A85991A44DAF400EC20EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BaseBoardTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		948A858A1A44DACA00EC20EA /* Build configuration list for PBXProject "BaseBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				948A858B1A44DACA00EC20EA /* Debug */,
+				948A858C1A44DACA00EC20EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		948A859A1A44DAF400EC20EA /* Build configuration list for PBXNativeTarget "BaseBoardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				948A85981A44DAF400EC20EA /* Debug */,
+				948A85991A44DAF400EC20EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 948A85871A44DACA00EC20EA /* Project object */;
+}

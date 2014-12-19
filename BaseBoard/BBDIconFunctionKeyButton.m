@@ -32,11 +32,12 @@
     return color;
 }
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect
+{
     [super drawRect:rect];
     
     //draw the appropriate shift key image
-    UIImage * iconImage = nil;
+    UIImage *iconImage = nil;
     if (self.keyCode == BBDKeyCodeNextKeyboard) {
         iconImage = [UIImage imageNamed:@"global_portrait"];
         iconImage = [iconImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];

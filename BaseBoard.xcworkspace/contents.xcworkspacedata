@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:BaseBoard/BaseBoard.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleProject/BaseBoardSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SampleProject/Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

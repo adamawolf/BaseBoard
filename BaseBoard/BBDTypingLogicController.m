@@ -67,19 +67,17 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
             if (beforeText.length == 0) {
                 determinedState = BBDShiftKeyStateUppercase;
             } else if (beforeText.length == 1) {
-                NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
-                if ([lastCharacter isEqualToString:@"\n"])
-                {
+                NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length - 1];
+                if ([lastCharacter isEqualToString:@"\n"]) {
                     //typed text ends in a carriage return
                     //NOTE: we get into this case (beforeText.length == 1) when the user types two subsequent \n
                     determinedState = BBDShiftKeyStateUppercase;
                 }
             } else if (beforeText.length >= 2) {
-                NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
+                NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length - 1];
                 NSString *secondToLastCharacter = [beforeText substringWithRange:(NSRange){beforeText.length - 2, 1}];
                 
-                if ([lastCharacter isEqualToString:@"\n"])
-                {
+                if ([lastCharacter isEqualToString:@"\n"]) {
                     //typed text ends in a carriage return
                     determinedState = BBDShiftKeyStateUppercase;
                 } else if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
@@ -105,9 +103,8 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         if (beforeText.length == 0) {
             determinedState = BBDShiftKeyStateUppercase;
         } else {
-            NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length -1];
-            if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound)
-            {
+            NSString *lastCharacter = [beforeText substringFromIndex:beforeText.length - 1];
+            if ([lastCharacter rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
                 determinedState = BBDShiftKeyStateUppercase;
             }
         }

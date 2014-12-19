@@ -63,7 +63,7 @@
 		8EB02909852E2C76C63C266C /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		941229021A437F1D002CB2CE /* KeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
 		941229031A437F1D002CB2CE /* KeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
-		94F9B99F19F08E6600F47B35 /* BaseBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94F9B99F19F08E6600F47B35 /* BaseBoardSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBoardSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9A319F08E6600F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F9B9A419F08E6600F47B35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		94F9B9A619F08E6600F47B35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 		94F9B9B019F08E6600F47B35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94F9B9B219F08E6600F47B35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		94F9B9B519F08E6600F47B35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		94F9B9BB19F08E6600F47B35 /* BaseBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94F9B9BB19F08E6600F47B35 /* BaseBoardSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseBoardSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9B9C019F08E6600F47B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F9B9C119F08E6600F47B35 /* BaseBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseBoardTests.m; sourceTree = "<group>"; };
 		94F9B9CF19F08EA300F47B35 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,8 +120,8 @@
 		94F9B99619F08E6600F47B35 = {
 			isa = PBXGroup;
 			children = (
-				94F9B9A119F08E6600F47B35 /* BaseBoard */,
-				94F9B9BE19F08E6600F47B35 /* BaseBoardTests */,
+				94F9B9A119F08E6600F47B35 /* BaseBoardSample */,
+				94F9B9BE19F08E6600F47B35 /* BaseBoardSampleTests */,
 				94F9B9D019F08EA300F47B35 /* Keyboard */,
 				94F9B9A019F08E6600F47B35 /* Products */,
 				D7CC430FF5C06F2C63033179 /* Pods */,
@@ -132,14 +132,14 @@
 		94F9B9A019F08E6600F47B35 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94F9B99F19F08E6600F47B35 /* BaseBoard.app */,
-				94F9B9BB19F08E6600F47B35 /* BaseBoardTests.xctest */,
+				94F9B99F19F08E6600F47B35 /* BaseBoardSample.app */,
+				94F9B9BB19F08E6600F47B35 /* BaseBoardSampleTests.xctest */,
 				94F9B9CF19F08EA300F47B35 /* Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94F9B9A119F08E6600F47B35 /* BaseBoard */ = {
+		94F9B9A119F08E6600F47B35 /* BaseBoardSample */ = {
 			isa = PBXGroup;
 			children = (
 				94F9B9A619F08E6600F47B35 /* AppDelegate.h */,
@@ -153,6 +153,7 @@
 				94F9B9B419F08E6600F47B35 /* LaunchScreen.xib */,
 				94F9B9A219F08E6600F47B35 /* Supporting Files */,
 			);
+			name = BaseBoardSample;
 			path = BaseBoard;
 			sourceTree = "<group>";
 		};
@@ -165,12 +166,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		94F9B9BE19F08E6600F47B35 /* BaseBoardTests */ = {
+		94F9B9BE19F08E6600F47B35 /* BaseBoardSampleTests */ = {
 			isa = PBXGroup;
 			children = (
 				94F9B9C119F08E6600F47B35 /* BaseBoardTests.m */,
 				94F9B9BF19F08E6600F47B35 /* Supporting Files */,
 			);
+			name = BaseBoardSampleTests;
 			path = BaseBoardTests;
 			sourceTree = "<group>";
 		};
@@ -212,9 +214,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94F9B99E19F08E6600F47B35 /* BaseBoard */ = {
+		94F9B99E19F08E6600F47B35 /* BaseBoardSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94F9B9C519F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoard" */;
+			buildConfigurationList = 94F9B9C519F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoardSample" */;
 			buildPhases = (
 				94F9B99B19F08E6600F47B35 /* Sources */,
 				94F9B99C19F08E6600F47B35 /* Frameworks */,
@@ -227,14 +229,14 @@
 				94F9B9D719F08EA300F47B35 /* PBXTargetDependency */,
 				94F9B9DA19F08EA300F47B35 /* PBXTargetDependency */,
 			);
-			name = BaseBoard;
+			name = BaseBoardSample;
 			productName = BaseBoard;
-			productReference = 94F9B99F19F08E6600F47B35 /* BaseBoard.app */;
+			productReference = 94F9B99F19F08E6600F47B35 /* BaseBoardSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		94F9B9BA19F08E6600F47B35 /* BaseBoardTests */ = {
+		94F9B9BA19F08E6600F47B35 /* BaseBoardSampleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94F9B9C819F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoardTests" */;
+			buildConfigurationList = 94F9B9C819F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoardSampleTests" */;
 			buildPhases = (
 				94F9B9B719F08E6600F47B35 /* Sources */,
 				94F9B9B819F08E6600F47B35 /* Frameworks */,
@@ -245,9 +247,9 @@
 			dependencies = (
 				94F9B9BD19F08E6600F47B35 /* PBXTargetDependency */,
 			);
-			name = BaseBoardTests;
+			name = BaseBoardSampleTests;
 			productName = BaseBoardTests;
-			productReference = 94F9B9BB19F08E6600F47B35 /* BaseBoardTests.xctest */;
+			productReference = 94F9B9BB19F08E6600F47B35 /* BaseBoardSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		94F9B9CE19F08EA300F47B35 /* Keyboard */ = {
@@ -293,7 +295,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94F9B99A19F08E6600F47B35 /* Build configuration list for PBXProject "BaseBoard" */;
+			buildConfigurationList = 94F9B99A19F08E6600F47B35 /* Build configuration list for PBXProject "BaseBoardSample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -306,8 +308,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94F9B99E19F08E6600F47B35 /* BaseBoard */,
-				94F9B9BA19F08E6600F47B35 /* BaseBoardTests */,
+				94F9B99E19F08E6600F47B35 /* BaseBoardSample */,
+				94F9B9BA19F08E6600F47B35 /* BaseBoardSampleTests */,
 				94F9B9CE19F08EA300F47B35 /* Keyboard */,
 			);
 		};
@@ -406,7 +408,7 @@
 /* Begin PBXTargetDependency section */
 		94F9B9BD19F08E6600F47B35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 94F9B99E19F08E6600F47B35 /* BaseBoard */;
+			target = 94F9B99E19F08E6600F47B35 /* BaseBoardSample */;
 			targetProxy = 94F9B9BC19F08E6600F47B35 /* PBXContainerItemProxy */;
 		};
 		94F9B9D719F08EA300F47B35 /* PBXTargetDependency */ = {
@@ -525,7 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BaseBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = BaseBoard;
+				PRODUCT_NAME = BaseBoardSample;
 			};
 			name = Debug;
 		};
@@ -535,7 +537,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BaseBoard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = BaseBoard;
+				PRODUCT_NAME = BaseBoardSample;
 			};
 			name = Release;
 		};
@@ -553,7 +555,7 @@
 				);
 				INFOPLIST_FILE = BaseBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = BaseBoardTests;
+				PRODUCT_NAME = BaseBoardSampleTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseBoard.app/BaseBoard";
 			};
 			name = Debug;
@@ -568,7 +570,7 @@
 				);
 				INFOPLIST_FILE = BaseBoardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = BaseBoardTests;
+				PRODUCT_NAME = BaseBoardSampleTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BaseBoard.app/BaseBoard";
 			};
 			name = Release;
@@ -602,7 +604,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94F9B99A19F08E6600F47B35 /* Build configuration list for PBXProject "BaseBoard" */ = {
+		94F9B99A19F08E6600F47B35 /* Build configuration list for PBXProject "BaseBoardSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94F9B9C319F08E6600F47B35 /* Debug */,
@@ -611,7 +613,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94F9B9C519F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoard" */ = {
+		94F9B9C519F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoardSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94F9B9C619F08E6600F47B35 /* Debug */,
@@ -620,7 +622,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94F9B9C819F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoardTests" */ = {
+		94F9B9C819F08E6600F47B35 /* Build configuration list for PBXNativeTarget "BaseBoardSampleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94F9B9C919F08E6600F47B35 /* Debug */,

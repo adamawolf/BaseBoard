@@ -18,7 +18,7 @@
         static UIColor *_darkColor = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            _darkColor = [UIColor colorWithWhite:(208.0f/255.0f) alpha:1.0f];
+            _darkColor = [UIColor colorWithWhite:(208.0f / 255.0f) alpha:1.0f];
         });
         color = _darkColor;
     } else {
@@ -28,11 +28,12 @@
     return color;
 }
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect
+{
     [super drawRect:rect];
     
     //draw the appropriate shift key image
-    UIImage * shiftKeyImage = nil;
+    UIImage *shiftKeyImage = nil;
     if ([self.dataSource shiftKeyState] == BBDShiftKeyStateLowercase) {
         shiftKeyImage = [UIImage imageNamed:@"shift_portrait"];
         shiftKeyImage = [shiftKeyImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];

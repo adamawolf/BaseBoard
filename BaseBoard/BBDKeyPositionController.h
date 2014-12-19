@@ -39,7 +39,7 @@
 
 + (NSIndexPath *)indexPathForKeyPosition:(NSInteger)keyPosition inKeyRow:(NSInteger)keyRow;
 
-@property(nonatomic,readonly) NSInteger keyPosition;
-@property(nonatomic,readonly) NSInteger keyRow;
+@property (nonatomic, readonly) NSInteger keyPosition;
+@property (nonatomic, readonly) NSInteger keyRow;
 
 @end

@@ -16,6 +16,7 @@
     if (self) {
         _shouldAutocapitalize = YES;
     }
+    
     return self;
 }
 

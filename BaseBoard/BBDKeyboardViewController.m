@@ -36,13 +36,15 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 
 @implementation BBDKeyboardViewController
 
-- (void)updateViewConstraints {
+- (void)updateViewConstraints
+{
     [super updateViewConstraints];
     
     // Add custom view sizing constraints here
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     _currentKeyPane = KeyPanePrimary;
@@ -72,7 +74,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
                                              },
                                          ];
     
-    [keyViewCreationContexts enumerateObjectsUsingBlock:^(NSDictionary * creationContext, NSUInteger idx, BOOL *stop) {
+    [keyViewCreationContexts enumerateObjectsUsingBlock:^(NSDictionary *creationContext, NSUInteger idx, BOOL *stop) {
         NSMutableSet *keyPaneSet = creationContext[@"targetButtonsMutableSet"];
         [creationContext[@"keyPaneRows"] enumerateObjectsUsingBlock:^(NSArray *row, NSUInteger rowIndex, BOOL *stop) {
             [row enumerateObjectsUsingBlock:^(NSNumber *keyCodeNumber, NSUInteger keyIndex, BOOL *stop) {

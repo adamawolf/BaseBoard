@@ -174,7 +174,6 @@
 
 @end
 
-
 @implementation NSIndexPath (KeyPositionControllerAdditions)
 
 + (NSIndexPath *)indexPathForKeyPosition:(NSInteger)keyPosition inKeyRow:(NSInteger)keyRow
