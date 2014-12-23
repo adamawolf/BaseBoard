@@ -171,9 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				948A859B1A44DB1C00EC20EA /* BaseBoard.podspec */,
+				948A859E1A44DB1C00EC20EA /* BaseBoard.h */,
 				948A859C1A44DB1C00EC20EA /* BBDKeyboardViewController.h */,
 				948A859D1A44DB1C00EC20EA /* BBDKeyboardViewController.m */,
-				948A859E1A44DB1C00EC20EA /* BaseBoard.h */,
 				948A859F1A44DB1C00EC20EA /* BBDKeyController.h */,
 				948A85A01A44DB1C00EC20EA /* BBDKeyController.m */,
 				948A85A11A44DB1C00EC20EA /* BBDKeyPositionController.h */,
