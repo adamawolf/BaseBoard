@@ -42,7 +42,7 @@
     return class;
 }
 
-+ (NSString *)symbolForKeyCode:(BBDKeyCode)keyCode
++ (NSString *)textualSymbolForKeyCode:(BBDKeyCode)keyCode
 {
     NSString *symbol = @"";
     
@@ -290,10 +290,9 @@
     return symbol;
 }
 
-+ (NSString *)yieldedLowercaseTextForKeyCode:(BBDKeyCode)keyCode forShiftKeyState:(BBDShiftKeyState)shiftKeyState
++ (NSString *)yieldedLowercaseTextForKeyCode:(BBDKeyCode)keyCode
 {
     NSString *yieldedText = nil;
-    BOOL isUpperCase = shiftKeyState == BBDShiftKeyStateUppercase || shiftKeyState == BBDShiftKeyStateCapsLock;
     
     switch (keyCode) {
         case BBDKeyCodeQ:
@@ -518,10 +517,6 @@
             break;
         default:
             break;
-    }
-    
-    if (isUpperCase) {
-        yieldedText = [yieldedText uppercaseString];
     }
     
     return yieldedText;

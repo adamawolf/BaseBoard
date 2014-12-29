@@ -116,8 +116,12 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
 - (void)processKeystrokeWithKeyCode:(BBDKeyCode)keyCode
 {
     if ([[BBDKeyController simpleTextGeneratingKeyCodeIndexSet] containsIndex:keyCode]) {
-        NSString *lowercaseYieldedText = [BBDKeyController yieldedLowercaseTextForKeyCode:keyCode forShiftKeyState:self.shiftKeyState];
-        [self.delegate typingLogicController:self determinedShouldInsertText:lowercaseYieldedText];
+        NSString *yieldedText = [BBDKeyController yieldedLowercaseTextForKeyCode:keyCode];
+        BOOL isUpperCase = self.shiftKeyState == BBDShiftKeyStateUppercase || self.shiftKeyState == BBDShiftKeyStateCapsLock;
+        if (isUpperCase) {
+            yieldedText = [yieldedText uppercaseString];
+        }
+        [self.delegate typingLogicController:self determinedShouldInsertText:yieldedText];
     } else if (keyCode == BBDKeyCodeSpace) {
         NSDate *spacePressDate = [NSDate date];
         NSTimeInterval timeSinceLastSpacePress = [spacePressDate timeIntervalSinceDate:self.lastSpacePressDate];

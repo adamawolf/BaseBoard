@@ -40,7 +40,7 @@
     
     NSString *symbol = nil;
     if (self.keyCode != BBDKeyCodeReturn) {
-        symbol = [BBDKeyController symbolForKeyCode:self.keyCode];
+        symbol = [BBDKeyController textualSymbolForKeyCode:self.keyCode];
     } else {
         symbol = [BBDStringKeyButton returnKeyTextForReturnKeyType:[self.dataSource returnKeyType]];
     }

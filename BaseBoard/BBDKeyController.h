@@ -119,9 +119,13 @@ typedef NS_ENUM(NSUInteger, BBDShiftKeyState) {
 
 + (Class)keyButtonClassForKeyCode:(BBDKeyCode)keyCode;
 
-+ (NSString *)symbolForKeyCode:(BBDKeyCode)keyCode;
-+ (NSString *)yieldedLowercaseTextForKeyCode:(BBDKeyCode)keyCode forShiftKeyState:(BBDShiftKeyState)shiftKeyState;
+//text to be drawn on a key view for particular key code
++ (NSString *)textualSymbolForKeyCode:(BBDKeyCode)keyCode;
 
+//text yielded by a 
++ (NSString *)yieldedLowercaseTextForKeyCode:(BBDKeyCode)keyCode;
+
+//set of keycodes which just result in adding
 + (NSIndexSet *)simpleTextGeneratingKeyCodeIndexSet;
 
 @end
