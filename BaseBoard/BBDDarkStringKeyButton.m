@@ -1,20 +1,31 @@
 //
-//  BBDFunctionKeyButton.m
+//  BBDDarkStringKeyButton.m
 //  BaseBoard
 //
-//  Created by Adam A. Wolf on 12/15/14.
+//  Created by Adam A. Wolf on 12/14/14.
 //  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "BBDFunctionKeyButton.h"
+#import "BBDDarkStringKeyButton.h"
 
-@implementation BBDFunctionKeyButton
+@implementation BBDDarkStringKeyButton
+
+- (UIFont *)symbolFont
+{
+    static UIFont *_symbolFont = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _symbolFont = [UIFont systemFontOfSize: [[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad ? 17.0f : 21.0];
+    });
+    
+    return _symbolFont;
+}
 
 - (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
 {
     self = [super initWithKeyCode:keyCode];
     if (self) {
-
+        self.shouldAutocapitalize = NO;
     }
     
     return self;

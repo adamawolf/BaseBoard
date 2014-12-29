@@ -13,12 +13,11 @@
 		948A85C51A44DB1C00EC20EA /* BBDKeyPositionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A21A44DB1C00EC20EA /* BBDKeyPositionController.m */; };
 		948A85C61A44DB1C00EC20EA /* BBDTypingLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A41A44DB1C00EC20EA /* BBDTypingLogicController.m */; };
 		948A85C71A44DB1C00EC20EA /* BBDDeleteKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A61A44DB1C00EC20EA /* BBDDeleteKeyButton.m */; };
-		948A85C81A44DB1C00EC20EA /* BBDFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85A81A44DB1C00EC20EA /* BBDFunctionKeyButton.m */; };
-		948A85C91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85AA1A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m */; };
+		948A85C91A44DB1C00EC20EA /* BBDDarkImageKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85AA1A44DB1C00EC20EA /* BBDDarkImageKeyButton.m */; };
 		948A85CA1A44DB1C00EC20EA /* BBDKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85AC1A44DB1C00EC20EA /* BBDKeyButton.m */; };
 		948A85CB1A44DB1C00EC20EA /* BBDShiftKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85AE1A44DB1C00EC20EA /* BBDShiftKeyButton.m */; };
-		948A85CC1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85B01A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m */; };
-		948A85CD1A44DB1C00EC20EA /* BBDSymbolKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85B21A44DB1C00EC20EA /* BBDSymbolKeyButton.m */; };
+		948A85CC1A44DB1C00EC20EA /* BBDDarkStringKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85B01A44DB1C00EC20EA /* BBDDarkStringKeyButton.m */; };
+		948A85CD1A44DB1C00EC20EA /* BBDStringKeyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A85B21A44DB1C00EC20EA /* BBDStringKeyButton.m */; };
 		948A85CE1A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B41A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png */; };
 		948A85CF1A44DB1C00EC20EA /* global_portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B51A44DB1C00EC20EA /* global_portrait@2x~ipad.png */; };
 		948A85D01A44DB1C00EC20EA /* delete_portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 948A85B61A44DB1C00EC20EA /* delete_portrait@2x~ipad.png */; };
@@ -49,18 +48,16 @@
 		948A85A41A44DB1C00EC20EA /* BBDTypingLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDTypingLogicController.m; path = BaseBoard/BBDTypingLogicController.m; sourceTree = "<group>"; };
 		948A85A51A44DB1C00EC20EA /* BBDDeleteKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDDeleteKeyButton.h; path = BaseBoard/BBDDeleteKeyButton.h; sourceTree = "<group>"; };
 		948A85A61A44DB1C00EC20EA /* BBDDeleteKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDDeleteKeyButton.m; path = BaseBoard/BBDDeleteKeyButton.m; sourceTree = "<group>"; };
-		948A85A71A44DB1C00EC20EA /* BBDFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDFunctionKeyButton.h; path = BaseBoard/BBDFunctionKeyButton.h; sourceTree = "<group>"; };
-		948A85A81A44DB1C00EC20EA /* BBDFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDFunctionKeyButton.m; path = BaseBoard/BBDFunctionKeyButton.m; sourceTree = "<group>"; };
-		948A85A91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDIconFunctionKeyButton.h; path = BaseBoard/BBDIconFunctionKeyButton.h; sourceTree = "<group>"; };
-		948A85AA1A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDIconFunctionKeyButton.m; path = BaseBoard/BBDIconFunctionKeyButton.m; sourceTree = "<group>"; };
+		948A85A91A44DB1C00EC20EA /* BBDDarkImageKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDDarkImageKeyButton.h; path = BaseBoard/BBDDarkImageKeyButton.h; sourceTree = "<group>"; };
+		948A85AA1A44DB1C00EC20EA /* BBDDarkImageKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDDarkImageKeyButton.m; path = BaseBoard/BBDDarkImageKeyButton.m; sourceTree = "<group>"; };
 		948A85AB1A44DB1C00EC20EA /* BBDKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDKeyButton.h; path = BaseBoard/BBDKeyButton.h; sourceTree = "<group>"; };
 		948A85AC1A44DB1C00EC20EA /* BBDKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDKeyButton.m; path = BaseBoard/BBDKeyButton.m; sourceTree = "<group>"; };
 		948A85AD1A44DB1C00EC20EA /* BBDShiftKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDShiftKeyButton.h; path = BaseBoard/BBDShiftKeyButton.h; sourceTree = "<group>"; };
 		948A85AE1A44DB1C00EC20EA /* BBDShiftKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDShiftKeyButton.m; path = BaseBoard/BBDShiftKeyButton.m; sourceTree = "<group>"; };
-		948A85AF1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDSymbolFunctionKeyButton.h; path = BaseBoard/BBDSymbolFunctionKeyButton.h; sourceTree = "<group>"; };
-		948A85B01A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDSymbolFunctionKeyButton.m; path = BaseBoard/BBDSymbolFunctionKeyButton.m; sourceTree = "<group>"; };
-		948A85B11A44DB1C00EC20EA /* BBDSymbolKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDSymbolKeyButton.h; path = BaseBoard/BBDSymbolKeyButton.h; sourceTree = "<group>"; };
-		948A85B21A44DB1C00EC20EA /* BBDSymbolKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDSymbolKeyButton.m; path = BaseBoard/BBDSymbolKeyButton.m; sourceTree = "<group>"; };
+		948A85AF1A44DB1C00EC20EA /* BBDDarkStringKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDDarkStringKeyButton.h; path = BaseBoard/BBDDarkStringKeyButton.h; sourceTree = "<group>"; };
+		948A85B01A44DB1C00EC20EA /* BBDDarkStringKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDDarkStringKeyButton.m; path = BaseBoard/BBDDarkStringKeyButton.m; sourceTree = "<group>"; };
+		948A85B11A44DB1C00EC20EA /* BBDStringKeyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBDStringKeyButton.h; path = BaseBoard/BBDStringKeyButton.h; sourceTree = "<group>"; };
+		948A85B21A44DB1C00EC20EA /* BBDStringKeyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBDStringKeyButton.m; path = BaseBoard/BBDStringKeyButton.m; sourceTree = "<group>"; };
 		948A85B41A44DB1C00EC20EA /* shift_lock_portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift_lock_portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		948A85B51A44DB1C00EC20EA /* global_portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "global_portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		948A85B61A44DB1C00EC20EA /* delete_portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_portrait@2x~ipad.png"; sourceTree = "<group>"; };
@@ -129,20 +126,10 @@
 		948A85B31A44DB1C00EC20EA /* Keys */ = {
 			isa = PBXGroup;
 			children = (
-				948A85A51A44DB1C00EC20EA /* BBDDeleteKeyButton.h */,
-				948A85A61A44DB1C00EC20EA /* BBDDeleteKeyButton.m */,
-				948A85A71A44DB1C00EC20EA /* BBDFunctionKeyButton.h */,
-				948A85A81A44DB1C00EC20EA /* BBDFunctionKeyButton.m */,
-				948A85A91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.h */,
-				948A85AA1A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m */,
 				948A85AB1A44DB1C00EC20EA /* BBDKeyButton.h */,
 				948A85AC1A44DB1C00EC20EA /* BBDKeyButton.m */,
-				948A85AD1A44DB1C00EC20EA /* BBDShiftKeyButton.h */,
-				948A85AE1A44DB1C00EC20EA /* BBDShiftKeyButton.m */,
-				948A85AF1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.h */,
-				948A85B01A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m */,
-				948A85B11A44DB1C00EC20EA /* BBDSymbolKeyButton.h */,
-				948A85B21A44DB1C00EC20EA /* BBDSymbolKeyButton.m */,
+				94ABD8B51A51F8E00070DB89 /* String Based Keys */,
+				94ABD8B41A51F8CA0070DB89 /* Image Based Keys */,
 			);
 			name = Keys;
 			sourceTree = "<group>";
@@ -185,6 +172,30 @@
 			);
 			name = BaseBoard;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		94ABD8B41A51F8CA0070DB89 /* Image Based Keys */ = {
+			isa = PBXGroup;
+			children = (
+				948A85AD1A44DB1C00EC20EA /* BBDShiftKeyButton.h */,
+				948A85AE1A44DB1C00EC20EA /* BBDShiftKeyButton.m */,
+				948A85A91A44DB1C00EC20EA /* BBDDarkImageKeyButton.h */,
+				948A85AA1A44DB1C00EC20EA /* BBDDarkImageKeyButton.m */,
+				948A85A51A44DB1C00EC20EA /* BBDDeleteKeyButton.h */,
+				948A85A61A44DB1C00EC20EA /* BBDDeleteKeyButton.m */,
+			);
+			name = "Image Based Keys";
+			sourceTree = "<group>";
+		};
+		94ABD8B51A51F8E00070DB89 /* String Based Keys */ = {
+			isa = PBXGroup;
+			children = (
+				948A85B11A44DB1C00EC20EA /* BBDStringKeyButton.h */,
+				948A85B21A44DB1C00EC20EA /* BBDStringKeyButton.m */,
+				948A85AF1A44DB1C00EC20EA /* BBDDarkStringKeyButton.h */,
+				948A85B01A44DB1C00EC20EA /* BBDDarkStringKeyButton.m */,
+			);
+			name = "String Based Keys";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,16 +293,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				948A85C31A44DB1C00EC20EA /* BBDKeyboardViewController.m in Sources */,
-				948A85CC1A44DB1C00EC20EA /* BBDSymbolFunctionKeyButton.m in Sources */,
-				948A85C91A44DB1C00EC20EA /* BBDIconFunctionKeyButton.m in Sources */,
+				948A85CC1A44DB1C00EC20EA /* BBDDarkStringKeyButton.m in Sources */,
+				948A85C91A44DB1C00EC20EA /* BBDDarkImageKeyButton.m in Sources */,
 				948A85CA1A44DB1C00EC20EA /* BBDKeyButton.m in Sources */,
 				948A85C71A44DB1C00EC20EA /* BBDDeleteKeyButton.m in Sources */,
 				948A85971A44DAF400EC20EA /* BaseBoardTests.m in Sources */,
 				948A85CB1A44DB1C00EC20EA /* BBDShiftKeyButton.m in Sources */,
 				948A85C41A44DB1C00EC20EA /* BBDKeyController.m in Sources */,
-				948A85C81A44DB1C00EC20EA /* BBDFunctionKeyButton.m in Sources */,
 				948A85C61A44DB1C00EC20EA /* BBDTypingLogicController.m in Sources */,
-				948A85CD1A44DB1C00EC20EA /* BBDSymbolKeyButton.m in Sources */,
+				948A85CD1A44DB1C00EC20EA /* BBDStringKeyButton.m in Sources */,
 				948A85C51A44DB1C00EC20EA /* BBDKeyPositionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

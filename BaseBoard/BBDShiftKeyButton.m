@@ -13,8 +13,9 @@
 - (UIColor *)backgroundColor
 {
     UIColor *color = nil;
-    if ([self.dataSource shiftKeyState] != BBDShiftKeyStateLowercase &&
-        [self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark &&
+        [self.dataSource shiftKeyState] != BBDShiftKeyStateLowercase) {
+        //special background color for darkmode capilized states
         static UIColor *_darkColor = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -22,7 +23,43 @@
         });
         color = _darkColor;
     } else {
-        color = [super backgroundColor];
+        if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+            static UIColor *_darkColor = nil;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                _darkColor = [UIColor colorWithWhite:(60.0f / 255.0f) alpha:1.0f];
+            });
+            color = _darkColor;
+        } else {
+            static UIColor *_lightColor = nil;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                _lightColor = [UIColor colorWithRed:(168.0f / 255.0f) green:(179.0f / 255.0f) blue:(186.0f / 255.0f) alpha:1.0f];
+            });
+            color = _lightColor;
+        }
+    }
+    
+    return color;
+}
+
+- (UIColor *)highlightedBackgroundColor
+{
+    UIColor *color = nil;
+    if ([self.dataSource keyboardAppearance] == UIKeyboardAppearanceDark) {
+        static UIColor *_darkColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _darkColor = [UIColor colorWithWhite:(40.0f / 255.0f) alpha:1.0f];
+        });
+        color = _darkColor;
+    } else {
+        static UIColor *_lightColor = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _lightColor = [UIColor colorWithRed:(128.0f / 255.0f) green:(139.0f / 255.0f) blue:(146.0f / 255.0f) alpha:1.0f];
+        });
+        color = _lightColor;
     }
     
     return color;

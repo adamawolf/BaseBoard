@@ -11,14 +11,14 @@
 
 #import "BBDDeleteKeyButton.h"
 #import "BBDFunctionKeyButton.h"
-#import "BBDIconFunctionKeyButton.h"
+#import "BBDDarkImageKeyButton.h"
 #import "BBDKeyboardViewController.h"
 #import "BBDKeyButton.h"
 #import "BBDKeyController.h"
 #import "BBDKeyPositionController.h"
 #import "BBDShiftKeyButton.h"
-#import "BBDSymbolFunctionKeyButton.h"
-#import "BBDSymbolKeyButton.h"
+#import "BBDDarkStringKeyButton.h"
+#import "BBDStringKeyButton.h"
 #import "BBDTypingLogicController.h"
 
 

@@ -1,14 +1,14 @@
 //
-//  BBDSymbolKeyButton.m
+//  BBDStringKeyButton.m
 //  BaseBoard
 //
 //  Created by Adam A. Wolf on 12/11/14.
 //  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "BBDSymbolKeyButton.h"
+#import "BBDStringKeyButton.h"
 
-@implementation BBDSymbolKeyButton
+@implementation BBDStringKeyButton
 
 - (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
 {
@@ -42,7 +42,7 @@
     if (self.keyCode != BBDKeyCodeReturn) {
         symbol = [BBDKeyController symbolForKeyCode:self.keyCode];
     } else {
-        symbol = [BBDSymbolKeyButton returnKeyTextForReturnKeyType:[self.dataSource returnKeyType]];
+        symbol = [BBDStringKeyButton returnKeyTextForReturnKeyType:[self.dataSource returnKeyType]];
     }
     
     BOOL isUpperCase = ([self.dataSource shiftKeyState] == BBDShiftKeyStateUppercase ||

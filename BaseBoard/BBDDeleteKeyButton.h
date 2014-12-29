@@ -5,9 +5,10 @@
 //  Created by Adam A. Wolf on 12/15/14.
 //  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
+//  A dark image key that handles hold-to-delete (and eventually, deletes faster).
 
-#import "BBDIconFunctionKeyButton.h"
+#import "BBDDarkImageKeyButton.h"
 
-@interface BBDDeleteKeyButton : BBDIconFunctionKeyButton
+@interface BBDDeleteKeyButton : BBDDarkImageKeyButton
 
 @end

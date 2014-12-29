@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 //  Base class for all other KeyButtons on the keyboard.
-//  Draws key background and shadow shapes according to paddings.
+//  Draws key background and shadow shapes according to paddings and colors.
 //  The space key can use this class, all else will need to subclass.
 
 #import <UIKit/UIKit.h>

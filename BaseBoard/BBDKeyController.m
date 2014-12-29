@@ -9,17 +9,17 @@
 #import "BBDKeyController.h"
 
 #import "BBDKeyButton.h"
-#import "BBDSymbolKeyButton.h"
+#import "BBDStringKeyButton.h"
 #import "BBDShiftKeyButton.h"
-#import "BBDSymbolFunctionKeyButton.h"
-#import "BBDIconFunctionKeyButton.h"
+#import "BBDDarkStringKeyButton.h"
+#import "BBDDarkImageKeyButton.h"
 #import "BBDDeleteKeyButton.h"
 
 @implementation BBDKeyController
 
 + (Class)keyButtonClassForKeyCode:(BBDKeyCode)keyCode
 {
-    Class class = [BBDSymbolKeyButton class];
+    Class class = [BBDStringKeyButton class];
     
     if (keyCode == BBDKeyCodeSpace) {
         class = [BBDKeyButton class];
@@ -32,9 +32,9 @@
                keyCode == BBDKeyCodeReturn ||
                keyCode == BBDKeyCodeSymbolsPane ||
                keyCode == BBDKeyCodePrimaryKeyPane) {
-        class = [BBDSymbolFunctionKeyButton class];
+        class = [BBDDarkStringKeyButton class];
     } else if (keyCode == BBDKeyCodeNextKeyboard) {
-        class = [BBDIconFunctionKeyButton class];
+        class = [BBDDarkImageKeyButton class];
     } else if (keyCode == BBDKeyCodeDelete) {
         class = [BBDDeleteKeyButton class];
     }

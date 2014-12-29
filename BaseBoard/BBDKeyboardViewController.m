@@ -11,7 +11,7 @@
 #import "BBDKeyPositionController.h"
 #import "BBDTypingLogicController.h"
 #import "BBDKeyButton.h"
-#import "BBDSymbolKeyButton.h"
+#import "BBDStringKeyButton.h"
 #import "BBDShiftKeyButton.h"
 
 typedef NS_ENUM(NSUInteger, KeyPane) {
@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     KeyPaneSupplementalSymbols,
 };
 
-@interface BBDKeyboardViewController () <BBDKeyPositionDataSource, BBDKeyButtonDelegate, BBDSymbolKeyButtonDataSource, BBDShiftKeyButtonDataSource, BBDTypingLogicControllerDelegate>
+@interface BBDKeyboardViewController () <BBDKeyPositionDataSource, BBDKeyButtonDelegate, BBDStringKeyButtonDataSource, BBDShiftKeyButtonDataSource, BBDTypingLogicControllerDelegate>
 
 @property (nonatomic, assign) KeyPane currentKeyPane;
 
@@ -301,7 +301,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     return self.textDocumentProxy.keyboardAppearance;
 }
 
-#pragma mark - BBDSymbolKeyButtonDataSource methods
+#pragma mark - BBDStringKeyButtonDataSource methods
 #pragma mark - BDShiftKeyButtonDataSource methods
 
 - (BBDShiftKeyState)shiftKeyState
