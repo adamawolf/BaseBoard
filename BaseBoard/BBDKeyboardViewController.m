@@ -200,7 +200,7 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
     return [[BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane][row] count];
 }
 
-- (BBDKeyCode)symbolForKeyAtIndexPath:(NSIndexPath *)indexPath
+- (BBDKeyCode)keyCodeForKeyAtIndexPath:(NSIndexPath *)indexPath
 {
     NSNumber *keyCodeNumber = [BBDKeyboardViewController rowsForKeyPane:self.currentKeyPane][indexPath.keyRow][indexPath.keyPosition];
     

@@ -142,7 +142,7 @@
             runningX += margins.left;
     
             NSIndexPath *currentIndexPath = [NSIndexPath indexPathForKeyPosition:keyIndex inKeyRow:rowIndex];
-            NSNumber *keyCodeNumber = @([self.dataSource symbolForKeyAtIndexPath:currentIndexPath]);
+            NSNumber *keyCodeNumber = @([self.dataSource keyCodeForKeyAtIndexPath:currentIndexPath]);
             CGRect frame = CGRectMake(runningX, runningY, [currentKeyDictionary[@"width"] floatValue], heightPerRow);
             runningX += frame.size.width;
             
