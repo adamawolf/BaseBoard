@@ -34,6 +34,6 @@
 
 - (void)determineShiftKeyState;
 
-- (void)processKeystrokeWithKeyCode:(BBDKeyCode)keyCode;
+- (void)processKeystrokeWithKeyCode:(NSUInteger)keyCode;
 
 @end

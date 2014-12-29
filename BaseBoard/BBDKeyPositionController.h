@@ -17,7 +17,7 @@
 @property (nonatomic, weak) id<BBDKeyPositionDataSource>dataSource;
 
 - (void)reloadKeyPositions;
-- (NSDictionary *)keyDictionaryForKeyCode:(BBDKeyCode)keyCode;
+- (NSDictionary *)keyDictionaryForKeyCode:(NSUInteger)keyCode;
 
 @end
 
@@ -29,7 +29,7 @@
 - (NSInteger)numberOfRows;
 - (NSInteger)numberOfKeysForRow:(NSInteger)row;
 
-- (BBDKeyCode)keyCodeForKeyAtIndexPath:(NSIndexPath *)indexPath;
+- (NSUInteger)keyCodeForKeyAtIndexPath:(NSIndexPath *)indexPath;
 
 //a fraction between 0 and 1.0, 1.0 representing width remaining after subtracting margins
 - (NSNumber *)relativeWidthForKeyAtIndexPath:(NSIndexPath *)indexPath;

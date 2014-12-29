@@ -10,14 +10,14 @@
 
 @interface BBDKeyButton ()
 
-@property (nonatomic, readwrite) BBDKeyCode keyCode;
+@property (nonatomic, readwrite) NSUInteger keyCode;
 @property (nonatomic, assign) CGFloat shadowHeight;
 
 @end
 
 @implementation BBDKeyButton
 
-- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
+- (instancetype)initWithKeyCode:(NSUInteger)keyCode
 {
     self = [super init];
     if (self) {

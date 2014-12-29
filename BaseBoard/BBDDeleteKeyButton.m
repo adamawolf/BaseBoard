@@ -21,7 +21,7 @@ static NSInteger const kLargeDeleteStringCharacterCount = 6;
 
 @implementation BBDDeleteKeyButton
 
-- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
+- (instancetype)initWithKeyCode:(NSUInteger)keyCode
 {
     self = [super initWithKeyCode:keyCode];
     

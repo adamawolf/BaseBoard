@@ -31,7 +31,7 @@
 @property (nonatomic, weak) id<BBDKeyButtonDelegate> delegate;
 @property (nonatomic, weak) id<BBDKeyButtonDataSource> dataSource;
 
-@property (nonatomic, readonly) BBDKeyCode keyCode;
+@property (nonatomic, readonly) NSUInteger keyCode;
 @property (nonatomic, assign) UIEdgeInsets paddings;
 
 - (UIColor *)symbolColor;
@@ -39,7 +39,7 @@
 - (UIColor *)shadowColor;
 - (UIColor *)highlightedBackgroundColor;
 
-- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode;
+- (instancetype)initWithKeyCode:(NSUInteger)keyCode;
 
 - (CGRect)keyFrame;
 

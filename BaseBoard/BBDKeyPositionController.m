@@ -163,7 +163,7 @@
     }
 }
 
-- (NSDictionary *)keyDictionaryForKeyCode:(BBDKeyCode)keyCode
+- (NSDictionary *)keyDictionaryForKeyCode:(NSUInteger)keyCode
 {
     if (!self.keyDictionariesKeyedByKeyCode) {
         [self reloadKeyPositions];

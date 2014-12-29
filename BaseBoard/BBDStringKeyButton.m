@@ -10,7 +10,7 @@
 
 @implementation BBDStringKeyButton
 
-- (instancetype)initWithKeyCode:(BBDKeyCode)keyCode
+- (instancetype)initWithKeyCode:(NSUInteger)keyCode
 {
     self = [super initWithKeyCode:keyCode];
     if (self) {

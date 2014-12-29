@@ -116,7 +116,7 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
     [self setShiftKeyState:determinedState];
 }
 
-- (void)processKeystrokeWithKeyCode:(BBDKeyCode)keyCode
+- (void)processKeystrokeWithKeyCode:(NSUInteger)keyCode
 {
     if ([[BBDKeyController simpleTextGeneratingKeyCodeIndexSet] containsIndex:keyCode]) {
         NSString *yieldedText = [BBDKeyController yieldedLowercaseTextForKeyCode:keyCode];
