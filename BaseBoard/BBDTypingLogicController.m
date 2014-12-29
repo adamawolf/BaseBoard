@@ -15,6 +15,9 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
 @property NSDate *lastShiftPressDate;
 @property NSDate *lastSpacePressDate;
 
+@property (nonatomic, weak) id<BBDTypingLogicControllerDelegate> delegate;
+@property (nonatomic, readonly) NSObject <UITextDocumentProxy> *textDocumentProxy;
+
 @end
 
 @implementation BBDTypingLogicController

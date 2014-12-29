@@ -5,6 +5,7 @@
 //  Created by Adam A. Wolf on 11/25/14.
 //  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
+//  Translates events on the keyboard into results in the text view.
 
 #import <Foundation/Foundation.h>
 #import "BBDKeyController.h"
@@ -25,9 +26,6 @@
 @end
 
 @interface BBDTypingLogicController : NSObject
-
-@property (nonatomic, weak) id<BBDTypingLogicControllerDelegate> delegate;
-@property (nonatomic, readonly) NSObject <UITextDocumentProxy> *textDocumentProxy;
 
 @property (nonatomic, assign) BBDShiftKeyState shiftKeyState;
 
