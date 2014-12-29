@@ -4,9 +4,9 @@ An basic implementation of the standard iOS keyboard as a keyboard extension.
 
 ## Motivation.
 
-Virtual keyboarding is here to stay.  As maker of [TapTyping](http://itunes.apple.com/us/app/taptyping/id364237969?mt=8) I'm in a unique position to notice a depressing trend with all of the 3rd party keyboards so far: they all suck. From the data I've gathered, absolutely none of them seem to offer any speed or accuracy advantages over Apple's stock virtual keyboard. Let's fix that.
+As maker of [TapTyping](http://itunes.apple.com/us/app/taptyping/id364237969?mt=8), I’ve been in the unique position to collect perfomrance data for 3rd party keyboards. When compared with Apple's built in keyboard, existing third party keyboards thus far haven't increased typing speed or accuracy. Direct individual taps that rely on our pre-existing "QWERTY" muscle memories constistently beat out input methods that rely heavily on swiping or auto-correct by a healthy margin.
 
-The problem is that Apple's Keyboard Extension template in Xcode is woefully bare. BaseBoard is a starting point so that people who would like to innovate with virtual keyboarding are not forced to re-invent the wheel.
+BaseBoard is a starting point so that people who would like to innovate with fundamentals-based virtual keyboarding are not forced to re-invent the wheel. Virtual keyboarding is here to stay. Let's make it better.
 
 ## How to get started.
 
