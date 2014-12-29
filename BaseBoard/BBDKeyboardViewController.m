@@ -302,16 +302,17 @@ typedef NS_ENUM(NSUInteger, KeyPane) {
 }
 
 #pragma mark - BBDStringKeyButtonDataSource methods
-#pragma mark - BDShiftKeyButtonDataSource methods
-
-- (BBDShiftKeyState)shiftKeyState
-{
-    return self.typingLogicController.shiftKeyState;
-}
 
 - (UIReturnKeyType)returnKeyType
 {
     return self.textDocumentProxy.returnKeyType;
+}
+
+#pragma mark - BBDShiftKeyButtonDataSource methods
+
+- (BBDShiftKeyState)shiftKeyState
+{
+    return self.typingLogicController.shiftKeyState;
 }
 
 #pragma mark - TypingLogicControllerDelegate methods
