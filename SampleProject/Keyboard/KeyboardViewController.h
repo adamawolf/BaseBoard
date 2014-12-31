@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Adam A. Wolf. All rights reserved.
 //
 
-#import "BBDKeyboardViewController.h"
+#import <BaseBoard/BaseBoard.h>
 
 @interface KeyboardViewController : BBDKeyboardViewController
 
