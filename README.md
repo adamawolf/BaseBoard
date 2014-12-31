@@ -12,11 +12,11 @@ BaseBoard is a starting point so that people who would like to innovate with fun
 
 1. Have Cocoapods installed.
 2. Create your own keyboard extension and wrapper app using Xcode. Follow [Apple's instructions](https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/Keyboard.html#//apple_ref/doc/uid/TP40014214-CH16-SW7).
-3. Integrate the BaseBoard pod. Link it with your keyboard extension target. See [SampleProject's Podfile](https://github.com/adamawolf/BaseBoard/blob/master/SampleProject/Podfile) for an example.
+3. Integrate the BaseBoard pod. Link it with your keyboard extension target. [SampleProject's Podfile](https://github.com/adamawolf/BaseBoard/blob/master/SampleProject/Podfile) is an example, though make sure to use ```pod 'BaseBoard'``` for the import. Once your Podfile is set up run ```pod install``` and switch to using the generated .xcworkspace.
 4. In your keyboard extension's KeyboardViewController.h:
-  1. ```#import <BaseBoard/BaseBoard.h>``` (or put this in your .pch to import globally)
+  1. ```#import <BaseBoard/BaseBoard.h>```
   2. Change your KeyboardViewController to be a subclass of ```BBDKeyboardViewController```.
-  3. Delete the Xcode template's method implementations from KeyboardViewController.m.
+  3. Delete all of the Xcode template's method implementations from KeyboardViewController.m.
 
 At this point you should be able to install and run the keyboard wrapper and extension on your simmulator or, with some bundle identifier modifications, on your test devices.
 
