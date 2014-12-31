@@ -4,7 +4,7 @@ An basic implementation of the standard iOS keyboard as a keyboard extension.
 
 ## Motivation.
 
-As maker of [TapTyping](http://itunes.apple.com/us/app/taptyping/id364237969?mt=8), I’ve been in the unique position to collect perfomrance data for 3rd party keyboards. When compared with Apple's built in keyboard, existing third party keyboards thus far haven't increased typing speed or accuracy. Direct individual taps that rely on our pre-existing "QWERTY" muscle memories constistently beat out input methods that rely heavily on swiping or auto-correct by a healthy margin.
+As maker of [TapTyping](http://itunes.apple.com/us/app/taptyping/id364237969?mt=8), I’ve been able to track perfomrance data for 3rd party keyboards since their public release in September. It seems keyboards that rely on direct individual taps and our pre-existing "QWERTY" muscle memories constistently beat out input methods that rely heavily on swiping or auto-correct. So far, when compared with Apple's keyboard, no third party keyboard holds a candle in terms of typing speed or accuracy.
 
 BaseBoard is a starting point so that people who would like to innovate with fundamentals-based virtual keyboarding are not forced to re-invent the wheel. Virtual keyboarding is here to stay. Let's make it better.
 
@@ -31,7 +31,7 @@ The Key Controller defines all the key codes and corresponding attributes. To cr
 A rough todo list:
 
 * Autocorrect.
-* De-couple touch detection from UIButton's bounds. I.e. a "touch plane" class that dynamically assings taps to keys.
-* Enhance extendability. I'm sure as people begin to build on top of BaseBoard many things will need to change to support extension in a sane(r) maner.
+* De-couple touch detection from UIButton's bounds. I.e. a "touch plane" class that dynamically assigns taps to keys.
+* Refactor to enhance extendability.
 
 The project uses [Objective Clean](http://objclean.com/) to enforce coding standards. Please install that app and fix all style warnings before sending a pull request.

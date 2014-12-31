@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage = 'http://github.com/adamawolf/BaseBoard'
   s.social_media_url = 'https://twitter.com/adamawolf'
   s.authors  = { 'Adam A. Wolf' => 'hi@adamawolf.com' }
-  s.source       = { :git => 'git@github.com:adamawolf/BaseBoard.git', :tag => '0.9.5' }
+  s.source       = { :git => 'https://github.com/adamawolf/BaseBoard.git', :tag => '0.9.5' }
   s.requires_arc = true
 
   s.ios.deployment_target = '8.0'
