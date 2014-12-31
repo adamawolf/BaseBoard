@@ -1,5 +1,5 @@
 PODS:
-  - BaseBoard (0.9.3)
+  - BaseBoard (0.9.6)
 
 DEPENDENCIES:
   - BaseBoard (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BaseBoard: 60ce2340e84e4a28da0ae9ebe95611f4e5b987ec
+  BaseBoard: 403dca4bd4b6e21d4664a19083d69132a2a16880
 
 COCOAPODS: 0.34.4

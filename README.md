@@ -10,7 +10,7 @@ BaseBoard is a starting point so that people who would like to innovate with fun
 
 ## How to get started.
 
-1. To get started, make sure you have Cocoapods installed.
+1. Have Cocoapods installed.
 2. Create your own keyboard extension and wrapper app using Xcode. Follow [Apple's instructions](https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/Keyboard.html#//apple_ref/doc/uid/TP40014214-CH16-SW7).
 3. Integrate the BaseBoard pod. Link it with your keyboard extension target. See [SampleProject's Podfile](https://github.com/adamawolf/BaseBoard/blob/master/SampleProject/Podfile) for an example.
 4. In your keyboard extension's KeyboardViewController.h:
@@ -28,10 +28,10 @@ The Key Controller defines all the key codes and corresponding attributes. To cr
 
 ## How to contribute. 
 
-A rough todo list:
+TODOs:
 
 * Autocorrect.
-* De-couple touch detection from UIButton's bounds. I.e. a "touch plane" class that dynamically assigns taps to keys.
+* De-couple touch detection from UIButton's bounds. I.e. a "touch plane" that can dynamically adjust touch targets of keys depending on previously typed characters, etc.
 * Refactor to enhance extendability.
 
-The project uses [Objective Clean](http://objclean.com/) to enforce coding standards. Please install that app and fix all style warnings before sending a pull request.
+BaseBoard uses [Objective Clean](http://objclean.com/) to enforce a conistent syntax. Please install that app and fix all style warnings before sending a pull request.
