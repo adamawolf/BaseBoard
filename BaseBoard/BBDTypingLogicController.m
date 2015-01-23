@@ -9,6 +9,7 @@
 #import "BBDTypingLogicController.h"
 
 static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
+static NSString *const kEnglishISO639dashOneCode = @"en";
 
 @interface BBDTypingLogicController ()
 
@@ -126,6 +127,44 @@ static const NSTimeInterval kMaxDoubleTapInterval = 0.3f;
         }
         [self.delegate typingLogicController:self determinedShouldInsertText:yieldedText];
     } else if (keyCode == BBDKeyCodeSpace) {
+        //get last word typed before this space it be inserted
+        NSString *beforeText = self.textDocumentProxy.documentContextBeforeInput;
+        NSArray *words = [beforeText componentsSeparatedByString:@" "];
+        NSString *lastWord = [words lastObject];
+        
+        if (lastWord) {
+            UITextChecker *aTextCheckter = [[UITextChecker alloc] init];
+            
+            NSLog(@"last word to check: '%@'", lastWord);
+            
+            //check for mispelling
+            NSString *paddedLastWord = [NSString stringWithFormat:@" %@ ", lastWord];
+            NSRange misspellingRange = [aTextCheckter rangeOfMisspelledWordInString:paddedLastWord range:(NSRange){0, paddedLastWord.length} startingAt:0 wrap:YES language:kEnglishISO639dashOneCode];
+            
+            BOOL isMisspelling = misspellingRange.location != NSNotFound;
+            
+            if (isMisspelling) {
+                NSLog(@"is misspelling: %@", isMisspelling ? @"YES" : @"NO");
+                
+                //check for completions and corrections
+                NSArray *guesses = [aTextCheckter guessesForWordRange:(NSRange){0,lastWord.length} inString:lastWord language:kEnglishISO639dashOneCode];
+                NSLog(@"guesses: %@", guesses);
+                
+                NSString *correction = [guesses firstObject];
+                if (correction) {
+                    //delete chracters of last word
+                    for (int i = 0; i < lastWord.length; i++) {
+                        [self.delegate typingLogicControllerDeterminedShouldDeleteBackwards:self];
+                    }
+                    //insert correction
+                    [self.delegate typingLogicController:self determinedShouldInsertText:correction];
+                }
+            }
+            
+            NSLog(@"\n");
+        }
+        
+        //check for double tap space shortcur
         NSDate *spacePressDate = [NSDate date];
         NSTimeInterval timeSinceLastSpacePress = [spacePressDate timeIntervalSinceDate:self.lastSpacePressDate];
         
